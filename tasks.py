@@ -20,4 +20,4 @@ def fetch_data(self, url):
             f.write(response.text)
     else:
         raise ValueError('Unexpected status code: shit')
-    return "shit"
+    return "something returned"
