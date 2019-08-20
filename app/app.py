@@ -2,11 +2,9 @@ import os
 from flask import Flask, Response, request, jsonify
 from tasks import fetch_data
 
-
 PATH = './data'
 app = Flask(__name__)
 app.config['DEBUG'] = True
-
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

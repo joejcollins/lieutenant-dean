@@ -1,13 +1,10 @@
 import os
 from celery import Celery
 
-
-CELERY_BROKER_URL = os.environ['CELERY_BROKER_URL']
-
-
 app = Celery(__name__)
 app.conf.update({
-    'broker_url': CELERY_BROKER_URL,
+    'broker_url': "redis://localhost:6379/0",
+    'result_backend': "redis://localhost:6379/0",
     'imports': (
         'tasks',
     ),

@@ -5,10 +5,11 @@ import os
 from datetime import datetime
 from worker import app
 
-
-
 @app.task(bind=True, name='fetch_data')
 def fetch_data(self, url):
+    self.update_state(
+        state="PROGRESS",
+    )
     response = requests.get(url)
     path = './data'
     if response.ok:
@@ -18,4 +19,5 @@ def fetch_data(self, url):
         with open(os.path.join(path, slug), 'w') as f:
             f.write(response.text)
     else:
-        raise ValueError(f'Unexpected status code: {response.status_code}')
+        raise ValueError('Unexpected status code: shit')
+    return "shit"
