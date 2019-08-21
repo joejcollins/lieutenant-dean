@@ -1,19 +1,33 @@
-# Unit Testing Celery Tasks
+# Testing Celery Tasks
+
+Approach is to run immediately.
 
 ## WSL Ubuntu 18.04
+
+Install Redis and Flower.
+
+```bash
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install redis-server
+redis-cli -v
+    redis-cli 4.0.9
+sudo service redis-server restart
+```
 
 WSL ends up trying to use the windows version of Python so you have to specify the executable directly
 
 `pipenv install --python=/usr/bin/python3.6`
 
-1. install redis
-1. pipenv install
-1. pipenv shell
-    1. python test-harness.py
-    1. python test-unittest.py
-    1. pytest test-pytest.py
-    1. celery -A tasks worker -l info
-    1. flower -A tasks --port=5555
-    1. python run.py
+
+Then you can open the `pipenv shell`.
+
+```bash
+python test-harness.py
+python test-unittest.py
+pytest test-pytest.py
+```
+
+Or run with actual `celery` in two WSL Windows `celery -A tasks worker -l info` and `python run.py`
 
 
