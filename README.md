@@ -1,5 +1,11 @@
 # Unit Testing Celery Tasks
 
+## WSL Ubuntu 18.04
+
+WSL ends up trying to use the windows version of Python so you have to specify the executable directly
+
+`pipenv install --python=/usr/bin/python3.6`
+
 1. install redis
 1. pipenv install
 1. pipenv shell
