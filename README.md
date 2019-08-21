@@ -1,6 +1,7 @@
 # Testing Celery Tasks
 
-Approach is to run immediately.
+Approach is to run tasks immediately, rather than have an instance of Celery available to run the tasks.
+This allows the tasks to be debugged during testing.
 
 ## WSL Ubuntu 18.04
 
