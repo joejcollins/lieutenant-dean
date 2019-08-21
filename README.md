@@ -3,6 +3,8 @@
 Approach is to run tasks immediately, rather than have an instance of Celery available to run the tasks.
 This allows the tasks to be debugged during testing.
 
+Suggested by <https://www.distributedpython.com/2018/05/01/unit-testing-celery-tasks/>.
+
 ## WSL Ubuntu 18.04
 
 Install Redis and Flower.
