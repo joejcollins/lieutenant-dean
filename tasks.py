@@ -12,4 +12,5 @@ def slowly_reverse_string(self, string):
     for i in range(0, counter):
         self.update_state(state='PROGRESS', meta={'done': i, 'total': counter })
         time.sleep(1)
+    import pdb; pdb.set_trace()
     return string[::-1]

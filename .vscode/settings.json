@@ -9,5 +9,6 @@
     "files.exclude": {
         "__pycache__": true,
         "**/.pytest_cache": true
-    }
+    },
+    "python.pythonPath": "/Users/J.Collins/.pyenv/versions/3.6.0/bin/python"
 }
