@@ -10,5 +10,7 @@
         "__pycache__": true,
         "**/.pytest_cache": true
     },
-    "python.pythonPath": "/Users/J.Collins/.pyenv/versions/3.6.0/bin/python"
+    "python.pythonPath": "/home/user/.local/share/virtualenvs/jjc-lieutenant-dean-rlKHnq1r/bin/python",
+    "python.linting.pylintEnabled": false,
+    "python.linting.pep8Enabled": true
 }
