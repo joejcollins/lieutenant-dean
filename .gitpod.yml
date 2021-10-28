@@ -4,8 +4,9 @@ ports:
 
 tasks:
   - name: Initialize Python and Redis
-    init: >
-      pip install -r requirements.txt && redis-server
+    init: |
+      pip install -r requirements.txt
+      redis-server
       gp sync-done pip # 'pip' is an arbitrary tag.
   - name: Webserver
     init: gp sync-await pip
