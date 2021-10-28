@@ -3,16 +3,16 @@ ports:
     onOpen: open-preview
 
 tasks:
-  - before: |
-      export FLASK_APP=flask_app
-      export FLASK_ENV=development
-  - name: Initialize Python
+  - name: Initialize Python and Redis
     init: >
-      pip install -r requirements.txt &&
+      pip install -r requirements.txt && redis-server
       gp sync-done pip # 'pip' is an arbitrary tag.
   - name: Webserver
     init: gp sync-await pip
-    command: flask run
+    command: |
+      export FLASK_APP=flask_app
+      export FLASK_ENV=development
+      flask run
   - name: Celery Queue
     init: gp sync-await pip
     command: celery --app=celery_app worker --loglevel=INFO
