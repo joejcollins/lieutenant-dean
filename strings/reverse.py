@@ -5,7 +5,7 @@ import time
 import flask
 import flasgger.utils as swag_utils
 import strings.reverse_apidocs as apidocs
-import celery.app.task.Task as queue
+from celery_app import celery_queue as queue
 
 demo_api = flask.Blueprint("auth", __name__, url_prefix="/reverse/")
 
@@ -25,14 +25,14 @@ def reverse(string_to_reverse):
 # The app provides the Celery configuration.
 # from worker import app
 
-@queue.(bind=True, name='slowly_reverse_string')
-def slowly_reverse_string(self, string):
+@queue.task(bind=True, name='slowly_reverse_string')
+def slowly_reverse_string(self, string_to_reverse):
     """ Reverse the string but take 10 seconds to do it """
     counter = 10
     for i in range(0, counter):
-        self.update_state(state='PROGRESS', meta={'done': i, 'total': counter })
+        self.update_state(state='PROGRESS', meta={'done': i, 'total': counter})
         time.sleep(1)
-    return string[::-1]
+    return reverse_this(string_to_reverse)
 
 
 def reverse_this(string_to_reverse):
