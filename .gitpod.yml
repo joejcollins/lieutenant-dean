@@ -7,8 +7,7 @@ tasks:
       export FLASK_APP=flask_app
       export FLASK_ENV=development
     init: |
-      pip install -e .
-      flask init-db
+      pip install -r requirements.txt
     command: |
       flask run
 vscode:

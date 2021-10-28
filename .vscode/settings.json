@@ -13,6 +13,6 @@
     "python.linting.pylintEnabled": true,
     "python.linting.pylintUseMinimalCheckers": false,
     "editor.detectIndentation": true,
-    "python.languageServer": "Pylance",
+    "python.languageServer": "Jedi",
     "workbench.colorTheme": "Kimbie Dark"
 }
