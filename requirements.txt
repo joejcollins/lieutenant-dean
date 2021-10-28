@@ -3,7 +3,6 @@ attrs==21.2.0
 billiard==3.5.0.5
 celery==4.2.0
 click==8.0.3
-dataclasses==0.8
 Flask==2.0.2
 importlib-metadata==4.8.1
 iniconfig==1.1.1
