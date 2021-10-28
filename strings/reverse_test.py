@@ -1,4 +1,3 @@
-""" Run a simple pytest with `pytest test-pytest.py` """
 import tasks
 
 def test_slowly_reverse_string():

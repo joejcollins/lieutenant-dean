@@ -5,12 +5,14 @@
     "python.testing.pytestArgs": [
         "."
     ],
-    "python.linting.enabled": true,
     "files.exclude": {
         "__pycache__": true,
         "**/.pytest_cache": true
     },
-    "python.pythonPath": "/home/user/.local/share/virtualenvs/jjc-lieutenant-dean-rlKHnq1r/bin/python",
-    "python.linting.pylintEnabled": false,
-    "python.linting.pep8Enabled": true
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintUseMinimalCheckers": false,
+    "editor.detectIndentation": true,
+    "python.languageServer": "Pylance",
+    "workbench.colorTheme": "Kimbie Dark"
 }

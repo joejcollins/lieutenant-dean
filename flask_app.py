@@ -1,15 +1,17 @@
+"""  """
 import os
 from flask import Flask, Response, request, jsonify
-from tasks import fetch_data
+import tasks as tasks
+from tasks import slowly_reverse_string
 
 PATH = './data'
-app = Flask(__name__)
-app.config['DEBUG'] = True
+public_api = Flask(__name__)
+public_api.config['DEBUG'] = True
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        fetch_data.s(url=request.json['url']).delay()
+        tasks.slowly_reverse_string.s(url=request.json['url']).delay()
         return jsonify({'url': request.json['url']}), 201
 
     data = os.listdir(PATH) if os.path.exists(PATH) else []
