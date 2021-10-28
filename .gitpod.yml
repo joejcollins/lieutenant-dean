@@ -11,7 +11,9 @@ tasks:
       gp sync-done pip # 'pip' is an arbitrary tag.
   - name: Redis Commander
     init: gp sync-await pip
-    command: redis-commander
+    command: |
+      npm install -g redis-commander
+      redis-commander
   - name: Web Server
     init: gp sync-await pip
     command: |
