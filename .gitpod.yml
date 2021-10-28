@@ -1,11 +1,12 @@
-ports:
-  - port: 5000
-    onOpen: open-preview
+image:
+  file: .gitpod.Dockerfile
 
 tasks:
   - name: Initialize Python and Redis
     init: |
       pip install -r requirements.txt
+      echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
+      source $HOME/.bashrc
       redis-server
       gp sync-done pip # 'pip' is an arbitrary tag.
   - name: Webserver
@@ -22,6 +23,12 @@ tasks:
     init: gp sync-await pip
     command: celery --app=celery_app flower
     openMode: tab-after
+
+ports:
+  - port: 5000
+    onOpen: open-preview
+  - port: 5555
+    onOpen: open-preview
 
 vscode:
   extensions:
