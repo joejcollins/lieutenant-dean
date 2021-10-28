@@ -7,9 +7,12 @@ tasks:
       pip install -r requirements.txt
       echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
       source $HOME/.bashrc
-      redis-server
+      redis-server --daemonize yes
       gp sync-done pip # 'pip' is an arbitrary tag.
-  - name: Webserver
+  - name: Redis Commander
+    init: gp sync-await pip
+    command: redis-commander
+  - name: Web Server
     init: gp sync-await pip
     command: |
       export FLASK_APP=flask_app
