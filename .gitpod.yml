@@ -6,15 +6,19 @@ tasks:
   - before: |
       export FLASK_APP=flask_app
       export FLASK_ENV=development
-    init: |
-      pip install -r requirements.txt
-  - name: Demo API
+  - name: Initialize Python
+    init: >
+      pip install -r requirements.txt &&
+      gp sync-done pip # 'pip' is an arbitrary tag.
+  - name: Webserver
+    init: gp sync-await pip
     command: flask run
-    openMode: tab-after
   - name: Celery Queue
+    init: gp sync-await pip
     command: celery --app=celery_app worker --loglevel=INFO
     openMode: tab-after
   - name: Celery Flower
+    init: gp sync-await pip
     command: celery --app=celery_app flower
     openMode: tab-after
 
