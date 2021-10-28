@@ -21,7 +21,7 @@ tasks:
     init: gp sync-await redis
     command: |
       npm install -g redis-commander
-      redis-commander --port 6000
+      redis-commander --port 6000 --redis-db 1
   - name: Celery Queue
     init: gp sync-await redis
     command: celery --app=celery_app worker --loglevel=INFO
