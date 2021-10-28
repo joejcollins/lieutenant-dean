@@ -8,16 +8,16 @@ tasks:
       export FLASK_ENV=development
     init: |
       pip install -r requirements.txt
-    command:
-      - name: Demo API
-        command: flask run
-        openMode: tab-after
-      - name: Celery Queue
-        command: celery --app=celery_app worker --loglevel=INFO
-        openMode: tab-after
-      - name: Celery Flower
-        command: celery --app=celery_app flower
-        openMode: tab-after
+  - name: Demo API
+    command: flask run
+    openMode: tab-after
+  - name: Celery Queue
+    command: celery --app=celery_app worker --loglevel=INFO
+    openMode: tab-after
+  - name: Celery Flower
+    command: celery --app=celery_app flower
+    openMode: tab-after
+
 vscode:
   extensions:
     - ms-python.python

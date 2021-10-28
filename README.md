@@ -34,4 +34,4 @@ pytest test-pytest.py
 
 Or run with actual `celery` in two WSL Windows `celery -A tasks worker -l info` and `python run.py`
 
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/.../...)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/joejcollins/lieutenant-dean)
