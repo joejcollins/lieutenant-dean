@@ -16,6 +16,16 @@ def slowly_reverse_string(self, string):
     return string[::-1]
 
 
+@demo_api.route('/', methods=['POST'])
+def reverse():
+    """  """
+    if flask.request.method == 'POST':
+        tasks.slowly_reverse_string.s(url=request.json['url']).delay()
+        return jsonify({'url': request.json['url']}), 201
+
+    data = os.listdir(PATH) if os.path.exists(PATH) else []
+    return jsonify(data)
+
 
 def reverse_this(string_to_reverse):
     """ Do the string reversal. """
