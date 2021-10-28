@@ -3,9 +3,11 @@ import flask
 import flasgger
 import flasgger.utils as swag_utils
 import flask_app_apidocs as apidocs
+import strings.reverse as reverse
 
 demo_api = flask.Flask(__name__)
 demo_api.config['DEBUG'] = True
+demo_api.register_blueprint(reverse.demo_api)
 
 swagger_template = {
     "swagger": "2.0",
