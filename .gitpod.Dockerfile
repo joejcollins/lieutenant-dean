@@ -4,7 +4,7 @@ FROM gitpod/workspace-full
 RUN sudo apt-get update \
  && sudo apt-get install -y redis-server \
  && sudo rm -rf /var/lib/apt/lists/* \
- && sudo apt install npm \
+ && sudo apt-get install -y npm \
  && sudo npm install -g n \
  && sudo n stable \
  && sudo npm install -g redis-commander \
