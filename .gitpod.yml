@@ -31,11 +31,14 @@ tasks:
 
 ports:
   - port: 5000
-    onOpen: open-browser
+    onOpen: open-preview
+    visibility: public
   - port: 5555
     onOpen: open-browser
+    visibility: public
   - port: 6000
     onOpen: open-browser
+    visibility: public
 
 vscode:
   extensions:
