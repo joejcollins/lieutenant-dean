@@ -13,7 +13,7 @@ tasks:
     init: gp sync-await pip
     command: |
       npm install -g redis-commander
-      redis-commander
+      redis-commander --port 6000
   - name: Web Server
     init: gp sync-await pip
     command: |
@@ -31,9 +31,11 @@ tasks:
 
 ports:
   - port: 5000
-    onOpen: open-preview
+    onOpen: open-browser
   - port: 5555
-    onOpen: open-preview
+    onOpen: open-browser
+  - port: 6000
+    onOpen: open-browser
 
 vscode:
   extensions:
