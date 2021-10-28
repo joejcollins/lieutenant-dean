@@ -2,30 +2,32 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: Initialize Python and Redis
+  - name: Initialize pip
     init: |
       pip install -r requirements.txt
-      echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
-      source $HOME/.bashrc
-      redis-server --daemonize yes
       gp sync-done pip # 'pip' is an arbitrary tag.
-  - name: Redis Commander
-    init: gp sync-await pip
-    command: |
-      npm install -g redis-commander
-      redis-commander --port 6000
   - name: Web Server
     init: gp sync-await pip
     command: |
       export FLASK_APP=flask_app
       export FLASK_ENV=development
       flask run
-  - name: Celery Queue
+  - name: Redis
     init: gp sync-await pip
+    command: |
+      redis-server --daemonize yes
+      gp sync-done redis # 'redis' is an arbitrary tag.
+  - name: Redis Commander
+    init: gp sync-await redis
+    command: |
+      npm install -g redis-commander
+      redis-commander --port 6000
+  - name: Celery Queue
+    init: gp sync-await redis
     command: celery --app=celery_app worker --loglevel=INFO
     openMode: tab-after
   - name: Celery Flower
-    init: gp sync-await pip
+    init: gp sync-await redis
     command: celery --app=celery_app flower
     openMode: tab-after
 
@@ -39,6 +41,9 @@ ports:
   - port: 6000
     onOpen: open-browser
     visibility: public
+  - port: 6379
+    onOpen: ignore
+    visibility: private
 
 vscode:
   extensions:
