@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full
+FROM gitpod/workspace-full:latest
 
 # Redis
 RUN sudo apt-get update \
