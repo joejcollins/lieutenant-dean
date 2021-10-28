@@ -1,10 +1,11 @@
 """  """
 import celery
 
-app = celery.Celery("__name__")
+celery_queue = celery.Celery("__name__")
 
+celery_queue.autodiscover_tasks(["stringsfoo"])
 
-app.conf.update(
+celery_queue.conf.update(
     broker_url="redis://localhost:6379/1",
     worker_prefetch_multiplier="1",
     result_backend="redis://localhost:6379/1",

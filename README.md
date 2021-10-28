@@ -1,4 +1,4 @@
-# Testing Celery Tasks
+# Testing Flask and Celery
 
 Celery tasks are supposed to be asynchronous, so if you put a break point it 
 
@@ -34,6 +34,4 @@ pytest test-pytest.py
 
 Or run with actual `celery` in two WSL Windows `celery -A tasks worker -l info` and `python run.py`
 
-## Using pyenv on Mac
-
-`pipenv install --python=/Users/J.Collins/.pyenv/versions/3.6.0/bin/python`
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/.../...)
