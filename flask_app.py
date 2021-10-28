@@ -24,6 +24,7 @@ swagger = flasgger.Swagger(demo_api, template=swagger_template)
 def index():
     """ Confirm that the flask app is running. """
     greeting = {
-        'message': "Hello"
+        'message': "Hello",
+        'docs': '/apidocs/'
     }
     return flask.jsonify(greeting)
