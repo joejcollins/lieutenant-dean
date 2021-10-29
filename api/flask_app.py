@@ -5,8 +5,8 @@ import flasgger.utils as swag_utils
 import api.flask_app_apidocs as apidocs
 import api.text as text
 
-demo_api = flask.Flask(__name__)
-demo_api.register_blueprint(text.endpoints)
+rest_api = flask.Flask(__name__)
+rest_api.register_blueprint(text.endpoints)
 
 swagger_template = {
     "swagger": "2.0",
@@ -17,10 +17,10 @@ swagger_template = {
     },
     "basePath": "/"
 }
-swagger = flasgger.Swagger(demo_api, template=swagger_template)
+swagger = flasgger.Swagger(rest_api, template=swagger_template)
 
 
-@demo_api.route('/', methods=['GET'])
+@rest_api.route('/', methods=['GET'])
 @swag_utils.swag_from(apidocs.INDEX)
 def index():
     """ Confirm that the flask app is running. """

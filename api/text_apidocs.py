@@ -11,7 +11,7 @@ REVERSE = {
     ],
     "responses": {
         "200": {
-            "description": "Your string reversed."
+            "description": "Your string but reversed."
         }
     },
 }
