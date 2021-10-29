@@ -15,5 +15,6 @@
     "python.linting.pylintUseMinimalCheckers": false,
     "editor.detectIndentation": true,
     "python.languageServer": "Jedi",
-    "workbench.colorTheme": "Kimbie Dark"
+    "workbench.colorTheme": "Kimbie Dark",
+    "editor.minimap.enabled": false
 }
