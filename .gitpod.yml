@@ -9,7 +9,7 @@ tasks:
   - name: Web Server
     init: gp sync-await pip
     command: |
-      export FLASK_APP=api/flask_app
+      export FLASK_APP=rest_api.flask_app
       export FLASK_ENV=development
       flask run
   - name: Redis
@@ -24,7 +24,7 @@ tasks:
       redis-commander --port 6000 --redis-db 1
   - name: Celery Queue
     init: gp sync-await redis
-    command: celery --workdir=queue --app=celery_app worker --loglevel=INFO
+    command: celery --workdir=task_queue --app=celery_app worker --loglevel=INFO
     openMode: tab-after
   - name: Celery Flower
     init: gp sync-await redis

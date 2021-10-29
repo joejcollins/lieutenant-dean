@@ -2,8 +2,8 @@
 import flask
 import flasgger
 import flasgger.utils as swag_utils
-import api.flask_app_apidocs as apidocs
-import api.text as text
+import rest_api.flask_app_apidocs as apidocs
+import rest_api.text as text
 
 rest_api = flask.Flask(__name__)
 rest_api.register_blueprint(text.endpoints)

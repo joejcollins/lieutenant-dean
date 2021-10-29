@@ -1,8 +1,7 @@
-
 """ Text endpoints. """
 import flask
 import flasgger.utils as swag_utils
-import api.text_apidocs as apidocs
+import rest_api.text_apidocs as apidocs
 import data.text as data_text
 
 endpoints = flask.Blueprint("auth", __name__, url_prefix="/text/")

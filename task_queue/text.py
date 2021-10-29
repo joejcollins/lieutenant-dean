@@ -1,7 +1,9 @@
-from flask_app import queue
+""" Celery text manipulations. """
 import time
+from task_queue.celery_app import queue
 
-@queue.task(bind=True, name='tasks.slowly_reverse_string')
+
+@queue.task(bind=True, name='text.slowly_reverse_string')
 def slowly_reverse_string(self, string_to_reverse):
     """ Reverse the string but take 10 seconds to do it """
     counter = 10
