@@ -1,4 +1,5 @@
 """ Swagger documentation. """
+
 INDEX = {
     "responses": {
         "200": {

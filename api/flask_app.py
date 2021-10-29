@@ -2,16 +2,11 @@
 import flask
 import flasgger
 import flasgger.utils as swag_utils
-import flask_app_apidocs as apidocs
-import strings.reverse as reverse
-import celery_app
+import api.flask_app_apidocs as apidocs
+import api.text as text
 
 demo_api = flask.Flask(__name__)
-demo_api.config['DEBUG'] = True
-demo_api.register_blueprint(reverse.demo_api)
-celery_app.make_celery(demo_api)
-
-
+demo_api.register_blueprint(text.endpoints)
 
 swagger_template = {
     "swagger": "2.0",
@@ -30,7 +25,7 @@ swagger = flasgger.Swagger(demo_api, template=swagger_template)
 def index():
     """ Confirm that the flask app is running. """
     greeting = {
-        'message': "Hello",
+        'message': "Hello there",
         'docs': '/apidocs/'
     }
     return flask.jsonify(greeting)
