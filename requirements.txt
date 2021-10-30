@@ -24,6 +24,7 @@ py==1.10.0
 pycodestyle==2.7.0
 pyparsing==3.0.2
 pytest==6.2.5
+pytest-flask==1.2.0
 pytz==2021.3
 PyYAML==6.0
 pyyaml_env_tag==0.1
@@ -31,6 +32,6 @@ redis==3.5.3
 schematics==2.1.1
 vine==5.0.0
 watchdog==2.1.6
-Werkzeug==2.0.
+Werkzeug==2.0.0
 zipp==3.6.0
 -e .
