@@ -6,13 +6,18 @@ tasks:
     init: |
       pip install -r requirements.txt
       gp sync-done pip # 'pip' is an arbitrary tag.
+  - name: Docs Web Server
+    init: gp sync-await pip
+    command: |
+      mkdocs serve
+    openMode: tab-after
   - name: API Web Server
     init: gp sync-await pip
     command: |
       export FLASK_APP=rest_api.flask_app
       export FLASK_ENV=development
       flask run
-  - name: Redis
+  - name: Redis Server
     init: gp sync-await pip
     command: |
       redis-server --daemonize yes
@@ -29,11 +34,6 @@ tasks:
   - name: Celery Flower
     init: gp sync-await redis
     command: celery --workdir=task_queue --app=celery_app flower
-    openMode: tab-after
-  - name: Docs Web Server
-    init: gp sync-await pip
-    command: |
-      mkdocs serve
     openMode: tab-after
 
 ports:
