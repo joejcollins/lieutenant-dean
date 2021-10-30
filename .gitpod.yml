@@ -34,7 +34,7 @@ tasks:
     command: |
       export BUNDLE_GEMFILE=./docs/Gemfile
       bundle install
-      bundle exec jekyll serve
+      bundle exec jekyll serve --config ./docs/_config.yml --source ./docs --destination ./docs/_site
     openMode: tab-after
 
 ports:

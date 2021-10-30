@@ -1,2 +1,22 @@
-#theme: jekyll-readthedocs
-remote_theme: pawamoy/jekyll-readthedocs
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+
+# Conversion
+markdown: kramdown
+
+# Markdown Processor
+kramdown:
+  auto_ids: true
+  hard_wrap: false
+
+timezone: GMT
+
+# Permalinks
+permalink: none
+
+plugins:
+  - jekyll-remote-theme
