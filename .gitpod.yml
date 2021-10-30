@@ -6,12 +6,12 @@ tasks:
     init: |
       pip install -r requirements.txt
       gp sync-done pip # 'pip' is an arbitrary tag.
-  - name: Docs Web Server
+  - name: Docs Web Server (8000)
     init: gp sync-await pip
     command: |
       mkdocs serve
     openMode: tab-after
-  - name: API Web Server
+  - name: API Web Server (5000)
     init: gp sync-await pip
     command: |
       export FLASK_APP=rest_api.flask_app
@@ -23,7 +23,7 @@ tasks:
     command: |
       redis-server --daemonize yes
       gp sync-done redis # 'redis' is an arbitrary tag.
-  - name: Redis Commander
+  - name: Redis Commander (6000)
     init: gp sync-await redis
     command: |
       npm install -g redis-commander
@@ -33,7 +33,7 @@ tasks:
     init: gp sync-await redis
     command: celery --workdir=task_queue --app=celery_app worker --loglevel=INFO
     openMode: tab-after
-  - name: Celery Flower
+  - name: Celery Flower (5555)
     init: gp sync-await redis
     command: celery --workdir=task_queue --app=celery_app flower
     openMode: tab-after
