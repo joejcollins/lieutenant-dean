@@ -6,7 +6,7 @@ tasks:
     init: |
       pip install -r requirements.txt
       gp sync-done pip # 'pip' is an arbitrary tag.
-  - name: Web Server
+  - name: API Web Server
     init: gp sync-await pip
     command: |
       export FLASK_APP=rest_api.flask_app
@@ -30,8 +30,17 @@ tasks:
     init: gp sync-await redis
     command: celery --workdir=task_queue --app=celery_app flower
     openMode: tab-after
+  - name: Docs Web Server
+    command: |
+      export BUNDLE_GEMFILE=./docs/Gemfile
+      bundle install
+      bundle exec jekyll serve
+    openMode: tab-after
 
 ports:
+  - port: 4000
+    onOpen: open-preview
+    visibility: public
   - port: 5000
     onOpen: open-preview
     visibility: public
