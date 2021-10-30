@@ -31,6 +31,7 @@ tasks:
     command: celery --workdir=task_queue --app=celery_app flower
     openMode: tab-after
   - name: Docs Web Server
+    init: gp sync-await pip
     command: |
       mkdocs serve
     openMode: tab-after
