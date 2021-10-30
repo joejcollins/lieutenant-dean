@@ -11,10 +11,11 @@
         "**/.pytest_cache": true
     },
     "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
+    "python.linting.pylintEnabled": false,
     "python.linting.pylintUseMinimalCheckers": false,
     "editor.detectIndentation": true,
     "python.languageServer": "Jedi",
     "workbench.colorTheme": "Kimbie Dark",
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "python.linting.flake8Enabled": true
 }
