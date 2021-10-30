@@ -17,6 +17,7 @@ tasks:
       export FLASK_APP=rest_api.flask_app
       export FLASK_ENV=development
       flask run
+    openMode: tab-after
   - name: Redis Server
     init: gp sync-await pip
     command: |
@@ -27,6 +28,7 @@ tasks:
     command: |
       npm install -g redis-commander
       redis-commander --port 6000 --redis-db 1
+    openMode: tab-after
   - name: Celery Queue
     init: gp sync-await redis
     command: celery --workdir=task_queue --app=celery_app worker --loglevel=INFO
