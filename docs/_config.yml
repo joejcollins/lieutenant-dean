@@ -17,6 +17,3 @@ timezone: GMT
 
 # Permalinks
 permalink: none
-
-plugins:
-  - jekyll-remote-theme
