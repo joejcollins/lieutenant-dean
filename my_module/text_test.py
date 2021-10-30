@@ -1,5 +1,5 @@
 """ Test text manipulations. """
-import data.text as text
+import my_module.text as text
 
 def test_method_is_present():
     """ Confirm that the methods are present. """
