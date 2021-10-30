@@ -1,9 +1,11 @@
 """ Test text manipulations. """
 import my_module.text as text
 
+
 def test_method_is_present():
     """ Confirm that the methods are present. """
     assert "reverse_text" in dir(text)
+
 
 def test_reverse_text():
     """ Confirm the text is reversed. """

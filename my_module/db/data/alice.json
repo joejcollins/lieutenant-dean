@@ -1,0 +1,26 @@
+{
+    "age": 50,
+    "age_in_dog_years": 350,
+    "bald": true,
+    "bio": "Blah blah blah",
+    "clothing": [
+        {
+            "colour": "blue",
+            "inside_leg": null,
+            "style": "pleated",
+            "waist": 34
+        },
+        {
+            "colour": "red",
+            "size": 56
+        },
+        {
+            "colour": "green",
+            "size": 56
+        }
+    ],
+    "female": false,
+    "male": true,
+    "name": "Alice",
+    "retired": false
+}
