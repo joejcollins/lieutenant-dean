@@ -1,0 +1,4 @@
+site_name: Captain Black
+nav:
+  - Home: index.md
+theme: readthedocs
