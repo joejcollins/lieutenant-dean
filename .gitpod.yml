@@ -28,7 +28,7 @@ tasks:
     openMode: tab-after
   - name: Celery Flower
     init: gp sync-await redis
-    command: celery --workdir=queue --app=celery_app flower
+    command: celery --workdir=task_queue --app=celery_app flower
     openMode: tab-after
 
 ports:
