@@ -27,7 +27,7 @@ def reverse_fast_get(string_to_reverse):
 
 @text_api.route('/reverse/fast', methods=['POST'])
 @swag_utils.swag_from(apidocs.REVERSE_POST)
-def reverse_fast_post(string_to_reverse):
+def reverse_fast_post():
     """ Provide a json response with the reversal. """
     string_to_reverse = flask.request.json.get("string_to_reverse")
     message = _reverse_fast(string_to_reverse)
