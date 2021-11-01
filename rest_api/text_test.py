@@ -10,7 +10,6 @@ import rest_api.text as text
 def app():
     """ Create a test fixture Flask application. """
     test_app = flask_app.api
-    test_app.register_blueprint(text.text_api)
     return test_app
 
 
