@@ -24,4 +24,4 @@ scrape_configs:
   - job_name: flower
     scheme: https
     static_configs:
-      - targets: ['5555-lavender-silkworm-wxlinzoe.ws-eu17.gitpod.io']
+      - targets: ['harlequin-halibut-qher7jty.ws-eu17.gitpod.io']
