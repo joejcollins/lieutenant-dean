@@ -45,7 +45,7 @@ REVERSE_SLOW_GET = {
     ],
     "responses": {
         "200": {
-            "description": "Task details (URL to monitor result, maybe?)."
+            "description": "Task details including the task id."
         }
     },
 }

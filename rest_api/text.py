@@ -39,5 +39,13 @@ def reverse_fast_post():
 @swag_utils.swag_from(apidocs.REVERSE_SLOW_GET)
 def reverse_slow_get(string_to_reverse):
     """ Provide a json response with the reversal. """
-    task = text_tasks.slowly_reverse_string.s(string_to_reverse="qwerty").apply()
-    return flask.jsonify(task)
+    result = text_tasks.slowly_reverse_string.delay(
+        string_to_reverse=string_to_reverse
+        )
+    result_dict = vars(result)
+    # Filter the dictionary to send back.
+    result_dict = {
+        k: v for (k, v) in result_dict.items()
+        if isinstance(v, (str, bool, int))
+        }
+    return flask.jsonify(result_dict)
