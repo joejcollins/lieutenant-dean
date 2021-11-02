@@ -33,9 +33,9 @@ tasks:
     init: gp sync-await redis
     command: celery --workdir=task_queue --app=celery_app worker --hostname textwork@%n --loglevel=INFO
     openMode: tab-after
-  - name: Celery Flower (5555)
+  - name: Celery Flower with Watchdog (5555)
     init: gp sync-await redis
-    command: celery --workdir=task_queue --hostname textwork@%%host --app=celery_app flower
+    command: watchmedo auto-restart --directory=./task_queue/ --pattern=*.py --recursive -- celery --workdir=task_queue --app=celery_app flower
     openMode: tab-after
   - name: Prometheus (9090)
     init: gp sync-await redis
