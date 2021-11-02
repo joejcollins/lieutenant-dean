@@ -1,5 +1,5 @@
 """ Swagger documentation. """
-REVERSE_GET = {
+REVERSE_FAST_GET = {
     "parameters": [
         {
             "in": "path",
@@ -16,7 +16,7 @@ REVERSE_GET = {
     },
 }
 
-REVERSE_POST = {
+REVERSE_FAST_POST = {
     "parameters": [
         {
             "in": "path",
@@ -29,6 +29,23 @@ REVERSE_POST = {
     "responses": {
         "200": {
             "description": "Your string but reversed."
+        }
+    },
+}
+
+REVERSE_SLOW_GET = {
+    "parameters": [
+        {
+            "in": "path",
+            "name": "string_to_reverse",
+            "description": "The string you want to reverse.",
+            "required": True,
+            "type": "string"
+        }
+    ],
+    "responses": {
+        "200": {
+            "description": "Task details (URL to monitor result, maybe?)."
         }
     },
 }
