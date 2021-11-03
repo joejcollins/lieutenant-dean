@@ -8,7 +8,7 @@ def test_method_is_present():
 
 
 def test_add_two_numbers():
-    """ Confirm the text is reversed. """
+    """ Confirm the total is correct. """
     first_number = 1
     second_number = 2
     total = numbers.add_two_numbers(first_number, second_number)
