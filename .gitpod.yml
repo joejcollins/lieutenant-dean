@@ -39,7 +39,7 @@ tasks:
     openMode: tab-after
   - name: Prometheus (9090)
     init: gp sync-await redis
-    command: docker-compose --project-directory ./prometheus up
+    command: docker-compose --project-directory ./monitoring up
     openMode: tab-after
 
 ports:
