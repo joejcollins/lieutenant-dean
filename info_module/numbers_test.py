@@ -1,5 +1,5 @@
 """ Test arithmetic. """
-import my_module.numbers as numbers
+import info_module.numbers as numbers
 
 
 def test_method_is_present():

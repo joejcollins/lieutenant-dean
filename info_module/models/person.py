@@ -5,7 +5,7 @@ from schematics.types import (
     )
 from schematics.types.serializable import serializable
 from schematics.transforms import blacklist
-from my_module.models.clothing import Trousers, Hat
+from info_module.models.clothing import Trousers, Hat
 import json
 import os
 
@@ -27,7 +27,7 @@ class Person(Model):
     @staticmethod
     def find_by_file(person_file_name):
         """ Find a person based on their file name. """
-        with open('./my_module/db/data/' + person_file_name) as json_file:
+        with open('./info_module/db/data/' + person_file_name) as json_file:
             person_json = json.load(json_file)
         person = Person(person_file_name, person_json)
         return person
@@ -36,9 +36,9 @@ class Person(Model):
     def all():
         """ Return all the people. """
         people = []
-        for file in os.listdir('./my_module/db/data/'):
+        for file in os.listdir('./info_module/db/data/'):
             if file.endswith(".json"):
-                with open('./my_module/db/data/' + file) as json_file:
+                with open('./info_module/db/data/' + file) as json_file:
                     person_json = json.load(json_file)
                     person = Person(file, person_json)
                     people.append(person)
@@ -92,5 +92,5 @@ class Person(Model):
 
     def save(self):
         stuff_to_save = self.to_primitive(role='remove_deprecated')
-        with open('./my_module/db/data/' + self._person_file_name, 'w') as outfile:
+        with open('./info_module/db/data/' + self._person_file_name, 'w') as outfile:
             json.dump(stuff_to_save, outfile, indent=4, sort_keys=True)

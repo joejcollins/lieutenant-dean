@@ -1,4 +1,4 @@
-from my_module.models.person import Person
+from info_module.models.person import Person
 
 alice = Person.find_by_file("alice.json")
 print(alice.to_primitive())

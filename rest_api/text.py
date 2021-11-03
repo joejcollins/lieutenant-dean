@@ -2,7 +2,7 @@
 import flask
 import flasgger.utils as swag_utils
 import rest_api.text_apidocs as apidocs
-import my_module.text as data_text
+import info_module.text as data_text
 import task_queue.text as text_tasks
 
 text_api = flask.Blueprint("text_api", __name__, url_prefix="/text/")
