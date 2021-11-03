@@ -2,7 +2,7 @@
 import flask
 import flasgger.utils as swag_utils
 import rest_api.text_apidocs as apidocs
-import info_module.text as data_text
+import info_module.text as info_text
 import task_queue.text as text_tasks
 
 text_api = flask.Blueprint("text_api", __name__, url_prefix="/text/")
@@ -10,7 +10,7 @@ text_api = flask.Blueprint("text_api", __name__, url_prefix="/text/")
 
 def _reverse_fast(string_to_reverse):
     """ Provide a json response with the reversal. """
-    reversed_string = data_text.reverse_text(string_to_reverse)
+    reversed_string = info_text.reverse_string(string_to_reverse)
     message = {
         'original': string_to_reverse,
         'reversed': reversed_string

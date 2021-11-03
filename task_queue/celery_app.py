@@ -9,5 +9,5 @@ queue.conf.update(
     result_backend="redis://localhost:6379/1",
     task_serializer="json",
     accept_content=["json", "pickle"],
-    imports=('task_queue.text', )
+    imports=('task_queue.text', 'task_queue.numbers', )
     )
