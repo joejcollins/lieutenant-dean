@@ -12,3 +12,5 @@ def slowly_reverse_string(self, string_to_reverse):
         self.update_state(state='PROGRESS', meta={'done': i, 'total': counter})
         time.sleep(1)
     return text.reverse_string(string_to_reverse)
+
+    

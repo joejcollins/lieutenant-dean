@@ -1,4 +1,4 @@
-""" Test slow running text tasks. """
+""" Test slow running text tasks without queuing. """
 import task_queue.text as text_tasks
 
 

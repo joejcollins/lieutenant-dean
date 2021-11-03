@@ -22,6 +22,6 @@ number_tasks.append(slowly_add_two_numbers.s(5, 6))
 
 final_number_task = slowly_add_two_numbers.si(7, 8)
 
-chain_of_number_tasks = celery.chord(number_tasks, final_number_task)
+chain_of_number_tasks = celery.chord(number_tasks, final_number_task)()
 
 print("Done")

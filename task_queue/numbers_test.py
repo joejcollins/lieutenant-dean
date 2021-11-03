@@ -1,4 +1,4 @@
-""" Test slow running arithmetic tasks. """
+""" Test slow running arithmetic tasks without queueing. """
 import task_queue.numbers as number_tasks
 
 
