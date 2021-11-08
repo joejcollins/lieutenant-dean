@@ -24,4 +24,4 @@ scrape_configs:
   - job_name: flower
     scheme: https
     static_configs:
-      - targets: ['5555-jade-sloth-a46f360k.ws-eu17.gitpod.io']
+      - targets: ['5555-fuchsia-guan-9rehpzd2.ws-eu18.gitpod.io']
