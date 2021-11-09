@@ -31,8 +31,8 @@ tasks:
     openMode: tab-after
   - name: Celery Queue with Watchdog 
     init: gp sync-await redis
-    command: watchmedo auto-restart --directory=./task_queue/ --pattern=*.py --recursive -- \
-             celery --workdir=task_queue --app=celery_app worker --hostname worker1@%n --loglevel=INFO --queues text_queue,number_queue
+    command: watchmedo auto-restart --directory=./task_queue/ --pattern=*.py --recursive \
+             -- celery --workdir=task_queue --app=celery_app worker --hostname worker1@%n --loglevel=INFO --queues text_queue,number_queue
     openMode: tab-after
   - name: Celery Flower (5555)
     init: gp sync-await redis
