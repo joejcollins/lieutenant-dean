@@ -15,8 +15,8 @@
     "python.linting.pylintUseMinimalCheckers": false,
     "editor.detectIndentation": true,
     "python.languageServer": "Jedi",
-    "workbench.colorTheme": "Kimbie Dark",
     "editor.minimap.enabled": false,
     "python.linting.flake8Enabled": true,
-    "python.pythonPath": "/home/gitpod/.pyenv/versions/3.8.12/bin/python"
+    "python.pythonPath": "/home/gitpod/.pyenv/versions/3.8.12/bin/python",
+    "workbench.colorTheme": "Kimbie Dark"
 }
