@@ -39,6 +39,7 @@ delete_network_prep.append(slowly_reverse_string.s("lmy.pi-cilbup-erusne-p"))
 delete_network_final = slowly_reverse_string.si("krowten tnemnorivne eteled")
 delete_network = celery.chord(delete_network_prep, delete_network_final)
 delete_network_result = delete_network()
+print("stop")
 
 delete_environment_prep = []
 delete_environment_prep.append(slowly_reverse_string.s("lmy.smv-yortsed-e"))
@@ -46,6 +47,6 @@ delete_environment_prep.append(slowly_reverse_string.s("lmy.ehcac-edon-yortsed-e
 delete_environment_prep.append(slowly_reverse_string.s("lmy.snd-yortsed-e"))
 delete_environment_prep.append(slowly_reverse_string.s("lmy.gnirotinom-yortsed-e"))
 # The final task is immutable because we don't need the result of the previous tasks.
-delete_environment_final = slowly_reverse_string.si("krowten tnemnorivne eteled")
+delete_environment_final = slowly_reverse_string.si("selif tnemnorivne eteled")
 delete_environment = celery.chord(delete_environment_prep, delete_environment_final)
 delete_environment_result = delete_environment()
