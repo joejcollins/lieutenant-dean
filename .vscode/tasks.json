@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "API Web Server (5000)",
+            "type": "shell",
+            "command": ".venv/flask.sh",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "runOptions": {
+                "runOn": "folderOpen",
+            }
+        },
+        {
+            "label": "Redis Commander (6000)",
+            "type": "shell",
+            "command": "redis-commander --port 6000 --redis-db 1",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "runOptions": {
+                "runOn": "folderOpen",
+            }
+        },
+        {
+            "label": "Celery Queue with Watchdog",
+            "type": "shell",
+            "command": ".venv/celery.sh",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "runOptions": {
+                "runOn": "folderOpen",
+            }
+        },
+        {
+            "label": "Celery Flower (5555)",
+            "type": "shell",
+            "command": ".venv/flower.sh",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "runOptions": {
+                "runOn": "folderOpen",
+            }
+        }
+    ]
+}

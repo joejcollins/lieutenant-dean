@@ -29,7 +29,7 @@ tasks:
       npm install -g redis-commander
       redis-commander --port 6000 --redis-db 1
     openMode: tab-after
-  - name: Celery Queue with Watchdog 
+  - name: Celery Queue with Watchdog
     init: gp sync-await redis
     command: >
       watchmedo auto-restart --directory=./task_queue/ --pattern=*.py --recursive --
