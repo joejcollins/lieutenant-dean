@@ -2,6 +2,18 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Control panel and Unleash Proxy (3000 and 3001)",
+            "type": "shell",
+            "command": "yarn --cwd control-panel start",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "runOptions": {
+                "runOn": "folderOpen",
+            }
+        },
+        {
             "label": "API Web Server (5000)",
             "type": "shell",
             "command": ".venv/flask.sh",
@@ -14,9 +26,9 @@
             }
         },
         {
-            "label": "Redis Commander (6000)",
+            "label": "Redis Commander (6001)",
             "type": "shell",
-            "command": "redis-commander --port 6000 --redis-db 1",
+            "command": "redis-commander --port 6001 --redis-db 1",
             "presentation": {
                 "reveal": "always",
                 "panel": "new"

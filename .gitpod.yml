@@ -43,6 +43,9 @@ tasks:
     init: gp sync-await redis
     command: docker-compose --project-directory ./monitoring up
     openMode: tab-after
+  - name: Control panel and Unleash Proxy (3000 and 3001)
+    command: yarn --cwd control-panel start
+    openMode: tab-after
 
 ports:
   - port: 5000
