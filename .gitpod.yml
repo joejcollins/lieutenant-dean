@@ -2,24 +2,25 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: Initialize pip
+  - name: Initialize pip and npm
     init: |
       pip install -r requirements.txt
-      gp sync-done pip # 'pip' is an arbitrary tag.
+      npm install control-panel
+      gp sync-done pip-npm # 'pip-npm' is an arbitrary tag.
   - name: Docs Web Server (8000)
-    init: gp sync-await pip
+    init: gp sync-await pip-npm
     command: |
       mkdocs serve
     openMode: tab-after
   - name: API Web Server (5000)
-    init: gp sync-await pip
+    init: gp sync-await pip-npm
     command: |
       export FLASK_APP=rest_api.flask_app
       export FLASK_ENV=development
       flask run
     openMode: tab-after
   - name: Redis Server
-    init: gp sync-await pip
+    init: gp sync-await pip-npm
     command: |
       redis-server --daemonize yes
       gp sync-done redis # 'redis' is an arbitrary tag.
@@ -44,6 +45,7 @@ tasks:
     command: docker-compose --project-directory ./monitoring up
     openMode: tab-after
   - name: Control panel and Unleash Proxy (3000 and 3001)
+    init: gp sync-await pip-npm
     command: yarn --cwd control-panel start
     openMode: tab-after
 
