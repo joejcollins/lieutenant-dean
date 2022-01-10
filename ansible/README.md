@@ -1,5 +1,7 @@
 # Ansible Example
 
+`sudo ansible-playbook ubuntu-20.04-playbook.yml --connection=local --inventory 127.0.0.1,`
+
 ```
 ansible/                        # contains the ansible.cfg
 ansible/playbooks/              # where you run playbooks
