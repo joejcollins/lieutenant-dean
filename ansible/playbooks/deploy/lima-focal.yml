@@ -1,0 +1,17 @@
+# Ubuntu 20.04 LTS (Focal Fossa)
+images:
+- location: "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img"
+  arch: "x86_64"
+- location: "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-arm64.img"
+  arch: "aarch64"
+
+cpus: 2
+
+memory: "4GiB"
+
+disk: "30GiB"
+
+ssh:
+  # A localhost port of the host. Forwarded to port 22 of the guest.
+  localPort: 60022
+  loadDotSSHPubKeys: true

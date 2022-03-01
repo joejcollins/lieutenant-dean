@@ -1,0 +1,11 @@
+---
+  - hosts: 127.0.0.1
+    connection: local
+    gather_facts: no
+    become: no
+    tasks:
+
+    - name: Create the VM
+      ansible.builtin.shell: limactl start lima-focal.yml --tty=false
+      register: lima-output
+...
