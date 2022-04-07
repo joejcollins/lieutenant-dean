@@ -134,3 +134,6 @@ yarn-error.log*
 
 package-lock.json
 package.json
+
+# Vagrant files
+**/.vagrant

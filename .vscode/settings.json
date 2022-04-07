@@ -1,4 +1,8 @@
 {
+    "files.associations": {
+      "*.yml.j2": "yaml",
+      "Vagrantfile": "ruby"
+    },
     "python.testing.pytestEnabled": true,
     "python.testing.unittestEnabled": false,
     "python.testing.pytestArgs": [
@@ -10,10 +14,15 @@
         "**/.pytest_cache": true
     },
     "python.linting.enabled": true,
-    "python.linting.pylintEnabled": false,
-    "editor.detectIndentation": true,
-    "python.languageServer": "Jedi",
-    "editor.minimap.enabled": false,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+      "--line-length",
+      "110"
+    ],
     "python.linting.flake8Enabled": true,
-    "workbench.colorTheme": "Solarized Light"
-}
+    "python.linting.flake8Args": [
+      "--max-line-length=110"
+    ],
+    "python.linting.mypyEnabled": true,
+    "editor.rulers": [110]
+  }

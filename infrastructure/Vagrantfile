@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+    config.vm.box = "juniper/vqfx10k-pfe"
+    config.vm.hostname = "juniper-switch"
+    config.vm.box_check_update = true
+    config.vm.network "private_network", ip: "192.168.56.0"
+
+    config.vm.network "forwarded_port", guest: 850, host: 850 #
+
+    # Vagrant's name for the Virtual Machine
+    config.vm.define "juniper-switch" do |la|
+    end
+
+    config.vm.provider "virtualbox" do |vb|
+        vb.gui = true # it has crashed a bit so it is useful to be able to watch what is going on.
+        vb.memory = "8192" # this value seems to work fast enough in CodeSpaces
+        vb.cpus = "4" # this value seems to work fast enough in CodeSpaces
+    end
+end

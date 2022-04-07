@@ -1,0 +1,15 @@
+ansible
+black
+celery
+flake8
+flasgger
+Flask
+flower
+mkdocs
+mypy
+ncclient
+pytest
+pytest-flask
+requests
+UnleashClient
+-e .

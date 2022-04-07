@@ -1,0 +1,33 @@
+---
+- name: Juniper inspection
+  gather_facts: false
+  hosts: all
+  connection: netconf
+
+  tasks:
+
+      - name: run show version on remote devices
+        junipernetworks.junos.junos_command:
+          commands: show version
+
+    # - name: Print version
+    #   debug:
+    #     var: junos.version
+
+    # - name: Retrieve Junos OS version
+    #   junos_command:
+    #     commands: show version
+    #   when: ansible_network_os == 'junos'
+
+    # - name: Configure interfaces
+    #   junipernetworks.junos.junos_interfaces:
+    #     config:
+    #       - name: "xe-0/0/0"
+    #         description: "laptop"
+    #         enabled: true
+    #         mtu: "1518"
+    #         duplex: full-duplex
+    #     state: replaced
+
+# connection: juniper.device.pyez
+# connection: juniper.device.pyez
