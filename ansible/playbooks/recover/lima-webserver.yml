@@ -1,0 +1,9 @@
+---
+  - hosts: all
+    gather_facts: no
+    remote_user: lima
+    tasks:
+
+    - name: Restart the VM
+      ansible.builtin.shell: sudo restart
+...

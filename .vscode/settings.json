@@ -15,6 +15,5 @@
     "python.languageServer": "Jedi",
     "editor.minimap.enabled": false,
     "python.linting.flake8Enabled": true,
-    "python.defaultInterpreterPath": "/home/gitpod/.pyenv/versions/3.8.12/bin/python",
     "workbench.colorTheme": "Solarized Light"
 }
