@@ -24,4 +24,4 @@ scrape_configs:
   - job_name: flower
     scheme: https
     static_configs:
-      - targets: ['5555-red-rabbit-v9fbpqic.ws-eu18.gitpod.io]
+      - targets: ['localhost:5555']
