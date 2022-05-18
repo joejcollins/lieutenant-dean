@@ -2,19 +2,25 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: Initialize pip and npm
+  - name: Initialize Python, pip and npm
     init: |
-      pip install -r requirements.txt
+      virtualenv .venv
+      . .venv/bin/activate
+      pip install --upgrade pip setuptools
+      pip install -Ur requirements-no-versions.txt
+      pip freeze requirements.txt
       npm install control-panel
       gp sync-done pip-npm # 'pip-npm' is an arbitrary tag.
   - name: Docs Web Server (8000)
     init: gp sync-await pip-npm
     command: |
+      . .venv/bin/activate
       mkdocs serve
     openMode: tab-after
   - name: API Web Server (5000)
     init: gp sync-await pip-npm
     command: |
+      . .venv/bin/activate
       export FLASK_APP=rest_api.flask_app
       export FLASK_ENV=development
       flask run
@@ -33,6 +39,7 @@ tasks:
   - name: Celery Queue with Watchdog
     init: gp sync-await redis
     command: >
+      . .venv/bin/activate &&
       watchmedo auto-restart --directory=./task_queue/ --pattern=*.py --recursive --
       celery --workdir=task_queue --app=celery_app worker --hostname worker1@%n --loglevel=INFO --queues text_queue,number_queue
     openMode: tab-after
