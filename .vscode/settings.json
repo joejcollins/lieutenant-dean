@@ -24,5 +24,6 @@
       "--max-line-length=110"
     ],
     "python.linting.mypyEnabled": true,
-    "editor.rulers": [110]
+    "editor.rulers": [110],
+    "editor.minimap.enabled": false
   }

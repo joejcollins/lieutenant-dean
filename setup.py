@@ -13,5 +13,4 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     package_dir={"": "./"},
     classifiers=["Development Status :: 3 - Alpha", "License :: Other/Proprietary License"],
-    },
 )
