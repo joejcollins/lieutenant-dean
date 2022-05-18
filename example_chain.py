@@ -10,4 +10,4 @@ task3 = slowly_add_two_numbers.si(1, 2)
 task4 = slowly_add_two_numbers.si(3, 4)
 
 res = celery.chain(task1, task3, task2, task4)()
-print("test")
+print("Chain on of tasks now on the queue.")
