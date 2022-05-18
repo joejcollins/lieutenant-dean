@@ -5,6 +5,7 @@ appdirs==1.4.4
 APScheduler==3.9.1
 argon2-cffi==21.1.0
 astroid==2.7.3
+async-timeout==4.0.2
 attrs==21.2.0
 autopep8==1.5.7
 backcall==0.2.0
@@ -28,6 +29,7 @@ cryptography==3.4.8
 debugpy==1.4.3
 decorator==5.1.0
 defusedxml==0.7.1
+Deprecated==1.2.13
 distlib==0.3.2
 docutils==0.17.1
 entrypoints==0.3
@@ -112,6 +114,7 @@ PyYAML==5.4.1
 pyyaml_env_tag==0.1
 pyzmq==22.2.1
 readme-renderer==29.0
+redis==4.3.1
 requests==2.26.0
 requests-toolbelt==0.9.1
 resolvelib==0.5.4

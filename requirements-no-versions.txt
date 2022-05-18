@@ -10,6 +10,7 @@ mypy
 ncclient
 pytest
 pytest-flask
+redis
 requests
 UnleashClient
 -e .
