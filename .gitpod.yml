@@ -4,6 +4,7 @@ image:
 tasks:
   - name: Initialize pip and npm
     init: |
+      pip install -r requirements.txt
       npm install control-panel
       gp sync-done pip-npm # 'pip-npm' is an arbitrary tag.
   - name: Docs Web Server (8000)
