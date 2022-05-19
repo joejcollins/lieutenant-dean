@@ -24,8 +24,8 @@ def prepare_logging(signal=None, sender=None, task_id=None, task=None, args=None
     task_handler.setFormatter(formatter)
     task_handler.setLevel(logging.INFO)
     # Add the handlers
-    logger.addHandler(task_handler)
-    logger.addHandler(stream_handler)
+    # logger.addHandler(task_handler)
+    # logger.addHandler(stream_handler)
 
 
 @task_postrun.connect(sender=TASK_WITH_LOGGING)
@@ -50,8 +50,10 @@ def close_logging(signal=None, sender=None, task_id=None, task=None, args=None, 
 def slowly_reverse_string(self, string_to_reverse):
     """ Reverse the string but take 10 seconds to do it. """
     logger = logging.getLogger(self.request.id)
-    logger.into()
-
+    import debugpy
+    debugpy.listen(('0.0.0.0', 8080))
+    debugpy.wait_for_client()
+    debugpy.breakpoint()
     logger.info(f'Reversing {string_to_reverse}.')
     counter = 10
     for i in range(0, counter):
