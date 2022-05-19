@@ -1,4 +1,7 @@
 site_name: Captain Black
 nav:
   - Home: index.md
+  - Dev Environment: develop.md
+  - Ansible: ansible.md
+  - Celery: task_queue.md
 theme: readthedocs

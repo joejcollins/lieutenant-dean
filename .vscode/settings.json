@@ -25,5 +25,7 @@
     ],
     "python.linting.mypyEnabled": true,
     "editor.rulers": [110],
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme":"Visual Studio Light",
+    "python.defaultInterpreterPath": ".venv/bin/python"
   }
