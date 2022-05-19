@@ -74,6 +74,9 @@ ports:
   - port: 8000
     onOpen: open-preview
     visibility: public
+  - port: 8080
+    onOpen: ignore
+    visibility: public
   - port: 9090
     onOpen: open-preview
     visibility: public
