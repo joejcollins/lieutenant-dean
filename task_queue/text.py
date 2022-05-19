@@ -7,6 +7,8 @@ from celery.signals import task_postrun, task_prerun
 
 from task_queue.celery_app import queue
 
+# Attempt to set up logger as per
+# https://stackoverflow.com/questions/25281612/celery-log-each-task-run-to-its-own-file
 TASK_WITH_LOGGING = ['text.slowly_reverse_string']
 
 
