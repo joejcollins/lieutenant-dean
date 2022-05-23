@@ -11,6 +11,7 @@ def prepare_logging(sender=None, task_id=None, **kwargs):
     """Log each task to a separate file."""
     # Get a logger based on the unique name of the task.
     logger = logging.getLogger(task_id)
+    logger.propagate = False
     # Logging to the console.
     stream_handler = logging.StreamHandler()
     formatter = logging.Formatter('[%(asctime)s][%(levelname)s] %(message)s')
