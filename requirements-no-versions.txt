@@ -1,6 +1,7 @@
 ansible
 black
 celery
+debugpy
 flake8
 flasgger
 Flask
