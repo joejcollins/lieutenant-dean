@@ -12,7 +12,7 @@ queue.conf.update(
     imports=('task_queue.text', 'task_queue.numbers'),
     task_create_missing_queues=True,
     task_routes={
-        "text.*": {"queue": "text_queue"},
-        "number.*": {"queue": "number_queue"},
+        "task_queue.text.*": {"queue": "text_queue"},
+        "task_queue.numbers.*": {"queue": "numbers_queue"},
     },
 )
