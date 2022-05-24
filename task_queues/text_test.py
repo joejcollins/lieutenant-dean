@@ -1,5 +1,5 @@
 """ Test slow running text tasks without queuing. """
-import task_queue.text as text_tasks
+import task_queues.text as text_tasks
 
 
 def test_slowly_reverse_string_without(monkeypatch):

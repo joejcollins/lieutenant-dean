@@ -1,7 +1,7 @@
 """ Celery text manipulations. """
 import logging
 
-from task_queue.celery_app import queue
+from task_queues.celery_app import queue
 
 @queue.task(bind=True)  # `bind=True` ensures that the arguments are passed.
 def run_playbook(self, playbook_name):

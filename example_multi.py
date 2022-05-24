@@ -34,7 +34,7 @@ Then:
 * delete the configuration files
 
 """
-from task_queue.text import slowly_reverse_string
+from task_queues.text import slowly_reverse_string
 import celery
 
 power_down = slowly_reverse_string.s("lmy.etats-rewop-etadpu-e")

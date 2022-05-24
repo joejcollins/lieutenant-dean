@@ -3,20 +3,33 @@
 
 Vagrant.configure("2") do |config|
 
-    config.vm.box = "juniper/vqfx10k-pfe"
-    config.vm.hostname = "juniper-switch"
-    config.vm.box_check_update = true
-    config.vm.network "private_network", ip: "192.168.56.0"
+    config.ssh.insert_key = false
 
-    config.vm.network "forwarded_port", guest: 850, host: 850 #
+    ##########################
+    ## Routing Engine  #######
+    ##########################
+    config.vm.define "vqfx" do |config|
+        config.vm.hostname = "vqfx"
+        config.vm.box = 'juniper/vqfx10k-re'
+        config.vm.box_check_update = true
 
-    # Vagrant's name for the Virtual Machine
-    config.vm.define "juniper-switch" do |la|
-    end
+        # VM can be really slow unless COM1 is connected to something.
+        (File.exist?("/proc/version") and File.readlines("/proc/version").grep(/(Microsoft|WSL)/).size > 0) ? ( re_log = "NUL" ) : ( re_log = "/dev/null" )
+        config.vm.provider "virtualbox" do |vb|
+            vb.customize ["modifyvm", :id, "--uartmode1", "file", re_log]
+            vb.gui = true # it has crashed a bit so it is useful to be able to watch what is going on.
+        end
 
-    config.vm.provider "virtualbox" do |vb|
-        vb.gui = true # it has crashed a bit so it is useful to be able to watch what is going on.
-        vb.memory = "8192" # this value seems to work fast enough in CodeSpaces
-        vb.cpus = "4" # this value seems to work fast enough in CodeSpaces
+        # DO NOT REMOVE / NO VMtools installed
+        config.vm.synced_folder '.', '/vagrant', disabled: true
+
+        # Management port (em1 / em2)
+        config.vm.network 'private_network', auto_config: false, nic_type: '82540EM', virtualbox__intnet: "reserved-bridge"
+        config.vm.network 'private_network', auto_config: false, nic_type: '82540EM', intnet: "reserved-bridge"
+
+        # (em3  em4)
+        (1..2).each do |seg_id|
+            config.vm.network 'private_network', auto_config: false, nic_type: '82540EM', intnet: "segment"
+        end
     end
 end

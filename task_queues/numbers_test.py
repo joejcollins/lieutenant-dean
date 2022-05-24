@@ -1,5 +1,5 @@
 """ Test slow running arithmetic tasks without queueing. """
-import task_queue.numbers as number_tasks
+import task_queues.numbers as number_tasks
 
 
 def test_slowly_add_two_numbers_without(monkeypatch):
