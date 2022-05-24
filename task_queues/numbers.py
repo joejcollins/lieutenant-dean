@@ -4,7 +4,7 @@ import time
 
 import info_module.numbers as numbers
 
-from task_queues.celery_app import queue
+from task_queues.redis_queue import queue
 
 
 @queue.task(bind=True)

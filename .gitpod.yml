@@ -41,7 +41,7 @@ tasks:
     command: >
       . .venv/bin/activate &&
       watchmedo auto-restart --directory=./task_queues/ --pattern=*.py --recursive --
-      celery --workdir=task_queuess --app=redis_queue worker --hostname worker1@%n --loglevel=INFO --queues text_queue,numbers_queue
+      celery --workdir=task_queues --app=redis_queue worker --hostname worker1@%n --loglevel=INFO --queues text_queue,numbers_queue
     openMode: tab-after
   - name: Celery Flower (5555)
     init: gp sync-await redis
