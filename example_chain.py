@@ -1,8 +1,8 @@
 """ Scratch pad. """
 import celery
 
-from task_queues.numbers import slowly_add_two_numbers
-from task_queues.text import slowly_reverse_string
+from task_queues.redis_tasks.numbers import slowly_add_two_numbers
+from task_queues.redis_tasks.text import slowly_reverse_string
 
 # .si = Signature Immutable (i.e. the task doesn't need the output of the previous task)
 task1 = slowly_reverse_string.si("qwerty")

@@ -1,6 +1,6 @@
 """ Scratch pad. """
-from task_queues.text import slowly_reverse_string
-from task_queues.numbers import slowly_add_two_numbers
+from task_queues.redis_tasks.text import slowly_reverse_string
+from task_queues.redis_tasks.numbers import slowly_add_two_numbers
 
 import celery
 

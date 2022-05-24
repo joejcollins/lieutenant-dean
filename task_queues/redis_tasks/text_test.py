@@ -1,22 +1,24 @@
-""" Test slow running arithmetic tasks without queueing. """
-import task_queues.numbers as number_tasks
+""" Test slow running text tasks without queuing. """
+import task_queues.redis_tasks.text as text_tasks
 
 
-def test_slowly_add_two_numbers_without(monkeypatch):
+def test_slowly_reverse_string_without(monkeypatch):
     """ Patch over the update state so we can test just the function on
     it's own, so the broker doesn't need to be running. """
     monkeypatch.setattr(
-        number_tasks.slowly_add_two_numbers,
+        text_tasks.slowly_reverse_string,
         "update_state",
         lambda state, meta: None
     )
-    result = number_tasks.slowly_add_two_numbers(1, 2)
-    assert result == 3
+    result = text_tasks.slowly_reverse_string("qwerty")
+    assert result == "ytrewq"
 
 
-def test_slowly_add_two_numbers_with():
+def test_slowly_reverse_string():
     """ Test the method with Celery but calling immediately rather than using
     a worker, so we can still debug it. """
-    task = number_tasks.slowly_add_two_numbers.s(1, 2).apply()
+    task = text_tasks.slowly_reverse_string.s(
+        string_to_reverse="qwerty"
+        ).apply()
     # Once the task is over it should indicate success.
     assert task.status == 'SUCCESS'
