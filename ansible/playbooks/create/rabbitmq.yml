@@ -9,6 +9,8 @@
     sudo apt-get install rabbitmq-server -y --fix-missing
     sudo service rabbitmq-server restart
     sudo rabbitmqctl add_user the_user the_password
+    sudo rabbitmqctl set_user_tags the_user administrator
     sudo rabbitmqctl add_vhost the_vhost
     sudo rabbitmqctl set_permissions -p the_vhost the_user ".*" ".*" ".*"
+    sudo rabbitmq-plugins enable rabbitmq_management
 
