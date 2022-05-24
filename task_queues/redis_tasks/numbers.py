@@ -4,10 +4,10 @@ import time
 
 import info_module.numbers as numbers
 
-from task_queues.redis_queue import redis_queue
+from task_queues.redis_broker import redis_queues
 
 
-@redis_queue.task(bind=True)
+@redis_queues.task(bind=True)
 def slowly_add_two_numbers(self, first_number, second_number):
     """ Add the numbers but take 10 seconds to do it. """
     logger = logging.getLogger(self.request.id)

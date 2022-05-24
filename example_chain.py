@@ -12,4 +12,4 @@ task3 = slowly_add_two_numbers.si(1, 2)
 task4 = slowly_add_two_numbers.si(3, 4)
 
 result = celery.chain(task1, task2, task3, task4)()
-print("Chain of tasks now on the queue.")
+print("Chain of tasks now on the Redis broker.")
