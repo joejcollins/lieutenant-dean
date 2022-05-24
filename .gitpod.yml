@@ -40,14 +40,14 @@ tasks:
     init: gp sync-await redis
     command: >
       . .venv/bin/activate &&
-      watchmedo auto-restart --directory=./task_queue/ --pattern=*.py --recursive --
-      celery --workdir=task_queue --app=celery_app worker --hostname worker1@%n --loglevel=INFO --queues text_queue,numbers_queue
+      watchmedo auto-restart --directory=./task_queues/ --pattern=*.py --recursive --
+      celery --workdir=task_queuess --app=redis_queue worker --hostname worker1@%n --loglevel=INFO --queues text_queue,numbers_queue
     openMode: tab-after
   - name: Celery Flower (5555)
     init: gp sync-await redis
     command: |
       . .venv/bin/activate
-      celery --workdir=task_queue --app=celery_app flower
+      celery --workdir=task_queues --app=redis_queue flower
     openMode: tab-after
   - name: Prometheus (9090)
     init: gp sync-await redis
