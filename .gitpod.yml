@@ -47,7 +47,7 @@ tasks:
     init: gp sync-await redis
     command: |
       . .venv/bin/activate
-      celery --workdir=task_queues --app=redis_queue flower
+      celery --workdir=task_queues --app=redis_broker flower
     openMode: tab-after
   - name: Prometheus (9090)
     init: gp sync-await redis
