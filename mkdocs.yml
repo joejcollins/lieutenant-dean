@@ -3,5 +3,6 @@ nav:
   - Home: index.md
   - Dev Environment: develop.md
   - Ansible: ansible.md
-  - Celery: task_queue.md
+  - Celery: task_queues.md
+  - To Do: todo.md
 theme: readthedocs
