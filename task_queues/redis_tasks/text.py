@@ -4,10 +4,10 @@ import time
 
 import info_module.text as info_module_text
 
-from task_queues.redis_queue import queue
+from task_queues.redis_queue import redis_queue
 
 
-@queue.task(bind=True)  # `bind=True` ensures that the arguments are passed.
+@redis_queue.task(bind=True)  # `bind=True` ensures that the arguments are passed.
 def slowly_reverse_string(self, string_to_reverse):
     """ Reverse the string but take 10 seconds to do it. """
     logger = logging.getLogger(self.request.id)

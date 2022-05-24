@@ -4,7 +4,7 @@ import celery
 redis_queue = celery.Celery("__name__")
 
 redis_queue.conf.update(
-    broker_url="redis://localhost:6379/1",
+    broker_url = 'amqp://myuser:mypassword@localhost:5672/myvhost',
     worker_prefetch_multiplier="1",
     result_backend="redis://localhost:6379/1",
     task_serializer="json",
@@ -16,3 +16,5 @@ redis_queue.conf.update(
         "task_queues.numbers.*": {"queue": "numbers_queue"},
     },
 )
+
+

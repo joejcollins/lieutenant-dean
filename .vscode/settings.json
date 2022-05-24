@@ -1,31 +1,35 @@
 {
-    "files.associations": {
-      "*.yml.j2": "yaml",
-      "Vagrantfile": "ruby"
+  "editor.rulers": [
+    110
+  ],
+  "editor.minimap.enabled": false,
+  "files.associations": {
+    "*.yml.j2": "yaml",
+    "Vagrantfile": "ruby"
+  },
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": [
+    "."
+  ],
+  "files.exclude": {
+    "**/*.pyc": {
+      "when": "$(basename).py"
     },
-    "python.testing.pytestEnabled": true,
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestArgs": [
-        "."
-    ],
-    "files.exclude": {
-        "**/*.pyc": {"when": "$(basename).py"}, 
-        "**/__pycache__": true,
-        "**/.pytest_cache": true
-    },
-    "python.linting.enabled": true,
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": [
-      "--line-length",
-      "110"
-    ],
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Args": [
-      "--max-line-length=110"
-    ],
-    "python.linting.mypyEnabled": true,
-    "editor.rulers": [110],
-    "editor.minimap.enabled": false,
-    "workbench.colorTheme":"Visual Studio Light",
-    "python.defaultInterpreterPath": ".venv/bin/python"
-  }
+    "**/__pycache__": true,
+    "**/.pytest_cache": true
+  },
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": [
+    "--line-length",
+    "110"
+  ],
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+    "--max-line-length=110"
+  ],
+  "python.linting.mypyEnabled": true,
+  "workbench.colorTheme": "Visual Studio Light",
+  "python.defaultInterpreterPath": ".venv/bin/python"
+}

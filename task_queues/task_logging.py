@@ -17,7 +17,7 @@ def prepare_logging(sender=None, task_id=None, **kwargs):
     formatter = logging.Formatter('[%(asctime)s][%(levelname)s] %(message)s')
     stream_handler.setFormatter(formatter)
     stream_handler.setLevel(logging.INFO)
-    # @task_prerun.connect(sender='slowly_reverse_string', weak=False) did not work for my but YMMV so 
+    # @task_prerun.connect(sender='slowly_reverse_string', weak=False) did not work for my but YMMV so
     # add the file log for some tasks based on the name of the task.
     if sender.__name__ == 'slowly_reverse_string':
         # Adding File Handle with file path. Filename is task_id
