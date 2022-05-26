@@ -57,7 +57,7 @@ tasks:
       sudo rabbitmqctl set_user_tags the_user administrator
       sudo rabbitmqctl add_vhost the_vhost
       sudo rabbitmqctl set_permissions -p the_vhost the_user ".*" ".*" ".*"
-      init: gp sync-await rabbitmq
+    init: gp sync-await rabbitmq
   - name: Celery RabbitMQ with Watchdog
     init: gp sync-await rabbitmq
     command: >
