@@ -49,6 +49,14 @@ tasks:
       . .venv/bin/activate
       celery --workdir=task_queues --app=redis_broker flower
     openMode: tab-after
+  - name: RabbitMQ (5672)
+    command: |
+      sudo service rabbitmq-server restart
+      sudo rabbitmq-plugins enable rabbitmq_management
+      sudo rabbitmqctl add_user the_user the_password
+      sudo rabbitmqctl set_user_tags the_user administrator
+      sudo rabbitmqctl add_vhost the_vhost
+      sudo rabbitmqctl set_permissions -p the_vhost the_user ".*" ".*" ".*"
   - name: Prometheus (9090)
     init: gp sync-await redis
     command: docker-compose --project-directory ./monitoring up
@@ -65,6 +73,9 @@ ports:
   - port: 5555
     onOpen: open-browser
     visibility: public
+  - port: 5672
+    onOpen: ignore
+    visibility: public
   - port: 6000
     onOpen: open-browser
     visibility: public
@@ -79,6 +90,9 @@ ports:
     visibility: public
   - port: 9090
     onOpen: open-preview
+    visibility: public
+  - port: 15672
+    onOpen: open-browser
     visibility: public
 
 vscode:
