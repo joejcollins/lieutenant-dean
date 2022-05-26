@@ -1,19 +1,15 @@
-""" Celery RabbitMQ queue text manipulations. """
+""" Celery Redis text queue manipulations. """
 import logging
 import time
 
 import info_module.text as info_module_text
 
-from task_queues.rabbit_broker import rabbit_queues
+from celery_apps.redis_broker import redis_queues
 
 
-@rabbit_queues.task(bind=True)  # `bind=True` ensures that the arguments are passed.
+@redis_queues.task(bind=True)  # `bind=True` ensures that the arguments are passed.
 def slowly_reverse_string(self, string_to_reverse):
     """ Reverse the string but take 10 seconds to do it. """
-    # import debugpy
-    # debugpy.listen(('0.0.0.0', 8080))
-    # debugpy.wait_for_client()
-    # debugpy.breakpoint()
     logger = logging.getLogger(self.request.id)
     logger.info(f'Reversing {string_to_reverse}.')
     counter = 10

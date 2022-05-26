@@ -40,14 +40,14 @@ tasks:
     init: gp sync-await redis
     command: >
       . .venv/bin/activate &&
-      watchmedo auto-restart --directory=./task_queues/ --pattern=*.py --recursive --
-      celery --workdir=task_queues --app=redis_broker worker --hostname worker1@%n --loglevel=INFO --queues text_queue,numbers_queue
+      watchmedo auto-restart --directory=./celery_apps/ --pattern=*.py --recursive --
+      celery --workdir=celery_apps --app=redis_broker worker --hostname worker1@%n --loglevel=INFO --queues text_queue,numbers_queue
     openMode: tab-after
   - name: Celery Flower (5555)
     init: gp sync-await redis
     command: |
       . .venv/bin/activate
-      celery --workdir=task_queues --app=redis_broker flower
+      celery --workdir=celery_apps --app=redis_broker flower
     openMode: tab-after
   - name: RabbitMQ (5672)
     command: |

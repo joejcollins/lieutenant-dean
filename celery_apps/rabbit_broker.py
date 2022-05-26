@@ -9,9 +9,9 @@ rabbit_queues.conf.update(
     result_backend="rpc://",
     task_serializer="json",
     accept_content=["json", "pickle"],
-    imports=("task_queues.task_logging", "task_queues.rabbit_tasks.text"),
+    imports=("celery_apps.task_logging", "celery_apps.rabbit_tasks.text"),
     task_create_missing_queues=True,
     task_routes={
-        "task_queues.rabbit_tasks.text.*": {"queue": "text_queue"},
+        "celery_apps.rabbit_tasks.text.*": {"queue": "text_queue"},
     },
 )

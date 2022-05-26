@@ -1,5 +1,5 @@
 """ Scratch pad. """
-from task_queues.redis_tasks.text import slowly_reverse_string
+from celery_apps.redis_tasks.text import slowly_reverse_string
 
 task = slowly_reverse_string.si("shit")
 

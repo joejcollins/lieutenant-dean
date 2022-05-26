@@ -4,7 +4,7 @@ import time
 
 import info_module.numbers as numbers
 
-from task_queues.redis_broker import redis_queues
+from celery_apps.redis_broker import redis_queues
 
 
 @redis_queues.task(bind=True)

@@ -9,10 +9,10 @@ redis_queues.conf.update(
     result_backend="redis://localhost:6379/1",
     task_serializer="json",
     accept_content=["json", "pickle"],
-    imports=("task_queues.task_logging", "task_queues.redis_tasks.text", "task_queues.redis_tasks.numbers"),
+    imports=("celery_apps.task_logging", "celery_apps.redis_tasks.text", "celery_apps.redis_tasks.numbers"),
     task_create_missing_queues=True,
     task_routes={
-        "task_queues.redis_tasks.text.*": {"queue": "text_queue"},
-        "task_queues.redis_tasks.numbers.*": {"queue": "numbers_queue"},
+        "celery_apps.redis_tasks.text.*": {"queue": "text_queue"},
+        "celery_apps.redis_tasks.numbers.*": {"queue": "numbers_queue"},
     },
 )

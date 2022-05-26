@@ -3,7 +3,7 @@ import flask
 import flasgger.utils as swag_utils
 import rest_api.text_apidocs as apidocs
 import info_module.text as info_text
-import task_queues.redis_tasks.text as text_tasks
+import celery_apps.redis_tasks.text as text_tasks
 
 text_api = flask.Blueprint("text_api", __name__, url_prefix="/text/")
 
