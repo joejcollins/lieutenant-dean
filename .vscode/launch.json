@@ -26,6 +26,22 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "Celery Rabbit Broker",
+            "type": "python",
+            "request": "launch",
+            "module": "celery",
+            "console": "integratedTerminal",
+            "args": [
+                "--workdir=celery_apps",
+                "--app=rabbit_broker",
+                "worker",
+                "--hostname=worker1@%n",
+                "--loglevel=INFO",
+                "--queues=text_queue",
+                "--pool=solo"
+            ]
         }
     ]
 }

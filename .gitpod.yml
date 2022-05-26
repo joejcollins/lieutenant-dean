@@ -41,7 +41,7 @@ tasks:
     command: >
       . .venv/bin/activate &&
       watchmedo auto-restart --directory=./celery_apps/ --pattern=*.py --recursive --
-      celery --workdir=celery_apps --app=redis_broker worker --hostname worker1@%n --loglevel=INFO --queues text_queue,numbers_queue
+      celery --workdir=celery_apps --app=redis_broker worker --hostname=worker1@%n --loglevel=INFO --queues=text_queue,numbers_queue
     openMode: tab-after
   - name: Celery Flower (5555)
     init: gp sync-await redis
@@ -63,7 +63,7 @@ tasks:
     command: >
       . .venv/bin/activate &&
       watchmedo auto-restart --directory=./celery_apps/ --pattern=*.py --recursive --
-      celery --workdir=celery_apps --app=rabbit_broker worker --hostname worker1@%n --loglevel=INFO --queues text_queue
+      celery --workdir=celery_apps --app=rabbit_broker worker --hostname=worker1@%n --loglevel=INFO --queues=text_queue
   - name: Prometheus (9090)
     init: gp sync-await redis
     command: docker-compose --project-directory ./monitoring up
