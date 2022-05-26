@@ -51,12 +51,12 @@ tasks:
     openMode: tab-after
   - name: RabbitMQ (5672)
     command: |
-      service rabbitmq-server restart
-      rabbitmq-plugins enable rabbitmq_management
-      rabbitmqctl add_user the_user the_password
-      rabbitmqctl set_user_tags the_user administrator
-      rabbitmqctl add_vhost the_vhost
-      rabbitmqctl set_permissions -p the_vhost the_user ".*" ".*" ".*"
+      sudo service rabbitmq-server restart
+      sudo rabbitmq-plugins enable rabbitmq_management
+      sudo rabbitmqctl add_user the_user the_password
+      sudo rabbitmqctl set_user_tags the_user administrator
+      sudo rabbitmqctl add_vhost the_vhost
+      sudo rabbitmqctl set_permissions -p the_vhost the_user ".*" ".*" ".*"
       gp sync-done rabbitmq # 'rabbitmq' is an arbitrary tag.
   - name: Celery RabbitMQ with Watchdog
     init: gp sync-await rabbitmq
