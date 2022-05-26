@@ -15,10 +15,10 @@ def slowly_reverse_string(self, string_to_reverse):
     # debugpy.wait_for_client()
     # debugpy.breakpoint()
     logger = logging.getLogger(self.request.id)
-    logger.info(f'Reversing {string_to_reverse}.')
+    logger.info(f'RabbitMQ: Reversing {string_to_reverse}.')
     counter = 10
     for i in range(0, counter):
         self.update_state(state='PROGRESS', meta={'done': i, 'total': counter})
-        logger.info(f'Reversing stage {i} of counter.')
+        logger.info(f'RabbitMQ: Reversing stage {i} of counter.')
         time.sleep(1)
     return info_module_text.reverse_string(string_to_reverse)

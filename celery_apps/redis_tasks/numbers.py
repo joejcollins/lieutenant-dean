@@ -14,6 +14,6 @@ def slowly_add_two_numbers(self, first_number, second_number):
     counter = 10
     for i in range(0, counter):
         self.update_state(state='PROGRESS', meta={'done': i, 'total': counter})
-        logger.info(f'Adding stage {i} of counter.')
+        logger.info(f'RabbitMQ: Adding stage {i} of counter.')
         time.sleep(1)
     return numbers.add_two_numbers(first_number, second_number)
