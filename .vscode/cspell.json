@@ -3,6 +3,7 @@
     "language": "en",
     "words": [
         "abcdefghijklmnopqrstuvwxyz",
+        "amqp",
         "apidocs",
         "asdfgh",
         "blockinfile",
@@ -47,6 +48,7 @@
         "useable",
         "vcenter",
         "vcpus",
+        "vhost",
         "VSPHERE",
         "watchmedo",
         "werkzeug",

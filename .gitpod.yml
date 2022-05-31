@@ -62,8 +62,8 @@ tasks:
     init: gp sync-await rabbitmq
     command: >
       . .venv/bin/activate &&
-      watchmedo auto-restart --directory=./celery_apps/ --pattern=*.py --recursive --
-      celery --workdir=celery_apps --app=rabbit_broker worker --hostname=worker1@%n --loglevel=INFO --queues=text_queue
+      watchmedo auto-restart --directory=./celery_app/ --pattern=*.py --recursive --
+      celery --workdir=celery_app --app=task_broker worker --hostname=worker1@%n --loglevel=INFO --queues=custom_queue
   - name: Prometheus (9090)
     init: gp sync-await redis
     command: docker-compose --project-directory ./monitoring up
