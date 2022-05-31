@@ -1,5 +1,6 @@
 """ Rabbit queue broker configuration. """
 import celery
+import rabbit_tasks.text as text_tasks
 
 rabbit_queues = celery.Celery("__name__")
 
@@ -15,3 +16,6 @@ rabbit_queues.conf.update(
         "celery_apps.rabbit_tasks.text.*": {"queue": "text_queue"},
     },
 )
+
+
+rabbit_queues.steps["consumer"].add(text_tasks.SubstitutionCypher)

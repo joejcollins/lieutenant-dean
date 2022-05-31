@@ -2,7 +2,7 @@ import celery_apps.redis_broker as broker
 from kombu import Exchange, Queue, Consumer
 from celery import bootsteps
 
-my_queue = Queue("custom", Exchange("custom"), "routing_key")
+my_queue = Queue("text_queue", Exchange("custom"), "routing_key")
 
 body = {
     "Body": {"Type": "environment", "Alias": "joes-test", "Properties": {}},
