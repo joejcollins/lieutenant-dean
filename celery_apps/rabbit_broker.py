@@ -4,7 +4,7 @@ import celery
 rabbit_queues = celery.Celery("__name__")
 
 rabbit_queues.conf.update(
-    broker_url="amqp://the_user:the_password@localhost:5672/the_vhost",
+    broker="pyamqp://the_user:the_password@localhost:5672/the_vhost",
     worker_prefetch_multiplier="1",
     result_backend="rpc://",
     task_serializer="json",
