@@ -12,8 +12,7 @@ class Capitalize(app.queue_broker.Task):
 
 @app.queue_broker.task(base=Capitalize)
 def shit(x):
-    val = shit.run(x)
-    return val
+    return "val"
 
 
 # app.queues.tasks.register(Capitalize)

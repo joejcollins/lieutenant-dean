@@ -19,6 +19,6 @@ queue_broker.conf.update(
 )
 
 # Add the custom consumers, which don't use standard Celery format messages.
-# queue_broker.steps["consumer"].add(consumers.SubstitutionCypher)
+queue_broker.steps["consumer"].add(consumers.SubstitutionCypher)
 
 # make_capitals = celery.Celery.tasks.add[custom_text.Capitalize]
