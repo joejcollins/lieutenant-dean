@@ -27,14 +27,14 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Celery Rabbit Broker",
+            "name": "Python: Celery Broker",
             "type": "python",
             "request": "launch",
             "module": "celery",
             "console": "integratedTerminal",
             "args": [
-                "--workdir=celery_app",
-                "--app=task_broker",
+                "--workdir=task_queuing",
+                "--app=celery_app",
                 "worker",
                 "--hostname=worker1@%n",
                 "--loglevel=INFO",

@@ -1,7 +1,9 @@
+---
 image:
   file: .gitpod.Dockerfile
 
 tasks:
+  # Ensure the that Python environment is ready
   - name: Initialize Python, pip and npm
     init: |
       virtualenv .venv
@@ -10,46 +12,28 @@ tasks:
       pip install -Ur requirements-no-versions.txt
       pip freeze requirements.txt
       npm install control-panel
-      gp sync-done pip-npm # 'pip-npm' is an arbitrary tag.
+      gp sync-done python-is-ready # an arbitrary tag.
+  # Once the Python environment is set up get the Redis and RabbitMQ servers running.
   - name: Docs Web Server (8000)
-    init: gp sync-await pip-npm
+    init: gp sync-await python-is-ready
     command: |
       . .venv/bin/activate
       mkdocs serve
     openMode: tab-after
   - name: API Web Server (5000)
-    init: gp sync-await pip-npm
+    init: gp sync-await python-is-ready
     command: |
       . .venv/bin/activate
       export FLASK_APP=rest_api.flask_app
       export FLASK_ENV=development
       flask run
     openMode: tab-after
-  - name: Redis Server
-    init: gp sync-await pip-npm
-    command: |
-      redis-server --daemonize yes
-      gp sync-done redis # 'redis' is an arbitrary tag.
-  - name: Redis Commander (6000)
-    init: gp sync-await redis
-    command: |
-      npm install -g redis-commander
-      redis-commander --port 6000 --redis-db 1
-    openMode: tab-after
-  - name: Celery Redis with Watchdog
-    init: gp sync-await redis
-    command: >
-      . .venv/bin/activate &&
-      watchmedo auto-restart --directory=./celery_apps/ --pattern=*.py --recursive --
-      celery --workdir=celery_apps --app=redis_broker worker --hostname=worker1@%n --loglevel=INFO --queues=text_queue,numbers_queue
-    openMode: tab-after
-  - name: Celery Flower (5555)
-    init: gp sync-await redis
-    command: |
-      . .venv/bin/activate
-      celery --workdir=celery_apps --app=redis_broker flower
+  - name: Control panel and Unleash Proxy (3000 and 3001)
+    init: gp sync-await python-is-ready
+    command: yarn --cwd control-panel start
     openMode: tab-after
   - name: RabbitMQ (5672)
+    init: gp sync-await python-is-ready
     command: |
       sudo service rabbitmq-server restart
       sudo rabbitmq-plugins enable rabbitmq_management
@@ -58,20 +42,32 @@ tasks:
       sudo rabbitmqctl add_vhost the_vhost
       sudo rabbitmqctl set_permissions -p the_vhost the_user ".*" ".*" ".*"
       gp sync-done rabbitmq # 'rabbitmq' is an arbitrary tag.
-  - name: Celery RabbitMQ with Watchdog
-    init: gp sync-await rabbitmq
+  - name: Redis Server
+    init: gp sync-await python-is-ready
+    command: |
+      redis-server --daemonize yes
+      gp sync-done redis-is-ready # 'redis-is-ready' is an arbitrary tag.
+  # Once Redis is running start the things that rely on it
+  - name: Redis Commander (6000)
+    init: gp sync-await redis-is-ready
+    command: |
+      npm install -g redis-commander
+      redis-commander --port 6000 --redis-db 1
+    openMode: tab-after
+  - name: Celery Flower (5555)
+    init: gp sync-await redis-is-ready
+    command: |
+      . .venv/bin/activate
+      celery --workdir=celery_app --app=task_broker flower
+      gp sync-done celery-monitors-ready # 'celery-monitors-ready' is an arbitrary tag.
+    openMode: tab-after
+  # Start the Celery Worker once everything else is up and running
+  - name: Celery Worker with Watchdog
+    init: gp sync-await celery-monitors-ready
     command: >
       . .venv/bin/activate &&
       watchmedo auto-restart --directory=./celery_app/ --pattern=*.py --recursive --
       celery --workdir=celery_app --app=task_broker worker --hostname=worker1@%n --loglevel=INFO --queues=custom_queue
-  - name: Prometheus (9090)
-    init: gp sync-await redis
-    command: docker-compose --project-directory ./monitoring up
-    openMode: tab-after
-  - name: Control panel and Unleash Proxy (3000 and 3001)
-    init: gp sync-await pip-npm
-    command: yarn --cwd control-panel start
-    openMode: tab-after
 
 ports:
   - port: 5000
@@ -107,3 +103,4 @@ vscode:
     - ms-python.python
     - eamodio.gitlens
     - streetsidesoftware.code-spell-checker
+...

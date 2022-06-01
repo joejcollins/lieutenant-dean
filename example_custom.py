@@ -1,4 +1,5 @@
-import celery_app.task_broker as broker
+import task_queuing.celery_app as app
+import celery
 from kombu import Queue
 from datetime import datetime
 
@@ -8,10 +9,13 @@ def send_me_a_message(producer=None):
     queue = Queue("custom_queue")
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    body = {"text": "Secret text to encode", "Time": current_time, "task": "make_secret"}
+    id = celery.uuid()
+    headers = {"task": "task_queuing.tasks.custom.shit", "id": id}
+    body = {"text": "Secret text to encode", "Time": current_time}
 
-    with broker.broker_config.producer_or_acquire(producer) as producer:
+    with app.queue_broker.producer_or_acquire(producer) as producer:
         producer.publish(
+            headers=headers,
             body=body,
             serializer="json",
             exchange=queue.exchange,
@@ -19,7 +23,7 @@ def send_me_a_message(producer=None):
             declare=[queue],
             retry=True,
         )
-    print("on queue")
+    print(f"Custom task {id} on queue")
 
 
 if __name__ == "__main__":
