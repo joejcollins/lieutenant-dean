@@ -5,7 +5,7 @@ import info_module.numbers as numbers
 import task_queuing.celery_app as app
 
 
-@app.queue_broker.task(bind=True, name="number.slowly_add_two_numbers")
+@app.queue_broker.task(bind=True)
 def slowly_add_two_numbers(self, first_number, second_number):
     """Add the numbers but take 10 seconds to do it."""
     counter = 10

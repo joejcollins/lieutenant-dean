@@ -5,7 +5,7 @@ from kombu import Consumer, Exchange, Queue
 class SubstitutionCypher(bootsteps.ConsumerStep):
     """Custom handling of substitution cypher"""
 
-    my_queue = Queue('custom', Exchange('custom'), 'routing_key')
+    my_queue = Queue('custom_queue', Exchange('custom_queue'), 'custom_queue')
 
     def handle_message(self, body, message):
         print('Received message: {0!r}'.format(body))
