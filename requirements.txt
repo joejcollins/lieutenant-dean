@@ -9,7 +9,7 @@ backports.zoneinfo==0.2.1
 bcrypt==3.2.2
 billiard==3.6.4.0
 black==22.3.0
--e git+https://github.com/joejcollins/captain-black.git@233b5b04941198b64ac965fa54fbf6785f9b679a#egg=captain_black
+-e git+https://github.com/joejcollins/captain-black.git@f575d6197189791c2ffc332585fc798ded484f8f#egg=captain_black
 celery==5.2.7
 certifi==2022.5.18.1
 cffi==1.15.0
