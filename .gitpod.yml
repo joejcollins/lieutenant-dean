@@ -58,7 +58,7 @@ tasks:
     init: gp sync-await redis-is-ready
     command: |
       . .venv/bin/activate
-      celery --workdir=celery_app --app=task_broker flower
+      celery --workdir=task_queuing --app=celery_app flower
       gp sync-done celery-monitors-ready # 'celery-monitors-ready' is an arbitrary tag.
     openMode: tab-after
   # Start the Celery Worker once everything else is up and running
@@ -66,8 +66,8 @@ tasks:
     init: gp sync-await celery-monitors-ready
     command: >
       . .venv/bin/activate &&
-      watchmedo auto-restart --directory=./celery_app/ --pattern=*.py --recursive --
-      celery --workdir=celery_app --app=task_broker worker --hostname=worker1@%n --loglevel=INFO --queues=custom_queue
+      watchmedo auto-restart --directory=./task_queuing/ --pattern=*.py --recursive --
+      celery --workdir=task_queuing --app=celery_app worker --hostname=worker1@%n --loglevel=INFO --queues=custom_queue
 
 ports:
   - port: 5000
