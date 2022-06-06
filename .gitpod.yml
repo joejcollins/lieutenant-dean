@@ -21,7 +21,7 @@ tasks:
       . .venv/bin/activate
       pip install --upgrade pip setuptools
       pip install -Ur requirements-no-versions.txt
-      pip freeze > requirements.txt
+      pip list --format=freeze > requirements.txt
       npm install control-panel
       gp sync-done python-is-ready # an arbitrary tag.
   # Once the Python environment is set up get the servers which rely on it.
