@@ -3,17 +3,28 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
+  # Adjust the Rabbit configuration.
+  - name: RabbitMQ (5672)
+    command: |
+      sudo service rabbitmq-server restart
+      sudo rabbitmq-plugins enable rabbitmq_management
+      sudo rabbitmqctl add_user the_user the_password
+      sudo rabbitmqctl set_user_tags the_user administrator
+      sudo rabbitmqctl add_vhost the_vhost
+      sudo rabbitmqctl set_permissions -p the_vhost the_user ".*" ".*" ".*"
+      gp sync-done rabbit-is-ready # 'rabbit-is-ready' is an arbitrary tag.
   # Ensure the that Python environment is ready
   - name: Initialize Python, pip and npm
     init: |
+      gp sync-await rabbit-is-ready
       virtualenv .venv
       . .venv/bin/activate
       pip install --upgrade pip setuptools
       pip install -Ur requirements-no-versions.txt
-      pip freeze requirements.txt
+      pip freeze > requirements.txt
       npm install control-panel
       gp sync-done python-is-ready # an arbitrary tag.
-  # Once the Python environment is set up get the Redis and RabbitMQ servers running.
+  # Once the Python environment is set up get the servers which rely on it.
   - name: Docs Web Server (8000)
     init: gp sync-await python-is-ready
     command: |
@@ -32,16 +43,6 @@ tasks:
     init: gp sync-await python-is-ready
     command: yarn --cwd control-panel start
     openMode: tab-after
-  - name: RabbitMQ (5672)
-    init: gp sync-await python-is-ready
-    command: |
-      sudo service rabbitmq-server restart
-      sudo rabbitmq-plugins enable rabbitmq_management
-      sudo rabbitmqctl add_user the_user the_password
-      sudo rabbitmqctl set_user_tags the_user administrator
-      sudo rabbitmqctl add_vhost the_vhost
-      sudo rabbitmqctl set_permissions -p the_vhost the_user ".*" ".*" ".*"
-      gp sync-done rabbitmq # 'rabbitmq' is an arbitrary tag.
   - name: Redis Server
     init: gp sync-await python-is-ready
     command: |
