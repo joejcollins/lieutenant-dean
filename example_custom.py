@@ -7,8 +7,7 @@ from datetime import datetime
 def send_me_a_message(producer=None):
     """Send a custom message as per Scott's instructions."""
     my_queue = Queue('custom', Exchange('custom'), 'routing_key')
-    now = datetime.now()
-    # current_time = now.strftime("%H:%M:%S")
+    eta = str(datetime.now())
     id = celery.uuid()
     # headers = {"task": "task_queuing.tasks.custom.shit", "id": id}
     # body = {"text": "Secret text to encode", "Time": current_time}
@@ -19,7 +18,7 @@ def send_me_a_message(producer=None):
         'args': [id],
         "kwargs": {},
         "retries": 0,
-        "eta": str(datetime.now())
+        "eta": eta
     }
 
     with app.queue_broker.producer_or_acquire(producer) as producer:

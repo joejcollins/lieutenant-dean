@@ -2,13 +2,13 @@
 log can be viewed during the run."""
 import celery
 
-import celery_app.tasks.celery_text as celery_text
+import task_queuing.tasks.text as text_tasks
 
 # .si = Signature Immutable (i.e. the task doesn't need the output of the previous task)
-reverse_it = celery_text.slowly_reverse_string.si("qwerty")
+reverse_it = text_tasks.slowly_reverse_string.si("qwerty")
 reverse_it.id = celery.uuid()
 # .s = Signature mutable (i.e. the task takes the output of the previous task)
-reverse_it_back = celery_text.slowly_reverse_string.s()
+reverse_it_back = text_tasks.slowly_reverse_string.s()
 reverse_it_back.id = celery.uuid()
 
 result = celery.chain(reverse_it, reverse_it_back)()

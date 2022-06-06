@@ -11,10 +11,16 @@ queue_broker.conf.update(
     result_backend="redis://localhost:6379/1",
     task_serializer="json",
     accept_content=["json", "pickle"],
-    imports=("task_queuing.task_logging", "task_queuing.tasks.text", "task_queuing.tasks.custom"),
+    imports=(
+        "task_queuing.task_logging",
+        "task_queuing.tasks.number",
+        "task_queuing.tasks.text",
+        "task_queuing.tasks.custom",
+    ),
     task_create_missing_queues=True,
     task_routes={
         "task_queuing.tasks.text.*": {"queue": "text_queue"},
+        "task_queuing.tasks.number.*": {"queue": "number_queue"},
     },
 )
 

@@ -1,8 +1,9 @@
-""" Celery RabbitMQ queue text manipulations. """
+""" Celery text manipulations. """
 import logging
 import time
-import task_queuing.celery_app as app
+
 import info_module.text as info_module_text
+import task_queuing.celery_app as app
 
 
 @app.queue_broker.task(bind=True)  # `bind=True` ensures that the arguments are passed.

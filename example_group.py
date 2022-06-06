@@ -1,8 +1,7 @@
 """ Scratch pad. """
-from celery_apps.redis_tasks.text import slowly_reverse_string
-from celery_apps.redis_tasks.numbers import slowly_add_two_numbers
-
 import celery
+from celery_apps.redis_tasks.numbers import slowly_add_two_numbers
+from celery_apps.redis_tasks.text import slowly_reverse_string
 
 task1 = slowly_reverse_string.s("qwerty")
 task2 = slowly_reverse_string.s("asdfgh")
