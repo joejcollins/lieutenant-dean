@@ -9,8 +9,7 @@ print("Consumer is running and waiting for messages.")
 
 
 def text_callback(ch, method, properties, body):
-    print(" [x] Received %r" % body.decode())
-    print(" Properties are %r" % properties)
+    print(" [x] Received %r \n" % body.decode())
     ch.basic_ack(delivery_tag=method.delivery_tag)
 
 
