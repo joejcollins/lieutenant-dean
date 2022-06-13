@@ -11,6 +11,7 @@ mypy
 ncclient
 pytest
 pytest-flask
+python-dotenv
 redis
 requests
 UnleashClient
