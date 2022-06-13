@@ -1,5 +1,5 @@
 """Post messages to a specific queue dependent on their load."""
-from task_queuing.queues import custom_exchange, my_queues
+from task_queuing.queues import custom_exchange
 import task_queuing.celery_app as app
 import celery
 

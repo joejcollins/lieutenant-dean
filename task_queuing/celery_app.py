@@ -1,7 +1,9 @@
 """ Celery queue broker configuration. """
 import celery
-import task_queuing.consumers as consumers
 import os
+
+import task_queuing.consumers as consumers
+from task_queuing.queues import custom_exchange
 
 # `.env` file for the RABBITMQ_USERNAME and RABBITMQ_PASSWORD
 from dotenv import load_dotenv
@@ -23,7 +25,7 @@ queue_broker.conf.update(
     ],
     broker_failover_strategy="shuffle",
     worker_prefetch_multiplier="1",
-    result_backend="redis://localhost:6379/1",
+    result_backend="redis://localhost:6379/1",  # rpc:// if running without redis server
     task_serializer="json",
     accept_content=["json", "pickle"],
     imports=(
@@ -35,9 +37,15 @@ queue_broker.conf.update(
     ),
     task_create_missing_queues=True,
     task_routes={
-        "task_queuing.tasks.text.*": {"queue": "zengenti.cloud.text_queue"},
-        "task_queuing.tasks.number.*": {"queue": "zengenti.cloud.number_queue"},
-        "task_queuing.tasks.environment.*": {"queue": "environment_queue"},
+        "task_queuing.tasks.text.*": {"exchange": custom_exchange,
+                                      "routing_key": "high_load",
+                                      },
+        "task_queuing.tasks.number.*": {"exchange": custom_exchange,
+                                        "routing_key": "low_load",
+                                        },
+        "task_queuing.tasks.environment.*": {"exchange": custom_exchange,
+                                             "routing_key": "low_load",
+                                             },
     },
 )
 
