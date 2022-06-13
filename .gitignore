@@ -137,3 +137,6 @@ package.json
 
 # Vagrant files
 **/.vagrant
+
+# Pycharm
+.idea/
