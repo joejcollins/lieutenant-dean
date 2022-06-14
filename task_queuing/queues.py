@@ -1,5 +1,4 @@
-from kombu import Exchange, Queue
+from kombu import Queue, Exchange
 
-custom_exchange = Exchange('zengenti-cloud', type='direct')
-my_queues = [Queue('zengenti-cloud-high', custom_exchange, routing_key='high_load'),
-             Queue('zengenti-cloud-low', custom_exchange, routing_key='low_load')]
+my_queues = [Queue("zengenti-cloud-high", Exchange("zengenti-cloud-high"), routing_key="zengenti-cloud-high"),
+             Queue("zengenti-cloud-low", Exchange("zengenti-cloud-high"), routing_key="zengenti-cloud-low")]

@@ -1,11 +1,13 @@
 """Post messages to a specific queue dependent on their load."""
-from task_queuing.queues import custom_exchange
-import task_queuing.celery_app as app
 import celery
+from kombu import Exchange, Queue
+
+import task_queuing.celery_app as app
 
 
 def send_custom_message(producer=None):
     """Send a custom message to our exchange with routing key high."""
+    my_queue = Queue("zengenti-cloud-high", Exchange("zengenti-cloud-high"), "zengenti-cloud-high")
     id = celery.uuid()
     message = {
         "Body": {"Type": "environment", "Alias": "{{alias}}", "Properties": {}},
@@ -17,15 +19,16 @@ def send_custom_message(producer=None):
         producer.publish(
             message,
             serializer="json",
-            exchange=custom_exchange,
-            declare=[custom_exchange],
-            routing_key="high_load",
+            exchange=my_queue.exchange,
+            declare=[my_queue],
+            routing_key="zengenti-cloud-high",
             retry=True)
         return id
 
 
 def send_to_text_reverse(producer=None):
     """Send a reverse_text task to our exchange with routing key low."""
+    my_queue = Queue("zengenti-cloud-low", Exchange("zengenti-cloud-low"), "zengenti-cloud-low")
     id = celery.uuid()
     message = {
         "task": "task_queuing.tasks.text.slowly_reverse_string",
@@ -39,9 +42,10 @@ def send_to_text_reverse(producer=None):
         producer.publish(
             message,
             serializer="json",
-            exchange=custom_exchange,
-            declare=[custom_exchange],  # declares exchange, queue and binds.
-            routing_key="low_load")
+            exchange=my_queue.exchange,
+            declare=[my_queue],  # declares exchange, queue and binds.
+            routing_key="zengenti-cloud-low",
+            retry=True)
         return id
 
 
