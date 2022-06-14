@@ -1,6 +1,5 @@
 from celery import bootsteps
 from kombu import Consumer
-import time
 
 from task_queuing.queues import my_queues
 

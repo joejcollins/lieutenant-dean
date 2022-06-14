@@ -3,7 +3,7 @@ import celery
 import os
 
 import task_queuing.consumers as consumers
-from task_queuing.queues import custom_exchange
+from task_queuing.queues import custom_exchange, my_queues
 
 # `.env` file for the RABBITMQ_USERNAME and RABBITMQ_PASSWORD
 from dotenv import load_dotenv
@@ -23,6 +23,7 @@ queue_broker.conf.update(
         f"amqp://{RABBITMQ_USERNAME}:{RABBITMQ_PASSWORD}@10.128.93.14:5672//",
         f"amqp://{RABBITMQ_USERNAME}:{RABBITMQ_PASSWORD}@10.128.93.15:5672//",
     ],
+    # broker="amqp://the_user:the_password@localhost:5672/the_vhost",
     broker_failover_strategy="shuffle",
     worker_prefetch_multiplier="1",
     result_backend="redis://localhost:6379/1",  # rpc:// if running without redis server
@@ -37,13 +38,13 @@ queue_broker.conf.update(
     ),
     task_create_missing_queues=True,
     task_routes={
-        "task_queuing.tasks.text.*": {"exchange": custom_exchange,
+        "task_queuing.tasks.text.*": {"queue": my_queues[0],
                                       "routing_key": "high_load",
                                       },
-        "task_queuing.tasks.number.*": {"exchange": custom_exchange,
+        "task_queuing.tasks.number.*": {"queue": my_queues[1],
                                         "routing_key": "low_load",
                                         },
-        "task_queuing.tasks.environment.*": {"exchange": custom_exchange,
+        "task_queuing.tasks.environment.*": {"queue": my_queues[1],
                                              "routing_key": "low_load",
                                              },
     },

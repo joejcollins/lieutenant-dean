@@ -46,5 +46,7 @@ def send_to_text_reverse(producer=None):
 
 
 if __name__ == "__main__":
-    id = send_to_text_reverse()
-    print(f"task {id} on queue")
+    task1 = send_to_text_reverse()
+    task2 = send_custom_message()
+    # result = celery.group(task1, task2)()
+    print(f"tasks {task1} and {task2} on queue")

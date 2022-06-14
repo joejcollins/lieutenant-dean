@@ -68,7 +68,7 @@ tasks:
       gp sync-await rabbit-is-ready &&
       . .venv/bin/activate &&
       watchmedo auto-restart --directory=./task_queuing/ --pattern=*.py --recursive --
-      celery --workdir=task_queuing --app=celery_app worker --hostname=worker1@%n --loglevel=INFO --queues=custom_queue,text_queue,number_queue
+      celery --workdir=task_queuing --app=celery_app worker --hostname=worker1@%n --loglevel=INFO
 
 ports:
   - port: 5000
