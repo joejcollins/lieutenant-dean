@@ -7,7 +7,7 @@ import task_queuing.celery_app as app
 
 def send_custom_message(producer=None):
     """Send a custom message to our exchange with routing key high."""
-    my_queue = Queue("zengenti-cloud-high", Exchange("zengenti-cloud-high"), "zengenti-cloud-high")
+    my_queue = Queue("zengenti-cloud-high", Exchange("zengenti-cloud-high"), routing_key="zengenti-cloud-high")
     id = celery.uuid()
     message = {
         "Body": {"Type": "environment", "Alias": "{{alias}}", "Properties": {}},
@@ -21,14 +21,13 @@ def send_custom_message(producer=None):
             serializer="json",
             exchange=my_queue.exchange,
             declare=[my_queue],
-            routing_key="zengenti-cloud-high",
             retry=True)
         return id
 
 
 def send_to_text_reverse(producer=None):
     """Send a reverse_text task to our exchange with routing key low."""
-    my_queue = Queue("zengenti-cloud-low", Exchange("zengenti-cloud-low"), "zengenti-cloud-low")
+    my_queue = Queue("zengenti-cloud-low", Exchange("zengenti-cloud-low"), routing_key="zengenti-cloud-low")
     id = celery.uuid()
     message = {
         "task": "task_queuing.tasks.text.slowly_reverse_string",
@@ -43,8 +42,8 @@ def send_to_text_reverse(producer=None):
             message,
             serializer="json",
             exchange=my_queue.exchange,
+            routing_key=my_queue.routing_key,
             declare=[my_queue],  # declares exchange, queue and binds.
-            routing_key="zengenti-cloud-low",
             retry=True)
         return id
 
@@ -52,5 +51,4 @@ def send_to_text_reverse(producer=None):
 if __name__ == "__main__":
     task1 = send_to_text_reverse()
     task2 = send_custom_message()
-    # result = celery.group(task1, task2)()
     print(f"tasks {task1} and {task2} on queue")
