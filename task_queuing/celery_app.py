@@ -35,9 +35,11 @@ queue_broker.conf.update(
         "task_queuing.tasks.text",
         "task_queuing.tasks.custom",
         "task_queuing.tasks.environment",
+        "example_custom_multi_queues",
     ),
     task_create_missing_queues=True,
     task_routes={
+        "example_custom_multi_queues.*": {"queue": "zengenti-cloud-low"},
         "task_queuing.tasks.text.*": {"queue": "text_queue"},
         "task_queuing.tasks.number.*": {"queue": "number_queue"},
         "task_queuing.tasks.environment.*": {"queue": "environment_queue"},
@@ -45,7 +47,7 @@ queue_broker.conf.update(
 )
 
 # Add the custom consumers, which don't use standard Celery format messages.
-queue_broker.steps["consumer"].add(consumers.HighConsumer)
+# queue_broker.steps["consumer"].add(consumers.HighConsumer)
 queue_broker.steps["consumer"].add(consumers.LowConsumer)
 
 # make_capitals = celery.Celery.tasks.add[custom_text.Capitalize]
