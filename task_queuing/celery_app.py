@@ -14,14 +14,7 @@ RABBITMQ_PASSWORD = os.getenv("RABBITMQ_PASSWORD")
 
 # Configure the Celery task broker, to use RabbitMQ with Redis to store the results.
 queue_broker.conf.update(
-    broker_url=[
-        f"amqp://{RABBITMQ_USERNAME}:{RABBITMQ_PASSWORD}@10.128.93.11:5672//",
-        f"amqp://{RABBITMQ_USERNAME}:{RABBITMQ_PASSWORD}@10.128.93.12:5672//",
-        f"amqp://{RABBITMQ_USERNAME}:{RABBITMQ_PASSWORD}@10.128.93.13:5672//",
-        f"amqp://{RABBITMQ_USERNAME}:{RABBITMQ_PASSWORD}@10.128.93.14:5672//",
-        f"amqp://{RABBITMQ_USERNAME}:{RABBITMQ_PASSWORD}@10.128.93.15:5672//",
-    ],
-    broker_failover_strategy="shuffle",
+    broker_url="amqp://the_user:the_password@localhost:5672/the_vhost",
     worker_prefetch_multiplier="1",
     result_backend="redis://localhost:6379/1",
     task_serializer="json",
