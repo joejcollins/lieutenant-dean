@@ -1,4 +1,4 @@
-"""Tasks for running ansible commands."""
+"""Tasks for handling environments."""
 import logging
 
 import celery
@@ -7,5 +7,34 @@ import task_queuing.tasks.text as text_tasks
 
 
 @app.queue_broker.task(bind=True)  # `bind=True` ensures that the arguments are passed.
-def run_playbook(self, playbook, alias):
-    return "nothing"
+def deploy_sites(self, alias):
+    """Run the playbooks to deploy the sites for the environment."""
+    logger = logging.getLogger(self.request.id)
+    logger.info("Deploy Sites")
+
+
+@app.queue_broker.task(bind=True)
+def delete_environment(self, alias):
+    """Delete the environment and it's network."""
+    logger = logging.getLogger(self.request.id)
+    logger.info(f"Deleting {alias}")
+    power_down = text_tasks.slowly_reverse_string.s("lmy.etats-rewop-etadpu-e")
+
+    delete_network_prep = []
+    delete_network_prep.append(text_tasks.slowly_reverse_string.si("lmy.nalv-yortsed-p"))
+    delete_network_prep.append(text_tasks.slowly_reverse_string.si("lmy.pi-cilbup-erusne-p"))
+    # The final task is immutable because we don't need the result of the previous tasks.
+    delete_network_final = text_tasks.slowly_reverse_string.si("krowten tnemnorivne eteled")
+    delete_network = celery.chord(delete_network_prep, delete_network_final)
+
+    delete_environment_prep = []
+    delete_environment_prep.append(text_tasks.slowly_reverse_string.si("lmy.smv-yortsed-e"))
+    delete_environment_prep.append(text_tasks.slowly_reverse_string.si("lmy.ehcac-edon-yortsed-e"))
+    delete_environment_prep.append(text_tasks.slowly_reverse_string.si("lmy.snd-yortsed-e"))
+    delete_environment_prep.append(text_tasks.slowly_reverse_string.si("lmy.gnirotinom-yortsed-e"))
+    # The final task is immutable because we don't need the result of the previous tasks.
+    delete_environment_final = text_tasks.slowly_reverse_string.si("selif tnemnorivne eteled")
+    delete_environment = celery.chord(delete_environment_prep, delete_environment_final)
+
+    delete_everything = celery.chain(power_down, delete_network, delete_environment)
+    return delete_everything()
