@@ -1,7 +1,6 @@
 """ Celery queue broker configuration. """
 import celery
 import task_queuing.consumers as consumers
-import os
 
 queue_broker = celery.Celery("__name__")
 
@@ -17,6 +16,7 @@ queue_broker.conf.update(
         "task_queuing.tasks.number",
         "task_queuing.tasks.text",
         "task_queuing.tasks.custom",
+        "task_queuing.tasks.ansible",
     ),
     task_create_missing_queues=True,
     task_routes={

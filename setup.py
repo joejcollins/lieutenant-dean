@@ -15,6 +15,7 @@ setuptools.setup(
     classifiers=["Development Status :: 3 - Alpha", "License :: Other/Proprietary License"],
     install_requires=[
         "ansible",
+        "ansible-runner",
         "black",
         "celery",
         "debugpy",  # only required for debugging, not needed for production.
@@ -31,6 +32,6 @@ setuptools.setup(
         "python-dotenv",  # used for the .env secrets file.
         "redis",
         "requests",
-        "UnleashClient"
-    ]
+        "UnleashClient",
+    ],
 )

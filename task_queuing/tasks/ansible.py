@@ -1,5 +1,6 @@
 """Tasks for handling environments."""
 import logging
+import sys
 
 import celery
 import task_queuing.celery_app as app
@@ -38,3 +39,30 @@ def delete_environment(self, alias):
 
     delete_everything = celery.chain(power_down, delete_network, delete_environment)
     return delete_everything()
+
+
+@app.queue_broker.task(bind=True)  # `bind=True` ensures that the arguments are passed.
+def ansible_runner(self):
+    """Run a playbook for logging test."""
+    logger = logging.getLogger(self.request.id)
+    logger.info("Run sucker run.")
+    # Weirdly I have to move to another directory before the run.  This makes no sense.
+    # os.chdir('/data/zengentiansible/pod/')
+    out, err, rc = ansible_runner.run_command(
+        executable_cmd="ansible-playbook",
+        cmdline_args=[
+            "playbooks/debug/system-info.yml",
+            "-i",
+            "controller-build",
+            "-l",
+            "z-cloud-controller-dev-joe"
+        ],
+        project_dir="/ansible",
+        private_data_dir="/ansible",
+        artifact_dir="/logs",
+        input_fd=sys.stdin,
+        output_fd=sys.stdout,
+        error_fd=sys.stderr
+    )
+
+    return True
