@@ -36,7 +36,7 @@ class HighConsumer(bootsteps.ConsumerStep):
 
 class LowConsumer(bootsteps.ConsumerStep):
     """Handles tasks sent to low load queue"""
-    my_queue = Queue("zengenti-cloud-low", Exchange("zengenti-cloud-low"), routing_key="zengenti-cloud-low")
+    my_queue = Queue("zengenti-cloud-high", Exchange("contensis", type='topic'), routing_key="*.environment.*")
 
     def handle_message(self, body, message):
         print('Low load worker: Received message: {0!r}'.format(body))

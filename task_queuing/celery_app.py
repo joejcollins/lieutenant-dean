@@ -39,7 +39,7 @@ queue_broker.conf.update(
     ),
     task_create_missing_queues=True,
     task_routes={
-        "example_custom_multi_queues.*": {"queue": "zengenti-cloud-low"},
+        "example_custom_multi_queues.*": {"exchange": "contensis", "routing_key": "*.environment.*"},
         "task_queuing.tasks.text.*": {"queue": "text_queue"},
         "task_queuing.tasks.number.*": {"queue": "number_queue"},
         "task_queuing.tasks.environment.*": {"queue": "environment_queue"},
