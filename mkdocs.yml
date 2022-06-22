@@ -1,8 +1,18 @@
 site_name: Captain Black
+repo_url: https://github.com/joejcollins/captain-black
 nav:
   - Home: index.md
-  - Dev Environment: develop.md
-  - Ansible: ansible.md
-  - Celery: celery_apps.md
+  - Development:
+    - dev-setup.md
+    - dev-adding-python-packages.md
+    - Debugging Ansible Modules:
+      - dev-debug-arguments.md
+      - dev-debug-debugpy.md
+  - Use:
+    - Ansible: use-ansible.md
+    - Celery: use-celery.md
   - To Do: todo.md
-theme: readthedocs
+theme:
+      name: readthedocs
+      locale: en
+      include_sidebar: true

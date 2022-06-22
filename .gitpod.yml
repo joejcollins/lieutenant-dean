@@ -9,8 +9,7 @@ tasks:
       virtualenv .venv
       . .venv/bin/activate
       pip install --upgrade pip setuptools
-      pip install -Ur requirements-no-versions.txt
-      pip list --format=freeze > requirements.txt
+      pip install -Ur requirements.txt
       npm install control-panel
     command: |
       gp sync-done python-is-ready # an arbitrary tag.

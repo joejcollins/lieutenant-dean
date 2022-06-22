@@ -140,4 +140,4 @@ package.json
 
 # Pycharm files
 .DS_Store
-.idea
+.idea/

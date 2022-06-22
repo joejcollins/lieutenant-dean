@@ -1,11 +1,12 @@
 from celery import bootsteps
-from kombu import Consumer, Exchange, Queue
+from kombu import Consumer
+import time
+
+from task_queuing.queues import my_queues
 
 
 class SubstitutionCypher(bootsteps.ConsumerStep):
     """Custom handling of substitution cypher"""
-
-    my_queue = Queue('custom_queue', Exchange('custom_queue'), 'custom_queue')
 
     def handle_message(self, body, message):
         print('Received message: {0!r}'.format(body))
@@ -14,6 +15,6 @@ class SubstitutionCypher(bootsteps.ConsumerStep):
     def get_consumers(self, channel):
         print(f"Registering custom consumer: {__class__}")
         return [Consumer(channel,
-                         queues=[self.my_queue],
+                         queues=my_queues,
                          callbacks=[self.handle_message],
                          accept=['json'])]
