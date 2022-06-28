@@ -141,3 +141,6 @@ package.json
 # Pycharm files
 .DS_Store
 .idea/
+
+# Ansible Play Runner
+/logs/*

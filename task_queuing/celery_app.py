@@ -10,7 +10,7 @@ queue_broker.conf.update(
     worker_prefetch_multiplier="1",
     result_backend="redis://localhost:6379/1",
     task_serializer="json",
-    accept_content=["json", "pickle"],
+    accept_content=["json", "pickle"],    
     imports=(
         "task_queuing.task_logging",
         "task_queuing.tasks.number",
@@ -20,6 +20,7 @@ queue_broker.conf.update(
     ),
     task_create_missing_queues=True,
     task_routes={
+        "task_queuing.tasks.ansible.*": {"queue": "ansible_queue"},
         "task_queuing.tasks.text.*": {"queue": "text_queue"},
         "task_queuing.tasks.number.*": {"queue": "number_queue"},
     },

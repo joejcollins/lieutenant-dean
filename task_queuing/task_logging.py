@@ -21,7 +21,7 @@ def prepare_logging(sender=None, task_id=None, **kwargs):
     # add the file log for some tasks based on the name of the task.
     if sender.__name__ == 'slowly_reverse_string':
         # Adding File Handle with file path. Filename is task_id
-        task_handler = logging.FileHandler(f'../logs/{task_id}.log')
+        task_handler = logging.FileHandler(f'../logs/playbook_output/{task_id}.log')
         task_handler.setLevel(logging.INFO)
         logger.addHandler(task_handler)
     logger.addHandler(stream_handler)
