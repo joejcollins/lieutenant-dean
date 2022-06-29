@@ -1,5 +1,5 @@
 import logging
-from celery.signals import task_prerun, task_postrun
+from celery.signals import task_prerun, task_postrun, setup_logging
 # Attempt to set up logger as per the example at:
 # https://stackoverflow.com/questions/25281612/celery-log-each-task-run-to-its-own-file
 # I could not get the decorator `@task_prerun.connect(sender='slowly_reverse_string', weak=False)` to work so
@@ -19,7 +19,7 @@ def prepare_logging(sender=None, task_id=None, **kwargs):
     stream_handler.setLevel(logging.INFO)
     # @task_prerun.connect(sender='slowly_reverse_string', weak=False) did not work for my but YMMV so
     # add the file log for some tasks based on the name of the task.
-    if sender.__name__ == 'slowly_reverse_string':
+    if sender.__name__ == 'run_playbook':
         # Adding File Handle with file path. Filename is task_id
         task_handler = logging.FileHandler(f'../logs/playbook_output/{task_id}.log')
         task_handler.setLevel(logging.INFO)
@@ -35,3 +35,13 @@ def close_logging(sender=None, task_id=None, **kwargs):
         handler.flush()
         handler.close()
     logger.handlers = []
+
+
+@setup_logging.connect
+def setup_celery_logging(**kwargs):
+    """Don't use the Celery logging."""
+    import debugpy
+    debugpy.listen(('0.0.0.0', 8080))
+    debugpy.wait_for_client()
+    debugpy.breakpoint()
+    pass
