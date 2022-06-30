@@ -14,9 +14,9 @@
     debug:
       msg: "{{msg.split('\n')}}"
 
-  # - name: Pause
-  #   pause:
-  #     seconds: 5
+  - name: Pause (to demonstrate we can manage a pause)
+    pause:
+      seconds: 1
 
   - name: network info
     vars:
@@ -25,10 +25,6 @@
         Gateway: {{ansible_default_ipv4.gateway}}
     debug:
       msg: "{{msg.split('\n')}}"
-
-  # - name: Pause
-  #   pause:
-  #     seconds: 5
 
   - name: OS and Kernel info
     vars:
@@ -40,10 +36,6 @@
         Architecture: {{ansible_architecture}}
     debug:
       msg: "{{msg.split('\n')}}"
-
-  # - name: Pause
-  #   pause:
-  #     seconds: 5
 
   - name: HW info
     vars:
