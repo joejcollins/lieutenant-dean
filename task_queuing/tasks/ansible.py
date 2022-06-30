@@ -64,7 +64,7 @@ def run_playbook(self):
         project_dir="./ansible",
         artifact_dir="./logs/runner_artifacts",
         input_fd=sys.stdin,
-        output_fd=sys.stdout,
+        output_fd=logger.handlers[0].stream,
         error_fd=sys.stderr
     )
     logger.info("ENDS")

@@ -47,25 +47,3 @@ def setup_celery_logging(**kwargs):
     """Completely disable the Celery logging.  Celery messes with the root logger
     so the LoggingProxy has no fileno which causes ansible-runner to fail."""
     pass
-
-
-# @after_setup_logger.connect
-# def setup_loggers(logger, *args, **kwargs):
-#     """Set up our own loggers rather than let Celery do it."""
-#     logging.basicConfig(level=logging.DEBUG, format='%(message)s')
-
-
-# logger = logging.getLogger()
-# formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-# # StreamHandler
-# sh = logging.StreamHandler()
-# sh.setFormatter(formatter)
-# logger.addHandler(sh)
-
-# my_handler = MyLogHandler()
-# my_handler.setLevel(logging.DEBUG)
-# my_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s') #custom formatter
-# my_handler.setFormatter(my_formatter)
-# logger.addHandler(my_handler)
-
-# logging.info("My log handler connected -> Global Logging")
