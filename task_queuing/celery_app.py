@@ -1,6 +1,7 @@
 """ Celery queue broker configuration. """
 import celery
 import task_queuing.consumers as consumers
+import logging
 
 queue_broker = celery.Celery("__name__")
 
@@ -24,7 +25,14 @@ queue_broker.conf.update(
         "task_queuing.tasks.text.*": {"queue": "text_queue"},
         "task_queuing.tasks.number.*": {"queue": "number_queue"},
     },
+    worker_hijack_root_logger=False,
 )
+
+# logger = logging.getLogger()
+
+# # StreamHandler
+# sh = logging.StreamHandler()
+# logger.addHandler(sh)
 
 # Add the custom consumers, which don't use standard Celery format messages.
 queue_broker.steps["consumer"].add(consumers.SubstitutionCypher)

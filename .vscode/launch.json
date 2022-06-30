@@ -38,7 +38,7 @@
                 "worker",
                 "--hostname=worker1@%n",
                 "--loglevel=INFO",
-                "--queues=custom_queue",
+                "--queues=ansible_queue",
                 "--pool=solo"
             ],
             "justMyCode": false,

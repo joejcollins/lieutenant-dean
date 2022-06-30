@@ -47,7 +47,7 @@ def delete_environment(self, alias):
 def run_playbook(self):
     """Run a playbook for logging test."""
     logger = logging.getLogger(self.request.id)
-    logger.info("Run sucker run.")
+    logger.info("BEGINS")
     # Weirdly I have to move to another directory before the run.  This makes no sense.
     os.chdir('/workspace/captain-black')
     out, err, rc = ansible_runner.run_command(
@@ -67,4 +67,5 @@ def run_playbook(self):
         output_fd=sys.stdout,
         error_fd=sys.stderr
     )
+    logger.info("ENDS")
     return True
