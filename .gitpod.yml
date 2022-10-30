@@ -28,11 +28,6 @@ tasks:
       export FLASK_ENV=development
       flask run
     openMode: tab-after
-  - name: Control panel and Unleash Proxy (3000 and 3001)
-    command: |
-      gp sync-await python-is-ready
-      yarn --cwd control-panel start
-    openMode: tab-after
   - name: Redis Server
     command: |
       gp sync-await python-is-ready
