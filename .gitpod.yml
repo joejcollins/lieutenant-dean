@@ -97,4 +97,7 @@ vscode:
     - ms-python.python
     - eamodio.gitlens
     - streetsidesoftware.code-spell-checker
+    - redhat.ansible
+    - bierner.markdown-mermaid
+    - sourcery.sourcery
 ...
