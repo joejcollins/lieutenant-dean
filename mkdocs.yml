@@ -1,18 +1,19 @@
+---
 site_name: Captain Black
 repo_url: https://github.com/joejcollins/captain-black
-nav:
-  - Home: index.md
-  - Development:
-    - dev-setup.md
-    - dev-adding-python-packages.md
-    - Debugging Ansible Modules:
-      - dev-debug-arguments.md
-      - dev-debug-debugpy.md
-  - Use:
-    - Ansible: use-ansible.md
-    - Celery: use-celery.md
-  - To Do: todo.md
 theme:
-      name: readthedocs
-      locale: en
-      include_sidebar: true
+    name: 'material'
+    palette:
+        - scheme: default
+          primary: indigo
+          accent: indigo
+
+plugins:
+    - search
+    - roamlinks
+    - mermaid2
+
+extra_javascript:
+    - https://polyfill.io/v3/polyfill.min.js?features=es6
+    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    - https://unpkg.com/mermaid/dist/mermaid.min.js
