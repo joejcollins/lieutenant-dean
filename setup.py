@@ -24,6 +24,8 @@ setuptools.setup(
         "Flask",
         "flower",
         "mkdocs",
+        "mkdocs-mermaid2-plugin",
+        "mkdocs-roamlinks-plugin",
         "mypy",
         "ncclient",
         "pip-tools",  # used to manage requirements.txt.
