@@ -144,3 +144,9 @@ package.json
 
 # Ansible Play Runner
 /logs/*
+
+# Obsidian configuration files
+/docs/.obsidian
+
+# Ansible collections (included so they can be viewed and imported)
+/ansible_collections
