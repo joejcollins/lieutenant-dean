@@ -100,4 +100,5 @@ vscode:
     - redhat.ansible
     - bierner.markdown-mermaid
     - sourcery.sourcery
+    - bungcip.better-toml
 ...
