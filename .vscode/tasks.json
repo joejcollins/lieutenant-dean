@@ -58,7 +58,7 @@
                 "panel": "new"
             },
             "runOptions": {
-                "runOn": "folderOpen",
+                "runOn": "default",
             }
         }
     ]
