@@ -5,8 +5,8 @@
 
 In development:
 
-1. Add or remove required packages from `setup.py`.
-2. Freeze the package list using `pip-compile > requirements.txt && echo "-e ." >> requirements.txt`.
+1. Add or remove required packages in `pyproject.toml`.
+2. Freeze the package list using `python -m piptools compile -o requirements.txt pyproject.toml && echo "-e ." >> requirements.txt`.
 The local files are added using a relative path with `-e .` so they can be accessed
 in development, test and production environments.
 3. Run `pip install -Ur requirements.txt` to install the packages.

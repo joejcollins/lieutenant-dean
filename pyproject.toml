@@ -8,17 +8,37 @@ version = "1.0.0"
 description = "Python test bed"
 readme = "README.md"
 requires-python = ">=3.7"
-keywords = ["Ansible", "Celery", "RabbitMQ"]
-license = {text = "BSD 3-Clause License"}
 classifiers = [
     "Framework :: Django",
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-    "requests",
-    'importlib-metadata; python_version<"3.8"',
+        "ansible",
+        "ansible-runner",
+        "black",
+        "celery",
+        "debugpy",  # only required for debugging, not needed for production.
+        "fastapi",
+        "flake8",
+        "flasgger",
+        "Flask",
+        "flower",
+        "mkdocs",
+        "mkdocs-mermaid2-plugin",
+        "mkdocs-roamlinks-plugin",
+        "mypy",
+        "ncclient",
+        "pip-tools",  # used to manage requirements.txt.
+        "pytest",  # used for testing, not needed for production.
+        "pytest-flask",  # used for testing, not needed for production.
+        "python-dotenv",  # used for the .env secrets file.
+        "redis",
+        "requests",
+        "UnleashClient"
 ]
-dynamic = ["version"]
+
+[tool.setuptools]
+py-modules = []  #  Disable auto discovery of modules (unwanted files or directories might be included now).
 
 [project.optional-dependencies]
 pdf = ["ReportLab>=1.2", "RXP"]
