@@ -58,8 +58,6 @@ class InBoundModelCodeOrDescription(BaseModel):
         ):
             raise ValueError("You can't set both")
         return values
-
-
 # end region
 
 
