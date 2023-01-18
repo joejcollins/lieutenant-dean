@@ -1,0 +1,14 @@
+# Created: 2020-05-01 16:00:00
+venv:
+	python -m venv .venv
+	. .venv/bin/activate
+	python -m pip install --upgrade pip setuptools 
+	python -m pip install -r requirements.txt
+
+test:
+	. .venv/bin/activate; pytest
+
+clean:
+	rm -rf .venv
+	find . -name "*.pyc" -exec rm -f {} \;
+	find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete
