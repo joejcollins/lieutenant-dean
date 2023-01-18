@@ -1,13 +1,13 @@
 """ Test arithmetic. """
-import info_module.numbers as numbers
+import pkg_config.numbers as numbers
 
 
-def test_method_is_present():
+def test_method_is_present() -> None:
     """ Confirm that the methods are present. """
     assert "add_two_numbers" in dir(numbers)
 
 
-def test_add_two_numbers():
+def test_add_two_numbers() -> None:
     """ Confirm the total is correct. """
     first_number = 1
     second_number = 2

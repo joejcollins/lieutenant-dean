@@ -37,8 +37,8 @@ dependencies = [
         "UnleashClient"
 ]
 
-[tool.setuptools]
-py-modules = []  #  Disable auto discovery of modules (unwanted files or directories might be included now).
+# [tool.setuptools]
+# py-modules = []  #  Disable auto discovery of modules (unwanted files or directories might be included now).
 
 [project.optional-dependencies]
 pdf = ["ReportLab>=1.2", "RXP"]

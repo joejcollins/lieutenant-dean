@@ -1,6 +1,6 @@
 {
   "editor.rulers": [
-    110
+    88
   ],
   "editor.minimap.enabled": false,
   "files.associations": {
@@ -21,13 +21,9 @@
   },
   "python.linting.enabled": true,
   "python.formatting.provider": "black",
-  "python.formatting.blackArgs": [
-    "--line-length",
-    "110"
-  ],
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Args": [
-    "--max-line-length=110"
+    "--max-line-length=88"
   ],
   "python.linting.mypyEnabled": true,
   "workbench.colorTheme": "Visual Studio Light",

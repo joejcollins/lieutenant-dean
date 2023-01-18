@@ -2,7 +2,7 @@
 log can be viewed during the run."""
 import celery
 
-import task_queuing.tasks.text as text_tasks
+import celery_queue_rabbit.tasks.text as text_tasks
 
 # .si = Signature Immutable (i.e. the task doesn't need the output of the previous task)
 reverse_it = text_tasks.slowly_reverse_string.si("qwerty")

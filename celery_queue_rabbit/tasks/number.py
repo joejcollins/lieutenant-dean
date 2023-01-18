@@ -1,8 +1,8 @@
 """ Celery arithmetic. """
 import time
 
-import info_module.numbers as numbers
-import task_queuing.celery_app as app
+import pkg_config.numbers as numbers
+import celery_queue_rabbit.celery_app as app
 
 
 @app.queue_broker.task(bind=True)

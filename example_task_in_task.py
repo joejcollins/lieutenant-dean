@@ -1,5 +1,5 @@
 """Send a single task to the queue."""
-import task_queuing.tasks.environment as environment_tasks
+import celery_queue_rabbit.tasks.environment as environment_tasks
 
 task = environment_tasks.delete_environment.si("an_alias")
 

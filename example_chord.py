@@ -2,7 +2,7 @@
 like strange use of the term 'chord' to me.  Typically chord is notes that are played together, but that is a
 group in Celery parlance."""
 import celery
-import task_queuing.tasks.text as text_tasks
+import celery_queue_rabbit.tasks.text as text_tasks
 
 text_task_group = []
 text_task_group.append(text_tasks.slowly_reverse_string.s("qwerty"))

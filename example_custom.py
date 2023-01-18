@@ -4,7 +4,7 @@ from datetime import datetime
 import celery
 from kombu import Exchange, Queue
 
-import task_queuing.celery_app as app
+import celery_queue_rabbit.celery_app as app
 
 
 def send_to_shit(producer=None):
@@ -12,11 +12,11 @@ def send_to_shit(producer=None):
     my_queue = Queue("custom_queue", Exchange("custom_queue"), "custom_queue")
     eta = str(datetime.now())
     id = celery.uuid()
-    # headers = {"task": "task_queuing.tasks.custom.shit", "id": id}
+    # headers = {"task": "celery_queue_rabbit.tasks.custom.shit", "id": id}
     # body = {"text": "Secret text to encode", "Time": current_time}
 
     message = {
-        "task": "task_queuing.tasks.custom.shit",
+        "task": "celery_queue_rabbit.tasks.custom.shit",
         "id": id,
         "args": [id],
         "kwargs": {},
@@ -63,11 +63,11 @@ def send_to_text_reverse(producer=None):
     my_queue = Queue("text_queue", Exchange("text_queue"), "text_queue")
     eta = str(datetime.now())
     id = celery.uuid()
-    # headers = {"task": "task_queuing.tasks.custom.shit", "id": id}
+    # headers = {"task": "celery_queue_rabbit.tasks.custom.shit", "id": id}
     # body = {"text": "Secret text to encode", "Time": current_time}
 
     message = {
-        "task": "task_queuing.tasks.text.slowly_reverse_string",
+        "task": "celery_queue_rabbit.tasks.text.slowly_reverse_string",
         "id": id,
         "args": ["reverse me"],
         "kwargs": {},

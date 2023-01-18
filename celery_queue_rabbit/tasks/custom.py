@@ -1,5 +1,5 @@
 """Custom celery task to capitalize text"""
-import task_queuing.celery_app as app
+import celery_queue_rabbit.celery_app as app
 
 
 class Capitalize(app.queue_broker.Task):

@@ -4,8 +4,8 @@ import os
 import sys
 
 import celery
-import task_queuing.celery_app as app
-import task_queuing.tasks.text as text_tasks
+import celery_queue_rabbit.celery_app as app
+import celery_queue_rabbit.tasks.text as text_tasks
 import ansible_runner
 
 

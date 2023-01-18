@@ -1,6 +1,6 @@
 """Post messages to a specific queue dependent on their load."""
-from task_queuing.queues import custom_exchange, my_queues
-import task_queuing.celery_app as app
+from celery_queue_rabbit.queues import custom_exchange, my_queues
+import celery_queue_rabbit.celery_app as app
 import celery
 
 
@@ -28,7 +28,7 @@ def send_to_text_reverse(producer=None):
     """Send a reverse_text task to our exchange with routing key low."""
     id = celery.uuid()
     message = {
-        "task": "task_queuing.tasks.text.slowly_reverse_string",
+        "task": "celery_queue_rabbit.tasks.text.slowly_reverse_string",
         "id": id,
         "args": ["reverse me"],
         "kwargs": {},

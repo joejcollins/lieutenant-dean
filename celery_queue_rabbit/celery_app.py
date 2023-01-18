@@ -1,6 +1,6 @@
 """ Celery queue broker configuration. """
 import celery
-import task_queuing.consumers as consumers
+import celery_queue_rabbit.consumers as consumers
 import logging
 
 queue_broker = celery.Celery("__name__")
@@ -13,17 +13,17 @@ queue_broker.conf.update(
     task_serializer="json",
     accept_content=["json", "pickle"],
     imports=(
-        "task_queuing.task_logging",
-        "task_queuing.tasks.number",
-        "task_queuing.tasks.text",
-        "task_queuing.tasks.custom",
-        "task_queuing.tasks.ansible",
+        "celery_queue_rabbit.task_logging",
+        "celery_queue_rabbit.tasks.number",
+        "celery_queue_rabbit.tasks.text",
+        "celery_queue_rabbit.tasks.custom",
+        "celery_queue_rabbit.tasks.ansible",
     ),
     task_create_missing_queues=True,
     task_routes={
-        "task_queuing.tasks.ansible.*": {"queue": "ansible_queue"},
-        "task_queuing.tasks.text.*": {"queue": "text_queue"},
-        "task_queuing.tasks.number.*": {"queue": "number_queue"},
+        "celery_queue_rabbit.tasks.ansible.*": {"queue": "ansible_queue"},
+        "celery_queue_rabbit.tasks.text.*": {"queue": "text_queue"},
+        "celery_queue_rabbit.tasks.number.*": {"queue": "number_queue"},
     },
     worker_hijack_root_logger=False,
 )
