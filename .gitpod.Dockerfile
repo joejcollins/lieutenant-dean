@@ -7,6 +7,5 @@ RUN sudo apt-get update \
 
 USER gitpod
 
-RUN cd /home/gitpod/.pyenv \
- && git pull \
+RUN git -C /home/gitpod/.pyenv pull \
  && pyenv install 3.9.15 --skip-existing 
