@@ -26,6 +26,7 @@
     "--max-line-length=88"
   ],
   "python.linting.mypyEnabled": true,
+  "python.terminal.activateEnvironment": true,
   "workbench.colorTheme": "Visual Studio Light",
   "python.defaultInterpreterPath": ".venv/bin/python"
 }
