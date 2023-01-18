@@ -6,7 +6,7 @@ tasks:
   # Ensure the that Python environment is ready
   - name: Initialize Python and the virtual environment
     init: |
-  #   make venv
+      make venv
     command: |
       gp sync-done python-is-ready # an arbitrary tag.
   # Once the Python environment is set up get the servers which rely on it.
