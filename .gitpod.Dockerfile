@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full:latest
+FROM gitpod/workspace-python:latest
 
 # Redis and RabbitMQ
 RUN sudo apt-get update \
@@ -7,5 +7,8 @@ RUN sudo apt-get update \
 
 USER gitpod
 
-RUN git -C /home/gitpod/.pyenv pull \
- && pyenv install 3.9.15 --skip-existing 
+ENV PATH="$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH"
+ENV PIPENV_VENV_IN_PROJECT=true
+ENV PYENV_ROOT="$HOME/.pyenv"
+
+RUN pyenv install 3.9.15 --skip-existing 
