@@ -6,5 +6,5 @@ RUN sudo apt-get update \
  && sudo apt-get install rabbitmq-server -y --fix-missing
 
 RUN cd /home/gitpod/.pyenv \
- && git pull  \
- && pyenv install 3.9.15 --skip-existing 
+ && git pull
+# && pyenv install 3.9.15 --skip-existing 
