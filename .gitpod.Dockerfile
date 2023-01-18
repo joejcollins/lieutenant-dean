@@ -5,6 +5,8 @@ RUN sudo apt-get update \
  && sudo apt-get install redis-server -y \
  && sudo apt-get install rabbitmq-server -y --fix-missing
 
+USER gitpod
+
 RUN cd /home/gitpod/.pyenv \
- && sudo git pull
-# && pyenv install 3.9.15 --skip-existing 
+ && git pull \
+ && pyenv install 3.9.15 --skip-existing 
