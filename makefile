@@ -1,5 +1,6 @@
 # Created: 2020-05-01 16:00:00
 venv:
+	pyenv install --skip-existing 
 	python -m venv .venv
 	. .venv/bin/activate
 	python -m pip install --upgrade pip setuptools 
