@@ -4,7 +4,7 @@ image:
 
 tasks:
   # Ensure the that Python environment is ready
-  - name: Initialize Python, pip and npm
+  - name: Initialize Python and the virtual environment
     init: |
       make venv
     command: |
