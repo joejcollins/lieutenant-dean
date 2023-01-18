@@ -1,4 +1,4 @@
-FROM gitpod/workspace-postgres
+FROM gitpod/workspace-full:latest
 
 # Redis and RabbitMQ
 RUN sudo apt-get update \
