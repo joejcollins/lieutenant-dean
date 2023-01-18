@@ -1,7 +1,7 @@
 """Pydantic Union Demo"""
 from enum import IntEnum, Enum
 
-from pydantic import BaseModel, validator, Field
+from pydantic import BaseModel, Field, root_validator, Extra
 from typing import Optional
 
 
@@ -24,6 +24,9 @@ class RestrictedDescription(Enum):
 # region In Bound Models
 class InBoundModelCode(BaseModel):
     """Data in model only the code."""
+    class Config:
+        """Do not allow extras."""
+        extra = Extra.forbid
 
     name: str
     status_code: RestrictedCode
@@ -31,7 +34,6 @@ class InBoundModelCode(BaseModel):
 
 class InBoundModelDescription(BaseModel):
     """Data in model only the description."""
-
     name: str
     status_description: RestrictedDescription
 
@@ -43,17 +45,19 @@ class InBoundModelCodeOrDescription(BaseModel):
     status_code: Optional[RestrictedCode]
     status_description: Optional[RestrictedDescription]
 
-    @validator("status_code", "status_description")
-    def one_or_the_other_not_both(cls, v, values):
+    @root_validator
+    def one_or_the_other_not_both(cls, values: dict) -> dict:
         """Ensure that either the code or the description are set but not both."""
-        if values["status_code"] is None and values["status_description"] is None:
+        status_code = values.get("status_code")
+        status_description = values.get("status_description")
+        if status_code is None and status_description is None:
             raise ValueError("You have to set one.")
         if (
-            values["status_code"] is not None
-            and values["status_description"] is not None
+            status_code is not None
+            and status_description is not None
         ):
             raise ValueError("You can't set both")
-        return v
+        return values
 
 
 # end region
