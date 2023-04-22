@@ -5,26 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Remote Attach",
-            "type": "python",
-            "request": "attach",
-            "connect": {
-                "host": "localhost",
-                "port": 8080
-            },
-            "pathMappings": [
-                {
-                    "localRoot": "${workspaceFolder}",
-                    "remoteRoot": "./task_queue"
-                }
-            ]
-        },
-        {
-            "name": "Python: Current File",
+            "name": "Flask API - Debug",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
+            "program": "main.py",
+            "python": "${workspaceFolder}/flask_api_v1/.venv/bin/python",
+            "args": [],
+            "cwd": "${workspaceFolder}/flask_api_v1",
+            "console": "integratedTerminal",
+            "stopOnEntry": false,
+            "jinja": true
         },
         {
             "name": "Python: Celery Broker",

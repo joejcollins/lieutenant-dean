@@ -1,0 +1,104 @@
+{
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Flask API - Debug",
+                "type": "python",
+                "request": "launch",
+                "program": "${workspaceFolder:flask_api_v1}/main.py",
+                "python": "${workspaceFolder:flask_api_v1}/.venv/bin/python",
+                "console": "integratedTerminal",
+                "stopOnEntry": false,
+                "jinja": true
+            }
+        ],
+        "compounds": []
+    },
+    "settings": {
+        "editor.rulers": [
+            88
+          ],
+          "editor.minimap.enabled": false,
+          "files.associations": {
+            "*.yml.j2": "yaml",
+            "Vagrantfile": "ruby"
+          },
+          "python.testing.pytestEnabled": true,
+          "python.testing.unittestEnabled": false,
+          "python.testing.pytestArgs": [
+            "."
+          ],
+          "files.exclude": {
+            "**/*.pyc": {
+              "when": "$(basename).py"
+            },
+            "**/__pycache__": true,
+            "**/.pytest_cache": true
+          },
+          "python.linting.enabled": true,
+          "python.formatting.provider": "black",
+          "python.linting.flake8Enabled": true,
+          "python.linting.flake8Args": [
+            "--max-line-length=88"
+          ],
+          "python.linting.mypyEnabled": true,
+          "python.terminal.activateEnvironment": false,
+          "workbench.colorTheme": "Visual Studio Light"
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "My Task",
+                "command": "echo hello",
+                "type": "shell",
+                "args": [],
+                "problemMatcher": [
+                    "$tsc"
+                ],
+                "presentation": {
+                    "reveal": "always"
+                },
+                "group": "build"
+            }
+        ]
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "eamodio.gitlens",
+            "streetsidesoftware.code-spell-checker",
+            "redhat.ansible",
+            "bierner.markdown-mermaid",
+            "sourcery.sourcery",
+            "bungcip.better-toml"
+        ]
+    },
+    "folders": [
+        {
+            "path": "ansible_project_1"
+        },
+        {
+            "path": "celery_queue_rabbit"
+        },
+        {
+            "path": "celery_queue_redis"
+        },
+        {
+            "path": "flask_api_v1"
+        },
+        {
+            "path": "fastapi_api_v2"
+        },
+        {
+            "path": "logs"
+        },
+        {
+            "path": "pkg_config"
+        },
+        {
+            "path": "pkg_infrastructure"
+        }
+    ]
+}
