@@ -8,6 +8,9 @@ clean:  # Remove all build, test, coverage and Python artifacts.
 compile:  # Compile the requirements files using pip-tools.
 	cd flask_api_v1; . .venv/bin/activate; python -m pip install pip-tools
 	cd flask_api_v1; . .venv/bin/activate; python -m piptools compile --output-file=requirements.txt
+	cd flask_api_v1; echo "--editable ." >> requirements.txt
+	cd flask_api_v1; echo "--editable ../pkg_config" >> requirements.txt
+	
 
 .PHONY: docs  # because there is a directory called docs.
 docs:  # Build the mkdocs documentation.
