@@ -5,33 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Flask",
+            "name": "Flask API",
             "type": "python",
+            "pythonPath": "${workspaceFolder}/flask_api_v1/.venv/bin/python",
+            "cwd": "${workspaceFolder}/flask_api_v1",
             "request": "launch",
-            "module": "flask",
-            "env": {
-                "FLASK_APP": "app.py",
-                "FLASK_DEBUG": "1"
-            },
+            "module": "gunicorn",
             "args": [
-                "run",
-                "--no-debugger",
-                "--no-reload"
+                "main:APP",
+                "--config",
+                "gunicorn_conf.py",
+                "--error-logfile",
+                "-",
+                "--workers",
+                "1",
+                "--timeout",
+                "3600"
             ],
             "jinja": true,
-            "justMyCode": true
-        },
-        {
-            "name": "Flask API - Debug",
-            "type": "python",
-            "request": "launch",
-            "program": "main.py",
-            "python": "${workspaceFolder}/flask_api_v1/.venv/bin/python",
-            "args": [],
-            "cwd": "${workspaceFolder}/flask_api_v1",
-            "console": "integratedTerminal",
-            "stopOnEntry": false,
-            "jinja": true
+            "justMyCode": false
         },
         {
             "name": "Python: Celery Broker",

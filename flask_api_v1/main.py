@@ -16,4 +16,4 @@ SWAGGER_TEMPLATE = {
     },
     "basePath": "/"
 }
-swagger = flasgger.Swagger(APP, template=SWAGGER_TEMPLATE)
+flasgger.Swagger(APP, template=SWAGGER_TEMPLATE)
