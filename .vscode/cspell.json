@@ -18,6 +18,7 @@
         "dotenv",
         "endswith",
         "esxi",
+        "flasgger",
         "funcs",
         "getenv",
         "gitpod",

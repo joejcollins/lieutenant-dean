@@ -25,6 +25,7 @@ help: # Show help for each of the makefile recipes.
 
 requirements:  # Install the requirements for Python, Ansible Galaxy and the logs.
 	cd flask_api_v1; pyenv install --skip-existing
+	cd flask_api_v1; python -m venv .venv
 	cd flask_api_v1; . .venv/bin/activate; python -m pip install --upgrade pip setuptools
 	cd flask_api_v1; . .venv/bin/activate; python -m pip install -r requirements.txt
 

@@ -2,30 +2,18 @@
 import flask
 import flasgger
 import flasgger.utils as swag_utils
-import flask_api_v1.flask_app_apidocs as apidocs
-import flask_api_v1.text as text
+from blueprints import greetings
 
-api = flask.Flask(__name__)
-api.register_blueprint(text.text_api)
+APP = flask.Flask(__name__)
+APP.register_blueprint(greetings.APP)
 
-swagger_template = {
+SWAGGER_TEMPLATE = {
     "swagger": "2.0",
     "info": {
-        "title": "Celery Demo API",
-        "description": "Demo of Flask and Celery in action.",
+        "title": "Flask API",
+        "description": "Demo of Flask action.",
         "version": "0.0.1"
     },
     "basePath": "/"
 }
-swagger = flasgger.Swagger(api, template=swagger_template)
-
-
-@api.route('/', methods=['GET'])
-@swag_utils.swag_from(apidocs.INDEX)
-def index():
-    """ Confirm that the flask app is running. """
-    greeting = {
-        'message': "Hello there",
-        'docs': '/apidocs/'
-    }
-    return flask.jsonify(greeting)
+swagger = flasgger.Swagger(APP, template=SWAGGER_TEMPLATE)
