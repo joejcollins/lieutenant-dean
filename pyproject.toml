@@ -17,6 +17,7 @@ dependencies = [
         "ansible-runner",
         "black",
         "celery",
+        "click",
         "debugpy",  # only required for debugging, not needed for production.
         "fastapi",
         "flake8",

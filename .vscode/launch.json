@@ -7,7 +7,7 @@
         {
             "name": "Flask API",
             "type": "python",
-            "pythonPath": "${workspaceFolder}/flask_api_v1/.venv/bin/python",
+            "python": "${workspaceFolder}/flask_api_v1/.venv/bin/python",
             "cwd": "${workspaceFolder}/flask_api_v1",
             "request": "launch",
             "module": "gunicorn",

@@ -1,31 +1,64 @@
 {
-  "editor.rulers": [
-    88
-  ],
-  "editor.minimap.enabled": false,
   "files.associations": {
     "*.yml.j2": "yaml",
     "Vagrantfile": "ruby"
   },
-  "python.testing.pytestEnabled": true,
-  "python.testing.unittestEnabled": false,
+  "editor.minimap.enabled": false,
   "python.testing.pytestArgs": [
-    "."
+    "./pytest_unit"
   ],
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "editor.lineNumbers": "on",
+  "remote.restoreForwardedPorts": true,
   "files.exclude": {
-    "**/*.pyc": {
-      "when": "$(basename).py"
-    },
     "**/__pycache__": true,
-    "**/.pytest_cache": true
+    "**/*.pyc": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.DS_Store": true
   },
+  "files.watcherExclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.pytest-cache/**": true,
+    "**/.ruff-cache/**": true,
+    "**/.venv/**": true,
+    "**/.DS_Store": true,
+    "**/typings": true
+  },
+  "search.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.venv/**": true,
+    "**/.DS_Store": true
+  },
+  "terminal.integrated.scrollback": 100000,
+  "editor.detectIndentation": true,
+  "python.languageServer": "Pylance",
+  "python.defaultInterpreterPath": ".venv/bin/python",
+  "python.terminal.activateEnvironment": true,
   "python.linting.enabled": true,
   "python.formatting.provider": "black",
-  "python.linting.flake8Enabled": true,
-  "python.linting.flake8Args": [
-    "--max-line-length=88"
+  "python.formatting.blackArgs": [
+    "--line-length",
+    "88"
   ],
   "python.linting.mypyEnabled": true,
-  "python.terminal.activateEnvironment": false,
+  "editor.rulers": [88],
+  "thunder-client.saveToWorkspace": true,
+  "task.allowAutomaticTasks": "on",
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/bin/bash",
+      "args": ["-l"]
+    }
+  },
   "workbench.colorTheme": "Visual Studio Light"
 }
