@@ -46,4 +46,4 @@ pdf = ["ReportLab>=1.2", "RXP"]
 rest = ["docutils>=0.3", "pack ==1.1, ==1.3"]
 
 [project.scripts]
-my-script = "fastapi_api_v3.__main__:main"
+run = "click_cli.main:cli"

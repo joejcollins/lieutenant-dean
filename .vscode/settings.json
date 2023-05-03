@@ -51,14 +51,7 @@
   ],
   "python.linting.mypyEnabled": true,
   "editor.rulers": [88],
-  "thunder-client.saveToWorkspace": true,
   "task.allowAutomaticTasks": "on",
   "terminal.integrated.shellIntegration.enabled": true,
-  "terminal.integrated.profiles.linux": {
-    "bash": {
-      "path": "/bin/bash",
-      "args": ["-l"]
-    }
-  },
   "workbench.colorTheme": "Visual Studio Light"
 }
