@@ -24,6 +24,7 @@ dependencies = [
         "flasgger",
         "Flask",
         "flower",
+        "gunicorn",
         "mkdocs",
         "mkdocs-mermaid2-plugin",
         "mkdocs-roamlinks-plugin",

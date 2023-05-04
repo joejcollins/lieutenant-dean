@@ -92,6 +92,8 @@ flower==1.2.0
     # via captain-black (pyproject.toml)
 ghp-import==2.1.0
     # via mkdocs
+gunicorn==20.1.0
+    # via captain-black (pyproject.toml)
 humanize==4.6.0
     # via flower
 idna==3.4

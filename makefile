@@ -6,8 +6,8 @@ clean:  # Remove all build, test, coverage and Python artifacts.
 	find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete
 
 compile:  # Compile the requirements files using pip-tools.
-	. .venv/bin/activate; python -m pip install pip-tools
-	. .venv/bin/activate; python -m piptools compile --output-file=requirements.txt
+	.venv/bin/python -m pip install pip-tools
+	.venv/bin/python -m piptools compile --output-file=requirements.txt
 	echo "--editable ." >> requirements.txt
 
 .PHONY: docs  # because there is a directory called docs.
@@ -15,10 +15,10 @@ docs:  # Build the mkdocs documentation.
 	python -m mkdocs build --clean
 
 flask:  # Run the Flask API server.
-	. .venv/bin/activate; python -m gunicorn main:APP --config gunicorn_conf.py $(ARGS)
+	.venv/bin/python -m gunicorn main:APP --config gunicorn_conf.py $(ARGS)
 
 fastapi:  # Run the FastAPI server.
-	. .venv/bin/activate; python -m hypercorn ./fastapi_api_v2/main:APP --config file:./fastapi_api_v2/hypercorn_conf.py $(ARGS)
+	.venv/bin/python -m hypercorn ./fastapi_api_v2/main:APP --config file:./fastapi_api_v2/hypercorn_conf.py $(ARGS)
 
 .PHONY: help
 help: # Show help for each of the makefile recipes.
@@ -27,8 +27,8 @@ help: # Show help for each of the makefile recipes.
 requirements:  # Install the requirements for Python, Ansible Galaxy and the logs.
 	pyenv install --skip-existing 
 	python -m venv .venv
-	. .venv/bin/activate; python -m pip install --upgrade pip setuptools 
-	. .venv/bin/activate; python -m pip install -Ur requirements.txt
+	.venv/bin/python -m pip install --upgrade pip setuptools 
+	.venv/bin/python -m pip install -r requirements.txt
 
 test:  # Run the unit tests.
-	. .venv/bin/activate; pytest
+	.venv/bin/python -m pytest

@@ -1,7 +1,8 @@
 
 """demo"""
 import click
-from click_cli.commands import cmd1, cmd2
+import click_shit
+from click_shit.commands import cmd1, cmd2
 from typing import Any
 
 
