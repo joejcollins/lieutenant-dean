@@ -40,7 +40,9 @@ dependencies = [
 ]
 
 [tool.setuptools]
-py-modules = []  #  Disable auto discovery of modules (unwanted files or directories might be included now).
+py-modules = [
+    'click_cli'
+]  #  Disable auto discovery of modules (unwanted files or directories might be included now).
 
 [project.optional-dependencies]
 pdf = ["ReportLab>=1.2", "RXP"]

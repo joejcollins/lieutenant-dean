@@ -1,8 +1,7 @@
 
 """demo"""
 import click
-import click_shit
-from click_shit.commands import cmd1, cmd2
+from click_cli.commands.cmd1 import cmd1
 from typing import Any
 
 
@@ -13,4 +12,9 @@ def cli() -> Any:
 
 
 cli.add_command(cmd1)
-cli.add_command(cmd2)
+
+@click.command()
+@click.option('--count', default=1, help='number of greetings')
+def cmd2():
+    """This is command 2"""
+    click.echo("Running command 2")
