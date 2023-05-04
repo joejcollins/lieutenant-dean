@@ -2,6 +2,7 @@
 .DEFAULT_GOAL:= help  # because it's is a safe task.
 
 clean:  # Remove all build, test, coverage and Python artifacts.
+	rm -rf .venv
 	find . -name "*.pyc" -exec rm -f {} \;
 	find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete
 
