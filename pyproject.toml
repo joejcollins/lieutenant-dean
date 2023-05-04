@@ -50,7 +50,7 @@ py-modules = [
     'pkg_infrastructure',
     'celery_queue_rabbit',
     'prometheus_monitoring'
-]  #  Disable auto discovery of modules (unwanted files or directories might be included now).
+]  #  Explicitly set up py-modules.
 
 [project.optional-dependencies]
 pdf = ["ReportLab>=1.2", "RXP"]
