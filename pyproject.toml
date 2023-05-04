@@ -41,7 +41,15 @@ dependencies = [
 
 [tool.setuptools]
 py-modules = [
-    'click_cli'
+    'click_cli',
+    'pkg_config',
+    'pytest_unit',
+    'flask_api_v1',
+    'fastapi_api_v2',
+    'celery_queue_redis',
+    'pkg_infrastructure',
+    'celery_queue_rabbit',
+    'prometheus_monitoring'
 ]  #  Disable auto discovery of modules (unwanted files or directories might be included now).
 
 [project.optional-dependencies]
