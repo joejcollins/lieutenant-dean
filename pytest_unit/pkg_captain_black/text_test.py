@@ -1,5 +1,5 @@
 """ Test text manipulations. """
-import pkg_config.text as text
+import pkg_captain_black.text as text
 
 
 def test_method_is_present() -> None:

@@ -74,7 +74,7 @@ ports:
     visibility: public
   - port: 6379
     onOpen: ignore
-    visibility: private
+    visibility: public
   - port: 8000
     onOpen: open-preview
     visibility: public

@@ -1,5 +1,5 @@
 """ Test arithmetic. """
-import pkg_config.numbers as numbers
+import pkg_captain_black.numbers as numbers
 
 
 def test_method_is_present() -> None:

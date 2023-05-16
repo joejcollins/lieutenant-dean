@@ -41,15 +41,15 @@ dependencies = [
 
 [tool.setuptools]
 py-modules = [
-    'click_cli',
-    'pkg_config',
-    'pytest_unit',
-    'flask_api_v1',
-    'fastapi_api_v2',
-    'celery_queue_redis',
-    'pkg_infrastructure',
     'celery_queue_rabbit',
-    'prometheus_monitoring'
+    'celery_queue_redis',
+    'click_cli',
+    'fastapi_api_v2',
+    'flask_api_v1',
+    'pkg_process',
+    'pkg_store',
+    'prometheus_monitoring',
+    'pytest_unit'
 ]  #  Explicitly set up py-modules.
 
 [project.optional-dependencies]

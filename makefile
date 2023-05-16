@@ -1,6 +1,9 @@
 # Consistent set of make tasks.
 .DEFAULT_GOAL:= help  # because it's is a safe task.
 
+celery-flower:  #
+	CELERY_CONFIG=flower .venv/bin/python -m celery --workdir celery_redis --app main flower
+
 clean:  # Remove all build, test, coverage and Python artifacts.
 	rm -rf .venv
 	find . -name "*.pyc" -exec rm -f {} \;
@@ -32,4 +35,17 @@ requirements:  # Install the requirements for Python, Ansible Galaxy and the log
 	.venv/bin/python -m pip install -r requirements.txt
 
 test:  # Run the unit tests.
-	.venv/bin/python -m pytest
+	.venv/bin/python -m pytest ./pytest_unit
+
+test-tree:  # Build the directory structure for the tests.
+	find . -type d -not -path "*/.*" \
+	-not -path "*/__*" \
+	-not -path "*/ansible_collections*" \
+	-not -path "*/ansible_roles*" \
+	-not -path "./base-images*" \
+	-not -path "*.egg-info*" \
+	-not -path "./docs*" \
+	-not -path "./logs*" \
+	-not -path "./pod*" \
+	-not -path "./site*" \
+	| xargs -I{} mkdir -p "./pytest_unit/{}"
