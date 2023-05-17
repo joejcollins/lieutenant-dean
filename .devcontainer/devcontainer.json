@@ -1,0 +1,39 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/ubuntu
+{
+    "name": "Ubuntu",
+    "build": {
+        "dockerfile": "../.gitpod.Dockerfile",
+        "context": "../"
+    },
+    "hostRequirements": {
+        "cpus": 2,
+        "memory": "4gb"
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {},
+            "extensions": [
+                "charliermarsh.ruff"
+            ]
+        }
+    },
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // 5555 - Celery Redis Flower
+    // 6001 - Redis Commander
+    // 6379 = Redis Server
+    // 8090 = flask_api
+    // 8093 = fastapi
+    "forwardPorts": [
+        5555,
+        6001,
+        6379,
+        8090,
+        8091
+    ],
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": ". ./.devcontainer/post-create.sh  > ../post-create-log.txt",
+    // Ensure that redis is running
+    "postStartCommand": "service redis-server restart"
+}

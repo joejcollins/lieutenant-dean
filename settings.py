@@ -16,7 +16,8 @@ def this_directory() -> str:
 
 class CaptainBlackSettings:
     """Class for keeping track of settings.  It doesn't need to be a dataclass because it is not being
-    initialized from a dictionary or the pyproject.toml file.  It is just a class to hold the settings"""
+    initialized from a dictionary or the pyproject.toml file.  It is just a class to hold the settings
+    """
 
     name: str = "Captain Black Default Name"
     path: str = this_directory()

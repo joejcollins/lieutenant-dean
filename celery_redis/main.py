@@ -1,11 +1,13 @@
 """ """
 import os
+import sys
 import logging
 from celery import Celery
 from celery.utils.log import get_task_logger
+from celery.signals import after_setup_logger
 
 # Get the worker name from the environment variable
-WORKER = os.environ.get('CELERY_CONFIG', 'default')
+WORKER = os.environ.get("CELERY_CONFIG", "default")
 
 # Create a Celery app
 APP = Celery(__name__)
@@ -36,7 +38,7 @@ APP.config_from_object(f"{WORKER}_config")
 logger = get_task_logger(__name__)
 
 # Create a separate logger for error logs
-error_logger = logging.getLogger('error_logger')
+error_logger = logging.getLogger("error_logger")
 error_logger.setLevel(logging.ERROR)
 
 # Create a FileHandler for error logs
@@ -45,3 +47,17 @@ error_handler = logging.FileHandler(error_log_file)
 error_formatter = logging.Formatter(APP.conf.task_error_log_format)
 error_handler.setFormatter(error_formatter)
 error_logger.addHandler(error_handler)
+
+
+@after_setup_logger.connect()
+def logger_setup_handler(logger, **kwargs) -> None:
+    """ Control where stdout goes. """
+    my_handler = logging.StreamHandler(sys.stdout)
+    my_handler.setLevel(logging.DEBUG)
+    my_formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )  # custom formatter
+    my_handler.setFormatter(my_formatter)
+    logger.addHandler(my_handler)
+
+    logging.info("My log handler connected -> Global Logging")

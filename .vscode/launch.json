@@ -26,20 +26,38 @@
             "justMyCode": false
         },
         {
-            "name": "Python: Celery Broker",
+            "name": "Celery Broker",
             "type": "python",
             "request": "launch",
             "module": "celery",
             "console": "integratedTerminal",
             "args": [
-                "--workdir=task_queuing",
-                "--app=celery_app",
+                "--workdir=celery_redis",
+                "--app=main",
                 "worker",
                 "--hostname=worker1@%n",
                 "--loglevel=INFO",
                 "--queues=ansible_queue",
                 "--pool=solo"
             ],
+            "justMyCode": false,
+        },
+        {
+            "name": "Celery Flower",
+            "type": "python",
+            "request": "launch",
+            "module": "celery",
+            "console": "integratedTerminal",
+            "args": [
+                "--workdir=celery_redis",
+                "--app=main",
+                "flower",
+                "--loglevel=INFO",
+                "--logfile=shit.log"
+            ],
+            "env": {
+                "CELERY_CONFIG": "flower"
+            },
             "justMyCode": false,
         }
     ]

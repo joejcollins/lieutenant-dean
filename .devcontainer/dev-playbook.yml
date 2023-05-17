@@ -1,0 +1,5 @@
+---
+# Playbook to set up dev container.
+- hosts: all
+  become: yes
+  gather_facts: yes
