@@ -41,13 +41,12 @@ dependencies = [
 
 [tool.setuptools]
 py-modules = [
-    'celery_queue_rabbit',
-    'celery_queue_redis',
+    'celery_rabbit',
+    'celery_redis',
     'click_cli',
-    'fastapi_api_v2',
-    'flask_api_v1',
-    'pkg_process',
-    'pkg_store',
+    'fastapi_api',
+    'flask_api',
+    'pkg_captain_black',
     'prometheus_monitoring',
     'pytest_unit'
 ]  #  Explicitly set up py-modules.

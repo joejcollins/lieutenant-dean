@@ -46,14 +46,13 @@
             "name": "Celery Flower",
             "type": "python",
             "request": "launch",
+            "cwd": "${workspaceFolder}",
             "module": "celery",
-            "console": "integratedTerminal",
             "args": [
                 "--workdir=celery_redis",
                 "--app=main",
                 "flower",
-                "--loglevel=INFO",
-                "--logfile=shit.log"
+                "--conf=flower_config.py"
             ],
             "env": {
                 "CELERY_CONFIG": "flower"

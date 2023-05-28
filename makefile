@@ -5,13 +5,13 @@ celery-beat:  # Run the Celery beat scheduler.
 	CELERY_CONFIG=beat .venv/bin/python -m celery --workdir=celery_redis --app=main beat
 
 celery-flower:  # Run the Celery flower web-based tool for monitoring and administration.
-	CELERY_CONFIG=flower .venv/bin/python -m celery --workdir celery_redis --app main flower --logfile=shit.log
+	.venv/bin/python -m celery --workdir=celery_redis --app=main flower --conf=flower_config.py $(ARGS)
 
 celery-worker-high:  # Run a Celery worker with a high concurrency.
-	CELERY_CONFIG=high .venv/bin/python -m celery --workdir celery_redis --app main worker --concurrency=10
+	.venv/bin/python -m celery --workdir celery_redis --app main worker --config=worker_high_config.py  $(ARGS)
 
 celery-worker-low:  # Run a Celery worker with a low concurrency.
-	CELERY_CONFIG=low .venv/bin/python -m celery --workdir celery_redis --app main worker --concurrency=1
+	.venv/bin/python -m celery --workdir celery_redis --app main worker --config=worker_low_config.py $(ARGS)
 
 clean:  # Remove all build, test, coverage and Python artifacts.
 	rm -rf .venv

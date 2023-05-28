@@ -1,5 +1,7 @@
 """Configuration for Celery flower."""
+# sourcery skip: avoid-global-variables
+logging = "DEBUG"
+port = 5555
+db = "flower_database.db"
 
-task_error_log_file = 'celery_flower_error.log'
-task_error_log_level = 'ERROR'
-task_error_log_format = '%(asctime)s - %(levelname)s - %(message)s'
+# these are tornados settings I think
