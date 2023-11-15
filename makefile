@@ -28,10 +28,10 @@ docs:  # Build the mkdocs documentation.
 	python -m mkdocs build --clean
 
 flask:  # Run the Flask API server.
-	.venv/bin/python -m gunicorn flask_api_v1.main:APP --config ./flask_api_v1/gunicorn_conf.py $(ARGS)
+	.venv/bin/python -m gunicorn flask_app_v1.main:APP --config ./flask_app_v1/gunicorn_conf.py $(ARGS)
 
 fastapi:  # Run the FastAPI server.
-	.venv/bin/python -m hypercorn ./fastapi_api_v2/main:APP --config file:./fastapi_api_v2/hypercorn_conf.py $(ARGS)
+	.venv/bin/python -m hypercorn ./fastapi_app_v2/main:APP --config file:./fastapi_app_v2/hypercorn_conf.py $(ARGS)
 
 .PHONY: help
 help: # Show help for each of the makefile recipes.

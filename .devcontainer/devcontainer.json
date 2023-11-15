@@ -23,7 +23,7 @@
     // 5555 - Celery Redis Flower
     // 6001 - Redis Commander
     // 6379 = Redis Server
-    // 8090 = flask_api
+    // 8090 = flask_app
     // 8093 = fastapi
     "forwardPorts": [
         5555,

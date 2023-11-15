@@ -1,7 +1,7 @@
 """ Text endpoints. """
 import flask
 import flasgger.utils as swag_utils
-import flask_api_v1.text_apidocs as apidocs
+import flask_app_v1.text_apidocs as apidocs
 import pkg_config.text as info_text
 import celery_queue_rabbit.tasks.text as text_tasks
 

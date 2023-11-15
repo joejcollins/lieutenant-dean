@@ -44,8 +44,8 @@ py-modules = [
     'celery_rabbit',
     'celery_redis',
     'click_cli',
-    'fastapi_api',
-    'flask_api',
+    'fastapi_app',
+    'flask_app',
     'pkg_captain_black',
     'prometheus_monitoring',
     'pytest_unit'

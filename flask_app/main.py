@@ -2,7 +2,7 @@
 import flask
 import flasgger
 import flasgger.utils as swag_utils
-from flask_api_v1.blueprints import greetings
+from flask_app_v1.blueprints import greetings
 
 APP = flask.Flask(__name__)
 APP.register_blueprint(greetings.APP)

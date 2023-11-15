@@ -1,7 +1,7 @@
 """ Test the endpoint. """
 import flask
 import pytest
-from flask_api_v1.main import APP
+from flask_app_v1.main import APP
 
 
 @pytest.fixture()

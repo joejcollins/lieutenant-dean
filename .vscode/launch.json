@@ -5,10 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Current File",
+            "type": "python",
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "Flask API",
             "type": "python",
-            "python": "${workspaceFolder}/flask_api_v1/.venv/bin/python",
-            "cwd": "${workspaceFolder}/flask_api_v1",
+            "python": "${workspaceFolder}/flask_app/.venv/bin/python",
+            "cwd": "${workspaceFolder}/flask_app",
             "request": "launch",
             "module": "gunicorn",
             "args": [

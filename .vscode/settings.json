@@ -43,13 +43,6 @@
   "python.languageServer": "Pylance",
   "python.defaultInterpreterPath": ".venv/bin/python",
   "python.terminal.activateEnvironment": true,
-  "python.linting.enabled": true,
-  "python.formatting.provider": "black",
-  "python.formatting.blackArgs": [
-    "--line-length",
-    "88"
-  ],
-  "python.linting.mypyEnabled": true,
   "editor.rulers": [88],
   "task.allowAutomaticTasks": "on",
   "terminal.integrated.shellIntegration.enabled": true,
