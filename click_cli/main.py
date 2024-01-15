@@ -12,5 +12,4 @@ def cli() -> Any:
     pass
 
 
-cli.add_command(cmd1)
 cli.add_command(cmd2)

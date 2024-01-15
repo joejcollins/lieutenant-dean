@@ -1,4 +1,4 @@
-""" """
+"""Run the Celery app."""
 from celery import Celery
 
 # # Get the worker name from the environment variable

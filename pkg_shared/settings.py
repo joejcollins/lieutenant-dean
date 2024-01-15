@@ -47,7 +47,10 @@ class CaptainBlackSettings:
     redis_port: int = 6379
     redis_db: int = 1
     redis_address: str = f"redis://{redis_host}:{redis_port}/{redis_db}"
-    log_format: str = "[%(asctime)s] [%(levelname)s] %(message)s. %(pathname)s:%(lineno)d, in %(funcName)s()"
+    log_format: str = (
+        "[%(asctime)s] [%(levelname)s] %(message)s."
+        "%(pathname)s:%(lineno)d, in %(funcName)s()"
+    )
     log_level: str = (
         "WARN"  # as a string so it can be read and set in the settings.json.
     )

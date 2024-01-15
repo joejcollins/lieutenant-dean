@@ -23,20 +23,31 @@ def delete_environment(self, alias):
     logger.info(f"Deleting {alias}")
     power_down = text_tasks.slowly_reverse_string.s("lmy.etats-rewop-etadpu-e")
 
-    delete_network_prep = []
-    delete_network_prep.append(text_tasks.slowly_reverse_string.si("lmy.nalv-yortsed-p"))
-    delete_network_prep.append(text_tasks.slowly_reverse_string.si("lmy.pi-cilbup-erusne-p"))
-    # The final task is immutable because we don't need the result of the previous tasks.
-    delete_network_final = text_tasks.slowly_reverse_string.si("krowten tnemnorivne eteled")
+    delete_network_prep = [text_tasks.slowly_reverse_string.si("lmy.nalv-yortsed-p")]
+    delete_network_prep.append(
+        text_tasks.slowly_reverse_string.si("lmy.pi-cilbup-erusne-p")
+    )
+    # The final task is immutable because we don't need the result of previous tasks.
+    delete_network_final = text_tasks.slowly_reverse_string.si(
+        "krowten tnemnorivne eteled"
+    )
     delete_network = celery.chord(delete_network_prep, delete_network_final)
 
-    delete_environment_prep = []
-    delete_environment_prep.append(text_tasks.slowly_reverse_string.si("lmy.smv-yortsed-e"))
-    delete_environment_prep.append(text_tasks.slowly_reverse_string.si("lmy.ehcac-edon-yortsed-e"))
-    delete_environment_prep.append(text_tasks.slowly_reverse_string.si("lmy.snd-yortsed-e"))
-    delete_environment_prep.append(text_tasks.slowly_reverse_string.si("lmy.gnirotinom-yortsed-e"))
-    # The final task is immutable because we don't need the result of the previous tasks.
-    delete_environment_final = text_tasks.slowly_reverse_string.si("selif tnemnorivne eteled")
+    delete_environment_prep = [text_tasks.slowly_reverse_string.si("lmy.smv-yortsed-e")]
+    delete_environment_prep.append(
+        text_tasks.slowly_reverse_string.si("lmy.ehcac-edon-yortsed-e")
+    )
+    delete_environment_prep.append(
+        text_tasks.slowly_reverse_string.si("lmy.snd-yortsed-e")
+    )
+    delete_environment_prep.append(
+        text_tasks.slowly_reverse_string.si("lmy.gnirotinom-yortsed-e")
+    )
+    # The final task is immutable because we don't need the result of the previous
+    # tasks.
+    delete_environment_final = text_tasks.slowly_reverse_string.si(
+        "selif tnemnorivne eteled"
+    )
     delete_environment = celery.chord(delete_environment_prep, delete_environment_final)
 
     delete_everything = celery.chain(power_down, delete_network, delete_environment)
@@ -49,7 +60,7 @@ def run_playbook(self):
     logger = logging.getLogger(self.request.id)
     logger.info("BEGINS")
     # Weirdly I have to move to another directory before the run.  This makes no sense.
-    os.chdir('/workspace/captain-black')
+    os.chdir("/workspace/captain-black")
     out, err, rc = ansible_runner.run_command(
         executable_cmd="ansible-playbook",
         cmdline_args=[
@@ -59,13 +70,13 @@ def run_playbook(self):
             "--inventory",
             "127.0.0.1,",
             "--limit",
-            "127.0.0.1"
+            "127.0.0.1",
         ],
         project_dir="./ansible",
         artifact_dir="./logs/runner_artifacts",
         input_fd=sys.stdin,
         output_fd=logger.handlers[0].stream,
-        error_fd=sys.stderr
+        error_fd=sys.stderr,
     )
     logger.info("ENDS")
     return True
