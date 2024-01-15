@@ -2,7 +2,7 @@
 import logging
 import time
 
-import pkg_shared.text as config_text
+import pkg_shared.text.reverse as config_text
 from celery_redis.main import APP
 
 

@@ -1,4 +1,4 @@
-"""Text manipulation."""
+"""Reverse some text."""
 
 
 def reverse_string(string_to_reverse: str) -> str:
