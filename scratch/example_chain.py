@@ -1,5 +1,6 @@
-"""Tasks running in order with one task using the output of another task.  The tasks are given a UUID so the
-log can be viewed during the run.
+"""Tasks running in order with one task using the output of another task.
+
+The tasks are given a UUID so the log can be viewed during the run.
 """
 import celery
 import celery_queue_rabbit.tasks.text as text_tasks

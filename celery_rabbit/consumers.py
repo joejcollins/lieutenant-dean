@@ -5,7 +5,7 @@ from kombu import Consumer
 
 
 class SubstitutionCypher(bootsteps.ConsumerStep):
-    """Custom handling of substitution cypher"""
+    """Custom handling of substitution cypher."""
 
     def handle_message(self, body, message):
         print('Received message: {0!r}'.format(body))

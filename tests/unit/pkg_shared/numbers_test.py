@@ -12,4 +12,4 @@ def test_add_two_numbers() -> None:
     first_number = 1
     second_number = 2
     total = numbers.add_two_numbers(first_number, second_number)
-    assert total == 3
+    assert total == 3  # noqa: PLR2004

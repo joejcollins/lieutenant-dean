@@ -8,8 +8,8 @@ This is the background to the approach taken here.
 Objective
 ---------
 
-The objective is to have a single source of truth for the settings that are shared between
-Platform apps.
+The objective is to have a single source of truth for the settings that are shared
+between Platform apps.
 
 Options
 -------
@@ -27,8 +27,8 @@ import os
 
 def this_directory() -> str:
     """Inspect the stack to find out where I have been called from."""
-    # This approach is used to avoid relying on the location of the file, which is different for the children.
-    # The calling frame is the second frame in the stack.
+    # This approach is used to avoid relying on the location of the file, which is
+    # different for the children. The calling frame is the second frame in the stack.
     calling_frame = inspect.stack()[1]
     calling_file_path = calling_frame.filename
     return os.path.dirname(calling_file_path)
@@ -48,11 +48,12 @@ class CaptainBlackSettings:
     redis_db: int = 1
     redis_address: str = f"redis://{redis_host}:{redis_port}/{redis_db}"
     log_format: str = "[%(asctime)s] [%(levelname)s] %(message)s. %(pathname)s:%(lineno)d, in %(funcName)s()"
-    log_level: str = "WARN"  # as a string so it can be read and set in the settings.json.
-
+    log_level: str = (
+        "WARN"  # as a string so it can be read and set in the settings.json.
+    )
 
     def __init__(self) -> None:
-        """Load the dynamic settings then the alternative settings from the settings file."""
+        """Load local settings then the alternative settings from a settings file."""
         # Custom settings
         self.load_local_settings(this_directory())
 

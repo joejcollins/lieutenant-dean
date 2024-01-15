@@ -92,7 +92,7 @@ extend-include = ["*.py.j2"]
 select = ["F", "E", "W", "C90", "I", "PL", "D"]
 ignore = ["D203", "D213"]
 fixable = ["ALL"]
-line-length = 110
+line-length = 88
 target-version = "py311"
 exclude = [
     ".git",

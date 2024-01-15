@@ -59,18 +59,16 @@ def send_to_custom_consumer(producer=None):
 
 
 def send_to_text_reverse(producer=None):
+    """Send a custom message as per Scott's instructions."""
     my_queue = Queue("text_queue", Exchange("text_queue"), "text_queue")
-    eta = str(datetime.now())
-    id = celery.uuid()
-    # headers = {"task": "celery_queue_rabbit.tasks.custom.shit", "id": id}
-    # body = {"text": "Secret text to encode", "Time": current_time}
+    task_id = celery.uuid()
 
     message = {
         "task": "celery_queue_rabbit.tasks.text.slowly_reverse_string",
-        "id": id,
+        "id": task_id,
         "args": ["reverse me"],
         "kwargs": {},
-        "retries": 0
+        "retries": 0,
     }
 
     with app.queue_broker.producer_or_acquire(producer) as producer:
@@ -86,5 +84,5 @@ def send_to_text_reverse(producer=None):
 
 
 if __name__ == "__main__":
-    id = send_to_text_reverse()
-    print(f"task {id} on queue")
+    task_id = send_to_text_reverse()
+    print(f"task {task_id} on queue")

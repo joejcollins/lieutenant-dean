@@ -1,4 +1,4 @@
-"""Flask App"""
+"""Flask App."""
 import flasgger
 import flask
 

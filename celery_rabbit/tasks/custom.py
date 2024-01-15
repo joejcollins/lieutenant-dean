@@ -1,9 +1,9 @@
-"""Custom celery task to capitalize text"""
+"""Custom celery task to capitalize text."""
 import celery_queue_rabbit.celery_app as app
 
 
 class Capitalize(app.queue_broker.Task):
-    """Custom task without the decorator"""
+    """Custom task without the decorator."""
 
     def run(self, text):
         capitalized = text.upper()

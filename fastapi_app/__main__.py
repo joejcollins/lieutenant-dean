@@ -1,8 +1,8 @@
-"""stuff"""
+"""stuff."""
 
 
 def main() -> None:
-    """Main"""
+    """Run but do nothing."""
     pass
 
 

@@ -1,4 +1,4 @@
-"""demo"""
+"""demo."""
 from typing import Any
 
 import click
@@ -8,7 +8,7 @@ from click_cli.commands.cmd2 import cmd2
 
 @click.group()
 def cli() -> Any:
-    """My CLI"""
+    """My CLI."""
     pass
 
 
