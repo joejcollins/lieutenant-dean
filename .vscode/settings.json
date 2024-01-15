@@ -59,5 +59,14 @@
       ]
     },
   },
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/bin/zsh",
+      "args": [
+        "-l",
+        "-i"
+      ]
+    }
+  },
   "ansible.python.interpreterPath": ".venv/bin/python"
 }
