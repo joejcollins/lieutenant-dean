@@ -1,11 +1,12 @@
 {
   "files.associations": {
     "*.yml.j2": "yaml",
-    "Vagrantfile": "ruby"
+    "Vagrantfile": "ruby",
+    "*.py.j2": "python"
   },
   "editor.minimap.enabled": false,
   "python.testing.pytestArgs": [
-    "./pytest_unit"
+    "./tests/"
   ],
   "python.testing.autoTestDiscoverOnSaveEnabled": true,
   "python.testing.unittestEnabled": false,
@@ -43,8 +44,20 @@
   "python.languageServer": "Pylance",
   "python.defaultInterpreterPath": ".venv/bin/python",
   "python.terminal.activateEnvironment": true,
-  "editor.rulers": [88],
-  "task.allowAutomaticTasks": "on",
-  "terminal.integrated.shellIntegration.enabled": true,
-  "workbench.colorTheme": "Visual Studio Light"
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+  },
+  "editor.rulers": [
+    88
+  ],
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/bin/bash",
+      "args": [
+        "-l"
+      ]
+    },
+  },
+  "ansible.python.interpreterPath": ".venv/bin/python"
 }

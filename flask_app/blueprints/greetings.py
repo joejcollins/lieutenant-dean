@@ -1,6 +1,6 @@
 import flask
 from flasgger.utils import swag_from
-from flask_app_v1.apidocs import greetings as greetings_docs
+from flask_app.apidocs import greetings as greetings_docs
 
 APP = flask.Blueprint("greetings", __name__, url_prefix='/greetings')
 

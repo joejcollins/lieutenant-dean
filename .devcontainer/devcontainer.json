@@ -14,7 +14,20 @@
         "vscode": {
             "settings": {},
             "extensions": [
-                "charliermarsh.ruff"
+                "bierner.markdown-mermaid",
+                "charliermarsh.ruff",
+                "eamodio.gitlens",
+                "ms-python.black-formatter",
+                "ms-python.isort",
+                "ms-python.mypy-type-checker",
+                "ms-python.pylint",
+                "ms-python.python",
+                "rangav.vscode-thunder-client",
+                "redhat.ansible",
+                "redhat.vscode-yaml",
+                "sourcery.sourcery",
+                "streetsidesoftware.code-spell-checker",
+                "tamasfe.even-better-toml"
             ]
         }
     },
