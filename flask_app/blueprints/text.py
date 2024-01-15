@@ -4,6 +4,7 @@ import flasgger.utils as swag_utils
 import flask
 
 import flask_app.text_apidocs as apidocs
+from flask_app.text import reverse_fast
 
 text_api = flask.Blueprint("text_api", __name__, url_prefix="/text/")
 
@@ -12,7 +13,7 @@ text_api = flask.Blueprint("text_api", __name__, url_prefix="/text/")
 @swag_utils.swag_from(apidocs.REVERSE_FAST_GET)
 def reverse_fast_get(string_to_reverse):
     """Provide a json response with the reversal."""
-    message = _reverse_fast(string_to_reverse)
+    message = reverse_fast(string_to_reverse)
     return flask.jsonify(message)
 
 
@@ -21,7 +22,7 @@ def reverse_fast_get(string_to_reverse):
 def reverse_fast_post():
     """Provide a json response with the reversal."""
     string_to_reverse = flask.request.json.get("string_to_reverse")
-    message = _reverse_fast(string_to_reverse)
+    message = reverse_fast(string_to_reverse)
     return flask.jsonify(message)
 
 

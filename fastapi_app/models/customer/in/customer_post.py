@@ -1,0 +1,1 @@
+"""Customer post in model."""
