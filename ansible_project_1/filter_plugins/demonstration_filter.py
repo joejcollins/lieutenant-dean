@@ -1,12 +1,13 @@
-"""Utilities for dealing with the VMWare output"""
+"""Utilities for dealing with the VMWare output."""
 from __future__ import absolute_import, division, print_function
 
 
 def get_top_two(value, data_store_group):
     """Select the correct data stores, then order them"""
     filtered_list = [data_store for data_store in value if data_store_group in data_store['name']]
-    sorted_list = sorted(filtered_list, key=lambda k: float(k['free'].split()[0]), reverse=True)
-    return sorted_list
+    return sorted(
+        filtered_list, key=lambda k: float(k['free'].split()[0]), reverse=True
+    )
 
 
 class FilterModule(object):
