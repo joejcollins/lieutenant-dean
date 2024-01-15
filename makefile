@@ -53,7 +53,7 @@ report:  # Report the python version and pip list.
 	.venv/bin/python -m pip list -v
 
 requirements:  # Install the requirements for Python, Ansible Galaxy and the logs.
-	pyenv install --skip-existing 
+	-pyenv install --skip-existing 
 	python -m venv .venv
 	.venv/bin/python -m pip install --upgrade pip setuptools 
 	.venv/bin/python -m pip install -r requirements.txt
