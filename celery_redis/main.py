@@ -1,10 +1,5 @@
 """ """
-import os
-import sys
-import logging
 from celery import Celery
-from celery.utils.log import get_task_logger
-from celery.signals import after_setup_logger
 
 # # Get the worker name from the environment variable
 # WORKER = os.environ.get("CELERY_CONFIG", "default")

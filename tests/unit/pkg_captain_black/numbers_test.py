@@ -1,14 +1,14 @@
-""" Test arithmetic. """
-import pkg_captain_black.numbers as numbers
+"""Test arithmetic."""
+from pkg_captain_black import numbers
 
 
 def test_method_is_present() -> None:
-    """ Confirm that the methods are present. """
+    """Confirm that the methods are present."""
     assert "add_two_numbers" in dir(numbers)
 
 
 def test_add_two_numbers() -> None:
-    """ Confirm the total is correct. """
+    """Confirm the total is correct."""
     first_number = 1
     second_number = 2
     total = numbers.add_two_numbers(first_number, second_number)

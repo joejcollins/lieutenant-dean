@@ -264,6 +264,8 @@ rpds-py==0.17.1
     # via
     #   jsonschema
     #   referencing
+ruff==0.1.13
+    # via captain_black (pyproject.toml)
 semver==3.0.2
     # via unleashclient
 six==1.16.0

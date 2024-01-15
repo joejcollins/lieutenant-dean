@@ -2,7 +2,7 @@
 
 
 def main() -> None:
-    """main"""
+    """Main"""
     pass
 
 

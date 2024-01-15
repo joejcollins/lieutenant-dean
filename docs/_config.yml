@@ -1,7 +1,8 @@
+---
 defaults:
   -
     scope:
-      path: "" # an empty string here means all files in the project
+      path: ""  # an empty string here means all files in the project
     values:
       layout: "default"
 
@@ -17,3 +18,4 @@ timezone: GMT
 
 # Permalinks
 permalink: none
+...

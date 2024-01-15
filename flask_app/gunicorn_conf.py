@@ -3,7 +3,6 @@
 # sourcery skip: avoid-global-variables
 import os
 
-
 # Create the log directory if it does not exist.
 my_logs = os.path.basename(os.getcwd())
 log_directory = f"../logs/{my_logs}"

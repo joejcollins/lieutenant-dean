@@ -1,17 +1,18 @@
-""" Test the endpoint. """
+"""Test the endpoint."""
 import flask
 import pytest
+
 from flask_app.main import APP
 
 
 @pytest.fixture()
 def app():
-    """ Create a test fixture Flask application. """
+    """Create a test fixture Flask application."""
     return APP
 
 
 def xxx_test_reverse_fast_get(client) -> None:
-    """ Reverse a string with GET. """
+    """Reverse a string with GET."""
     string_to_reverse = "qwerty"
     url = flask.url_for("text_api.reverse_fast_get",
                         string_to_reverse=string_to_reverse)
@@ -24,7 +25,7 @@ def xxx_test_reverse_fast_get(client) -> None:
 
 
 def xxx_test_reverse_fast_post(client) -> None:
-    """ Reverse a string with POST. """
+    """Reverse a string with POST."""
     string_to_reverse = "asdfgh"
     url = flask.url_for("text_api.reverse_fast_post")
     post_message = {

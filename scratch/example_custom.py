@@ -2,9 +2,8 @@
 from datetime import datetime
 
 import celery
-from kombu import Exchange, Queue
-
 import celery_queue_rabbit.celery_app as app
+from kombu import Exchange, Queue
 
 
 def send_to_shit(producer=None):

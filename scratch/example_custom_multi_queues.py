@@ -1,7 +1,7 @@
 """Post messages to a specific queue dependent on their load."""
-from celery_queue_rabbit.queues import custom_exchange, my_queues
-import celery_queue_rabbit.celery_app as app
 import celery
+import celery_queue_rabbit.celery_app as app
+from celery_queue_rabbit.queues import custom_exchange
 
 
 def send_custom_message(producer=None):

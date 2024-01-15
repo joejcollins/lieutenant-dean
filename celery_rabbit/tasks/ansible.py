@@ -3,10 +3,10 @@ import logging
 import os
 import sys
 
+import ansible_runner
 import celery
 import celery_queue_rabbit.celery_app as app
 import celery_queue_rabbit.tasks.text as text_tasks
-import ansible_runner
 
 
 @app.queue_broker.task(bind=True)  # `bind=True` ensures that the arguments are passed.

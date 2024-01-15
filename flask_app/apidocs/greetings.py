@@ -1,4 +1,4 @@
-""" Swagger documentation. """
+"""Swagger documentation."""
 
 INDEX = {
     "responses": {

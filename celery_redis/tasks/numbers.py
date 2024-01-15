@@ -1,8 +1,8 @@
-""" Celery arithmetic. """
+"""Celery arithmetic."""
 import time
 
-import pkg_captain_black.numbers as numbers
 from celery_redis.main import APP
+from pkg_captain_black import numbers
 
 
 @APP.task(bind=True)

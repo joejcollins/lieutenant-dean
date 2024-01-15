@@ -8,7 +8,7 @@ This is the background to the approach taken here.
 Objective
 ---------
 
-The objective is to have a single source of truth for the settings that are shared between 
+The objective is to have a single source of truth for the settings that are shared between
 Platform apps.
 
 Options

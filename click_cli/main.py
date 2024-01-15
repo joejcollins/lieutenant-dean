@@ -1,8 +1,9 @@
 """demo"""
+from typing import Any
+
 import click
 
 from click_cli.commands.cmd2 import cmd2
-from typing import Any
 
 
 @click.group()

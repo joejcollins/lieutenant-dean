@@ -1,6 +1,7 @@
 """A chord is a task that only executes after all of the tasks in a group have finished executing.  This seems
 like strange use of the term 'chord' to me.  Typically chord is notes that are played together, but that is a
-group in Celery parlance."""
+group in Celery parlance.
+"""
 import celery
 import celery_queue_rabbit.tasks.text as text_tasks
 

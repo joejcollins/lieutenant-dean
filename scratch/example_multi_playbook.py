@@ -1,5 +1,4 @@
-"""
-Deleting an environment
+"""Deleting an environment
 =======================
 
 Very First
@@ -35,7 +34,6 @@ Then:
 
 """
 import celery
-
 import celery_queue_rabbit.tasks.text as text_tasks
 
 power_down = text_tasks.slowly_reverse_string.s("lmy.etats-rewop-etadpu-e")

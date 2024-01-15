@@ -1,16 +1,17 @@
 ---
-  - hosts: 127.0.0.1
-    connection: local
-    gather_facts: no
-    become: no
-    tasks:
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: false
+  become: false
+  tasks:
 
-    sudo apt-get update -y
-    sudo apt-get install rabbitmq-server -y --fix-missing
-    sudo service rabbitmq-server restart
-    sudo rabbitmqctl add_user the_user the_password
-    sudo rabbitmqctl set_user_tags the_user administrator
-    sudo rabbitmqctl add_vhost the_vhost
-    sudo rabbitmqctl set_permissions -p the_vhost the_user ".*" ".*" ".*"
-    sudo rabbitmq-plugins enable rabbitmq_management
+  # sudo apt-get update -y
+  # sudo apt-get install rabbitmq-server -y --fix-missing
+  # sudo service rabbitmq-server restart
+  # sudo rabbitmqctl add_user the_user the_password
+  # sudo rabbitmqctl set_user_tags the_user administrator
+  # sudo rabbitmqctl add_vhost the_vhost
+  # sudo rabbitmqctl set_permissions -p the_vhost the_user ".*" ".*" ".*"
+  # sudo rabbitmq-plugins enable rabbitmq_management
 
+...

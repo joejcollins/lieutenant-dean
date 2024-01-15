@@ -1,4 +1,4 @@
-""" Swagger documentation. """
+"""Swagger documentation."""
 REVERSE_FAST_GET = {
     "parameters": [
         {

@@ -43,6 +43,11 @@ help: # Show help for each of the makefile recipes.
 kill: # Kill the servers on ports 8090 to 8093 if they are still running.
 	lsof -i tcp:8090-8093 | awk 'NR!=1 {print $$2}' | xargs kill 2>/dev/null || true
 
+lint:  # Lint the code with ruff, yamllint and ansible-lint.
+	# `ansible-lint` ignores the `ansible.cfg` so the `ANSIBLE_LIBRARY` and `ANSIBLE_ROLES_PATH` have to be set as environment variables.
+	.venv/bin/python -m ruff .
+	.venv/bin/python -m yamllint -c .yamllint.yml .
+
 report:  # Report the python version and pip list.
 	.venv/bin/python --version
 	.venv/bin/python -m pip list -v

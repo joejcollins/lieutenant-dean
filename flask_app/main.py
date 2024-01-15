@@ -1,7 +1,7 @@
-""" Flask App """
-import flask
+"""Flask App"""
 import flasgger
-import flasgger.utils as swag_utils
+import flask
+
 from flask_app.blueprints import greetings
 
 APP = flask.Flask(__name__)

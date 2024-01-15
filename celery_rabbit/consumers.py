@@ -1,8 +1,7 @@
-from celery import bootsteps
-from kombu import Consumer
-import time
 
+from celery import bootsteps
 from celery_queue_rabbit.queues import my_queues
+from kombu import Consumer
 
 
 class SubstitutionCypher(bootsteps.ConsumerStep):

@@ -1,9 +1,9 @@
-""" Celery text manipulations. """
+"""Celery text manipulations."""
 import logging
 import time
 
-import pkg_config.text as config_text
 import celery_queue_rabbit.celery_app as app
+import pkg_config.text as config_text
 
 
 @app.queue_broker.task(bind=True)  # `bind=True` ensures that the arguments are passed.

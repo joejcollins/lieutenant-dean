@@ -1,5 +1,6 @@
 import click
 
+
 @click.command()
 def cmd1():
     """This is command 1"""

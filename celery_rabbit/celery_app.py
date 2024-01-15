@@ -1,7 +1,7 @@
-""" Celery queue broker configuration. """
+"""Celery queue broker configuration."""
+
 import celery
-import celery_queue_rabbit.consumers as consumers
-import logging
+from celery_queue_rabbit import consumers
 
 queue_broker = celery.Celery("__name__")
 

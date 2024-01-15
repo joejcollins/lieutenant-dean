@@ -13,6 +13,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
+        "ansible-lint",
         "ansible",
         "ansible-runner",
         "black",
@@ -37,6 +38,7 @@ dependencies = [
         "python-dotenv",  # used for the .env secrets file.
         "redis",
         "requests",
+        "ruff",  # replacement for flake8.
         "UnleashClient"  # used by the for feature flags.
 ]
 

@@ -1,9 +1,9 @@
 ---
-  - hosts: 127.0.0.1
-    connection: local
-    gather_facts: no
-    become: no
-    tasks:
+- hosts: 127.0.0.1
+  connection: local
+  gather_facts: false
+  become: false
+  tasks:
 
     - name: Create the VM
       ansible.builtin.shell: limactl start lima-focal.yml --tty=false

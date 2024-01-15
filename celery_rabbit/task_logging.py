@@ -1,7 +1,6 @@
 import logging
 
-from celery.signals import setup_logging, task_postrun, task_prerun, after_setup_logger
-from celery.utils.log import get_task_logger
+from celery.signals import setup_logging, task_postrun, task_prerun
 
 # Attempt to set up logger as per the example at:
 # https://stackoverflow.com/questions/25281612/celery-log-each-task-run-to-its-own-file
@@ -45,5 +44,6 @@ def close_logging(sender=None, task_id=None, **kwargs):
 @setup_logging.connect
 def setup_celery_logging(**kwargs):
     """Completely disable the Celery logging.  Celery messes with the root logger
-    so the LoggingProxy has no fileno which causes ansible-runner to fail."""
+    so the LoggingProxy has no fileno which causes ansible-runner to fail.
+    """
     pass

@@ -1,8 +1,9 @@
-""" Text endpoints. """
-import flask
-import flasgger.utils as swag_utils
-import flask_app.text_apidocs as apidocs
+"""Text endpoints."""
 import celery_queue_rabbit.tasks.text as text_tasks
+import flasgger.utils as swag_utils
+import flask
+
+import flask_app.text_apidocs as apidocs
 
 text_api = flask.Blueprint("text_api", __name__, url_prefix="/text/")
 

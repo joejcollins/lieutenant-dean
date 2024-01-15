@@ -1,4 +1,4 @@
-""" Celery text manipulations. """
+"""Celery text manipulations."""
 import logging
 import time
 
