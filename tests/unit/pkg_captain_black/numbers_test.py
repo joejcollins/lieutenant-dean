@@ -1,5 +1,5 @@
 """Test arithmetic."""
-from pkg_captain_black import numbers
+from pkg_shared import numbers
 
 
 def test_method_is_present() -> None:

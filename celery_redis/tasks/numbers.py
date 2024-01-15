@@ -2,7 +2,7 @@
 import time
 
 from celery_redis.main import APP
-from pkg_captain_black import numbers
+from pkg_shared import numbers
 
 
 @APP.task(bind=True)

@@ -2,7 +2,7 @@
 import logging
 import time
 
-import pkg_captain_black.text as config_text
+import pkg_shared.text as config_text
 from celery_redis.main import APP
 
 

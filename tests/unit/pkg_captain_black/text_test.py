@@ -1,5 +1,5 @@
 """Test text manipulations."""
-from pkg_captain_black import text
+from pkg_shared import text
 
 
 def test_method_is_present() -> None:
@@ -9,6 +9,6 @@ def test_method_is_present() -> None:
 
 def test_reverse_text() -> None:
     """Confirm the text is reversed."""
-    string_to_reverse = 'qwerty'
+    string_to_reverse = "qwerty"
     reversed_text = text.reverse_string(string_to_reverse)
-    assert reversed_text == 'ytrewq'
+    assert reversed_text == "ytrewq"
