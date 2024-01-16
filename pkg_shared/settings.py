@@ -2,18 +2,15 @@
 
 Background
 ----------
-
 This is the background to the approach taken here.
 
 Objective
 ---------
-
 The objective is to have a single source of truth for the settings that are shared
 between Platform apps.
 
 Options
 -------
-
 Use .env files
 ^^^^^^^^^^^^^^
 
@@ -43,6 +40,7 @@ class CaptainBlackSettings:
 
     app_name: str = "Captain Black Default Name"
     path: str = this_directory()
+    greeting: str = "Hello"
     redis_host: str = "127.0.0.1"
     redis_port: int = 6379
     redis_db: int = 1

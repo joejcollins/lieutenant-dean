@@ -8,7 +8,7 @@ from pkg_shared.settings import CAPTAIN_BLACK
 from tests.unit.mock_built_in_file import MockFile
 
 
-def mock_file_open(file: str, mode: str) -> MockFile:
+def mock_file_open(file: str, mode: str) -> MockFile:  # pylint: disable=unused-argument
     """Return a mock file with some dummy content."""
     return MockFile('{"redis_host":  "my-dev-box.somewhere.com", "redis_db": 3}')
 
@@ -36,6 +36,8 @@ def test_get_settings_file_present(monkeypatch: MonkeyPatch) -> None:
     # Patch over the file open so the mock file is found.
     monkeypatch.setattr("builtins.open", mock_file_open)
     # ACT
-    settings = CAPTAIN_BLACK._get_settings_file("dummy_file.json")
+    the_settings = CAPTAIN_BLACK._get_settings_file(  # pylint: disable=protected-access
+        "dummy_file.json"
+    )
     # ASSERT
-    assert "my-dev-box.somewhere.com" in settings
+    assert "my-dev-box.somewhere.com" in the_settings

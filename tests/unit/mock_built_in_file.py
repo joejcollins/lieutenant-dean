@@ -14,7 +14,7 @@ class MockFile:
 
     def __exit__(self, exc_type, exc_value, traceback):
         """Make sure the mock supports the context manager."""
-        pass
+        # Do nothing.
 
     def read(self) -> str:
         """Return the content of the dummy content."""
