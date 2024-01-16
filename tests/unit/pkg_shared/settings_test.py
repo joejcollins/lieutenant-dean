@@ -11,7 +11,7 @@ from tests.unit.mock_built_in_file import MockFile
 def mock_file_open(
     file: str, mode: str, encoding: str | None = None  # pylint: disable=unused-argument
 ) -> MockFile:
-    """Return a mock file with some dummy content."""
+    """Mimics the file open but returns a mock file with some dummy content."""
     return MockFile('{"redis_host":  "my-dev-box.somewhere.com", "redis_db": 3}')
 
 
