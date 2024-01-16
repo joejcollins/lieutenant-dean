@@ -45,6 +45,7 @@ dependencies = [
 # Find all the packages in the root project using automatic discovery (flat-layout).
 [tool.setuptools.packages]
 find = {namespaces = false}  # Disable implicit namespaces
+# I think this uses the __init__.py files to find the packages.
 
 [project.optional-dependencies]
 pdf = ["ReportLab>=1.2", "RXP"]

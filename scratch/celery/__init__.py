@@ -1,0 +1,1 @@
+"""Celery scratch directory."""
