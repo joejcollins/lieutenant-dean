@@ -1,22 +1,4 @@
-"""Global configuration file for the project, to be subclassed for the sub projects.
-
-Background
-----------
-This is the background to the approach taken here.
-
-Objective
----------
-The objective is to have a single source of truth for the settings that are shared
-between Platform apps.
-
-Options
--------
-Use .env files
-^^^^^^^^^^^^^^
-
-
-
-"""
+"""Global configuration file for the project, to be subclassed for the sub projects."""
 import inspect
 import json
 import os
