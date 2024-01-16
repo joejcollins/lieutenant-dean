@@ -56,7 +56,7 @@ requirements:  # Install the requirements for Python (skipping the Pyenv install
 	-pyenv install --skip-existing 
 	python -m venv .venv
 	.venv/bin/python -m pip install --upgrade pip setuptools 
-	.venv/bin/python -m pip install -r requirements.txt
+	.venv/bin/python -m pip install --requirement requirements.txt
 
 test:  # Run the unit tests.
 	.venv/bin/python -m pytest ./tests

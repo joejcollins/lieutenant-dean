@@ -42,17 +42,9 @@ dependencies = [
         "UnleashClient"  # used by the for feature flags.
 ]
 
-[tool.setuptools]
-py-modules = [
-    'celery_rabbit',
-    'celery_redis',
-    'click_cli',
-    'fastapi_app',
-    'flask_app',
-    'pkg_captain_black',
-    'prometheus_monitoring',
-    'pytest_unit'
-]  #  Explicitly set up py-modules.
+# Find all the packages in the root project using automatic discovery (flat-layout).
+[tool.setuptools.packages]
+find = {namespaces = false}  # Disable implicit namespaces
 
 [project.optional-dependencies]
 pdf = ["ReportLab>=1.2", "RXP"]
