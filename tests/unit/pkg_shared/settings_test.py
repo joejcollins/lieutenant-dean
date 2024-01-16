@@ -8,7 +8,9 @@ from pkg_shared.settings import CAPTAIN_BLACK
 from tests.unit.mock_built_in_file import MockFile
 
 
-def mock_file_open(file: str, mode: str) -> MockFile:  # pylint: disable=unused-argument
+def mock_file_open(
+    file: str, mode: str, encoding: str | None = None  # pylint: disable=unused-argument
+) -> MockFile:
     """Return a mock file with some dummy content."""
     return MockFile('{"redis_host":  "my-dev-box.somewhere.com", "redis_db": 3}')
 

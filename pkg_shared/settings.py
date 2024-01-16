@@ -53,7 +53,7 @@ class CaptainBlackSettings:
         """Get the settings file as a json string."""
         settings_file = os.path.join(settings_directory, "settings.json")
         if os.path.isfile(settings_file):
-            with open(settings_file, "r") as file:
+            with open(settings_file, "r", encoding="utf-8") as file:
                 content = file.read()
             return content
         else:
