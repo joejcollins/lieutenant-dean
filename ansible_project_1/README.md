@@ -5,11 +5,12 @@
 ```
 ansible/                        # contains the ansible.cfg
 ansible/playbooks/              # where you run playbooks
-ansible/playbooks/environment   # playbooks for managing environments
-ansible/playbooks/pod           # playbooks for managing pods
+ansible/playbooks/create        # playbooks for creating virtual machines
 ansible/playbooks/recovery      # playbooks for recovering from failure
+ansible/playbooks/upgrade       # playbooks for upgrading virtual machines
+ansible/playbooks/delete        # playbooks for deleting virtual machines
 ansible/library/                # custom modules
 ansible/module_utils/           # if any custom module_utils to support modules
 ansible/filter_plugins/         # filter plugins
-ansible/roles/                  # same just a list
+ansible/roles/                  # roles for the playbooks to use
 ```
