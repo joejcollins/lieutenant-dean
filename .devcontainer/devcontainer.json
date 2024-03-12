@@ -2,10 +2,7 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/ubuntu
 {
     "name": "Ubuntu",
-    "build": {
-        "dockerfile": "../.gitpod.Dockerfile",
-        "context": "../"
-    },
+    "image": "joejcollins/captain-black:20240222",
     "hostRequirements": {
         "cpus": 2,
         "memory": "4gb"
