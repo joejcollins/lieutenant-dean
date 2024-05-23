@@ -9,47 +9,47 @@ description = "Captain Black Python test bed"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
-    "Development Status :: 4 - Beta", 
+    "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3.11",
 ]
 dependencies = [
-        "ansible-lint",
-        "ansible",
-        "ansible-runner",
-        "black",
-        "celery",
-        "click",
-        "debugpy",  # only required for debugging, not needed for production.
-        "fastapi",
-        "flake8",
-        "flasgger",
-        "Flask",
-        "flower",
-        "gunicorn",  # used by the Flask API.
-        "hypercorn",  # used by the FastApi API.
-        "mkdocs",
-        "mkdocs-mermaid2-plugin",
-        "mkdocs-roamlinks-plugin",
-        "mypy",
-        "ncclient",
-        "pip-tools",  # used to manage requirements.txt.
-        "pytest",  # used for testing, not needed for production.
-        "pytest-flask",  # used for testing, not needed for production.
-        "python-dotenv",  # used for the .env secrets file.
-        "redis",
-        "requests",
-        "ruff",  # replacement for flake8.
-        "UnleashClient"  # used by the for feature flags.
+    "ansible",
+    "ansible-runner",
+    "celery",
+    "click",
+    "fastapi",
+    "flake8",
+    "flasgger",
+    "Flask",
+    "flower",
+    "gunicorn",                # used by the Flask API.
+    "hypercorn",               # used by the FastApi API.
+    "ncclient",
+    "python-dotenv",           # used for the .env secrets file.
+    "redis",
+    "requests",
+    "UnleashClient",           # used by the for feature flags.
+]
+
+[project.optional-dependencies]
+dev = [
+    "ansible-lint", 
+    "black",
+    "debugpy",                 # only required for debugging, not needed for production.
+    "mkdocs",
+    "mkdocs-mermaid2-plugin",
+    "mkdocs-roamlinks-plugin",
+    "mypy",
+    "pip-tools",               # used to manage requirements.txt.
+    "pytest",                  # used for testing, not needed for production.
+    "pytest-flask",            # used for testing, not needed for production.
+    "ruff",                    # replacement for flake8.
 ]
 
 # Find all the packages in the root project using automatic discovery (flat-layout).
 [tool.setuptools.packages]
-find = {namespaces = false}  # Disable implicit namespaces
-# I think this uses the __init__.py files to find the packages.
-
-[project.optional-dependencies]
-pdf = ["ReportLab>=1.2", "RXP"]
-rest = ["docutils>=0.3", "pack ==1.1, ==1.3"]
+find = { namespaces = false } # Disable implicit namespaces
+# I think this uses the __init__.py files to find the packages. 
 
 [project.scripts]
 run = "click_cli.main:cli"
@@ -70,9 +70,7 @@ warn_return_any = true
 warn_unused_configs = true
 follow_imports = "skip"
 "no_strict_optional" = true
-"exclude" = [
-    "typings",
-]
+"exclude" = ["typings"]
 
 [tool.pytest.ini_options]
 log_cli = false
@@ -81,16 +79,15 @@ addopts = "-q --disable-warnings --cache-clear"
 testpaths = ["./tests"]
 
 [tool.ruff]
-extend-include = ["*.py.j2"]
-select = ["F", "E", "W", "C90", "I", "PL", "D"]
-ignore = ["D203", "D213"]
-fixable = ["ALL"]
-line-length = 88
+lint.select = ["F", "E", "W", "C90", "I", "PL", "D"]
+lint.ignore = ["D203", "D213"]
+lint.fixable = ["ALL"]
 target-version = "py311"
 exclude = [
     ".git",
+    ".github",
     ".pytest_cache",
     ".venv",
     ".vscode",
-    "__pycache__",
+    "__pycache__"
 ]

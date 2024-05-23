@@ -1,0 +1,64 @@
+name: Build the Docker images and push to the Github Container Registry
+
+on:
+  push:
+    branches: [ main ]
+
+# Run building the docker image that runs our Flask App?
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+
+    steps:
+    - name: Checkout the repo to a depth of 2 so we can see what has changed.
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+        submodules: false
+        clean: true
+
+    - name: Docker login
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set short git commit SHA
+      id: vars
+      run: |
+        calculatedSha=$(git rev-parse --short ${{ github.sha }})
+        echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
+
+    - name: Build and Push Production Docker Image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: |
+          ghcr.io/joejcollins/captain-black:latest
+          ghcr.io/joejcollins/captain-black:${{ env.COMMIT_SHORT_SHA }}
+
+    - name: Check for changes in requirements.dev.txt
+      id: check_changes
+      run: |
+        if git diff --quiet HEAD^ HEAD requirements.dev.txt; then
+          echo "changed=false" >> $GITHUB_ENV
+        else
+          echo "changed=true" >> $GITHUB_ENV
+        fi
+
+    - name: Build and Push Development Docker Image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile.dev
+        push: true
+        tags: |
+          ghcr.io/joejcollins/captain-black-dev:latest

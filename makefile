@@ -19,12 +19,16 @@ clean:  # Remove all build, test, coverage and Python artifacts.
 	find . -name "*.pyc" -exec rm -f {} \;
 	find . -type f -name "*.py[co]" -delete -or -type d -name "__pycache__" -delete
 
+PIPTOOLS_COMPILE = .venv/bin/python -m piptools compile
+
 compile:  # Compile the requirements files using pip-tools.
 	rm -f requirements.*
-	.venv/bin/python -m pip install pip-tools
-	.venv/bin/pip-compile --output-file=requirements.txt
+	$(PIPTOOLS_COMPILE) --output-file=requirements.txt
 	echo "# Add the entire project as a package." >> requirements.txt
 	echo "-e ." >> requirements.txt
+	$(PIPTOOLS_COMPILE) --allow-unsafe --extra=dev --output-file=requirements.dev.txt
+	echo "# Add the entire project as a package." >> requirements.dev.txt
+	echo "-e ." >> requirements.dev.txt
 
 .PHONY: docs  # because there is a directory called docs.
 docs:  # Build the mkdocs documentation.
@@ -52,21 +56,15 @@ report:  # Report the python version and pip list.
 	.venv/bin/python --version
 	.venv/bin/python -m pip list -v
 
-requirements:  # Install the requirements for Python (skipping the Pyenv install if needed).
-	-pyenv install --skip-existing 
-	python -m venv .venv
-	.venv/bin/python -m pip install --upgrade pip setuptools 
-	.venv/bin/python -m pip install --requirement requirements.txt
-
 test:  # Run the unit tests.
 	.venv/bin/python -m pytest ./tests
 
-test-tree:  # Build the directory structure for the tests.
-	find . -type d -not -path "*/.*" \
-	-not -path "*/__*" \
-	-not -path "*.egg-info*" \
-	-not -path "./docs*" \
-	-not -path "./logs*" \
-	-not -path "./site*" \
-	-not -path "./tests*" \
-	| xargs -I{} mkdir -p "./tests/unit/{}"
+venv:  # Install the requirements for Python.
+	python -m venv .venv
+	.venv/bin/python -m pip install --upgrade pip setuptools
+	.venv/bin/python -m pip install -r requirements.txt
+
+venv-dev:  # Install the development requirements for Python.
+	python -m venv .venv
+	.venv/bin/python -m pip install --upgrade pip setuptools
+	.venv/bin/python -m pip install -r requirements.dev.txt
