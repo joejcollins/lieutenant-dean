@@ -42,7 +42,7 @@ fastapi:  # Run the FastAPI server.
 
 .PHONY: help
 help: # Show help for each of the makefile recipes.
-	@grep -E '^[a-zA-Z0-9 -]+:.*#'  makefile | sort | while read -r l; do printf "\033[1;32m$$(echo $$l | cut -f 1 -d':')\033[00m:$$(echo $$l | cut -f 2- -d'#')\n"; done
+	@grep -E '^[a-zA-Z0-9 -]+:.*#'  Makefile | sort | while read -r l; do printf "\033[1;32m$$(echo $$l | cut -f 1 -d':')\033[00m:$$(echo $$l | cut -f 2- -d'#')\n"; done
 
 kill: # Kill the servers on ports 8090 to 8093 if they are still running.
 	lsof -i tcp:8090-8093 | awk 'NR!=1 {print $$2}' | xargs kill 2>/dev/null || true
